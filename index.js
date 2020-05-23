@@ -29,7 +29,7 @@ let allowCrossDomain = function(res, next) {
   res.header('Access-Control-Allow-Headers', "*");
   next();
 }
-app.use(allowCrossDomain);
+
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
@@ -47,6 +47,8 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   app.use(middleware.swaggerUi());
 
   app.use(serveStatic(__dirname + "/public"));
+
+  app.use(allowCrossDomain);
 
   // Start the server
   setupDataLayer().then(() => {
