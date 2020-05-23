@@ -1,0 +1,1230 @@
+<!doctype html>
+<html>
+  <head>
+    <title>AVE</title>
+    <style type="text/css">
+      body {
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+  <h1>AVE</h1>
+    <div class="app-desc">This is a no profit association for elderly</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="info@ave.com">info@ave.com</a></div>
+    <div class="app-desc">Version: 1.0.0</div>
+    <div class="app-desc">BasePath:/v2</div>
+    <div class="license-info">Apache-2.0</div>
+    <div class="license-url">http://www.apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Event">Event</a></h4>
+  <ul>
+  <li><a href="#eventsEventIdGet"><code><span class="http-method">get</span> /events/{eventId}</code></a></li>
+  <li><a href="#eventsEventsbymonthMonthIdGet"><code><span class="http-method">get</span> /events/eventsbymonth/{monthId}</code></a></li>
+  <li><a href="#eventsGet"><code><span class="http-method">get</span> /events</code></a></li>
+  <li><a href="#eventsTodayseventsGet"><code><span class="http-method">get</span> /events/todaysevents</code></a></li>
+  </ul>
+  <h4><a href="#PeopleInvolved">PeopleInvolved</a></h4>
+  <ul>
+  <li><a href="#peopleInvolvedInServicesFindByPersonPersonIdGet"><code><span class="http-method">get</span> /peopleInvolvedInServices/findByPerson/{personId}</code></a></li>
+  <li><a href="#peopleInvolvedInServicesFindByServiceServiceIdGet"><code><span class="http-method">get</span> /peopleInvolvedInServices/findByService/{serviceId}</code></a></li>
+  <li><a href="#peopleInvolvedInServicesGet"><code><span class="http-method">get</span> /peopleInvolvedInServices</code></a></li>
+  </ul>
+  <h4><a href="#Person">Person</a></h4>
+  <ul>
+  <li><a href="#peopleGet"><code><span class="http-method">get</span> /people</code></a></li>
+  <li><a href="#peoplePersonIdGet"><code><span class="http-method">get</span> /people/{personId}</code></a></li>
+  </ul>
+  <h4><a href="#Service">Service</a></h4>
+  <ul>
+  <li><a href="#servicesGet"><code><span class="http-method">get</span> /services</code></a></li>
+  <li><a href="#servicesServiceIdGet"><code><span class="http-method">get</span> /services/{serviceId}</code></a></li>
+  <li><a href="#servicesTypeOfServicesGet"><code><span class="http-method">get</span> /services/typeOfServices</code></a></li>
+  <li><a href="#servicesTypeOfServicesTypeIdGet"><code><span class="http-method">get</span> /services/typeOfServices/{typeId}</code></a></li>
+  </ul>
+  <h4><a href="#ServicePicture">ServicePicture</a></h4>
+  <ul>
+  <li><a href="#servicePicturesGet"><code><span class="http-method">get</span> /servicePictures</code></a></li>
+  <li><a href="#servicePicturesServiceIdGet"><code><span class="http-method">get</span> /servicePictures/{serviceId}</code></a></li>
+  </ul>
+
+  <h1><a name="Event">Event</a></h1>
+  <div class="method"><a name="eventsEventIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /events/{eventId}</code></pre></div>
+    <div class="method-summary">Find event by Id (<span class="nickname">eventsEventIdGet</span>)</div>
+    <div class="method-notes">Returns an event</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">eventId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of an event format: int64</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Event">Event</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "eventId" : 1,
+  "name" : "Petanque game Presentation",
+  "hour" : 1200,
+  "day" : 10,
+  "month" : 9,
+  "year" : 2020,
+  "address" : "Daphne street 19",
+  "city" : "London",
+  "picturePath" : "/img/events/PetanqueGamePresentation",
+  "descriptionText" : "Opening of the petanque game place",
+  "contactPerson" : 0
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    succesful operation
+        <a href="#Event">Event</a>
+    <h4 class="field-label">400</h4>
+    Invalid Id supplied
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Event not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="eventsEventsbymonthMonthIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /events/eventsbymonth/{monthId}</code></pre></div>
+    <div class="method-summary">Find all the events for a specific Month (<span class="nickname">eventsEventsbymonthMonthIdGet</span>)</div>
+    <div class="method-notes">Returns events</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">monthId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Month of the events format: int64</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Event">Event</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "eventId" : 1,
+  "name" : "Petanque game Presentation",
+  "hour" : 1200,
+  "day" : 10,
+  "month" : 9,
+  "year" : 2020,
+  "address" : "Daphne street 19",
+  "city" : "London",
+  "picturePath" : "/img/events/PetanqueGamePresentation",
+  "descriptionText" : "Opening of the petanque game place",
+  "contactPerson" : 0
+}, {
+  "eventId" : 1,
+  "name" : "Petanque game Presentation",
+  "hour" : 1200,
+  "day" : 10,
+  "month" : 9,
+  "year" : 2020,
+  "address" : "Daphne street 19",
+  "city" : "London",
+  "picturePath" : "/img/events/PetanqueGamePresentation",
+  "descriptionText" : "Opening of the petanque game place",
+  "contactPerson" : 0
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    succesful operation
+        
+    <h4 class="field-label">400</h4>
+    Invalid Code supplied
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Event not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="eventsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /events</code></pre></div>
+    <div class="method-summary">Events of the Association (<span class="nickname">eventsGet</span>)</div>
+    <div class="method-notes">List of events of the association</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">offset (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Pagination offset </div><div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Maximum number of item per page. Default is 20. </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Event">Event</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "eventId" : 1,
+  "name" : "Petanque game Presentation",
+  "hour" : 1200,
+  "day" : 10,
+  "month" : 9,
+  "year" : 2020,
+  "address" : "Daphne street 19",
+  "city" : "London",
+  "picturePath" : "/img/events/PetanqueGamePresentation",
+  "descriptionText" : "Opening of the petanque game place",
+  "contactPerson" : 0
+}, {
+  "eventId" : 1,
+  "name" : "Petanque game Presentation",
+  "hour" : 1200,
+  "day" : 10,
+  "month" : 9,
+  "year" : 2020,
+  "address" : "Daphne street 19",
+  "city" : "London",
+  "picturePath" : "/img/events/PetanqueGamePresentation",
+  "descriptionText" : "Opening of the petanque game place",
+  "contactPerson" : 0
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A collection of Events
+        
+    <h4 class="field-label">404</h4>
+    Unexpected error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="eventsTodayseventsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /events/todaysevents</code></pre></div>
+    <div class="method-summary">Events of the current day (<span class="nickname">eventsTodayseventsGet</span>)</div>
+    <div class="method-notes">List of events of taday</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">offset (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Pagination offset </div><div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Maximum number of item per page. Default is 20. </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Event">Event</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "eventId" : 1,
+  "name" : "Petanque game Presentation",
+  "hour" : 1200,
+  "day" : 10,
+  "month" : 9,
+  "year" : 2020,
+  "address" : "Daphne street 19",
+  "city" : "London",
+  "picturePath" : "/img/events/PetanqueGamePresentation",
+  "descriptionText" : "Opening of the petanque game place",
+  "contactPerson" : 0
+}, {
+  "eventId" : 1,
+  "name" : "Petanque game Presentation",
+  "hour" : 1200,
+  "day" : 10,
+  "month" : 9,
+  "year" : 2020,
+  "address" : "Daphne street 19",
+  "city" : "London",
+  "picturePath" : "/img/events/PetanqueGamePresentation",
+  "descriptionText" : "Opening of the petanque game place",
+  "contactPerson" : 0
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A collection of Events of today
+        
+    <h4 class="field-label">404</h4>
+    Unexpected error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="PeopleInvolved">PeopleInvolved</a></h1>
+  <div class="method"><a name="peopleInvolvedInServicesFindByPersonPersonIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /peopleInvolvedInServices/findByPerson/{personId}</code></pre></div>
+    <div class="method-summary">Find served services by PersonId (<span class="nickname">peopleInvolvedInServicesFindByPersonPersonIdGet</span>)</div>
+    <div class="method-notes">Returns a the person Id and related Id of services</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">personId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of a person format: int64</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#PersonInvolvment">PersonInvolvment</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "personId" : 0,
+  "serviceId" : 1
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    succesful operation
+        <a href="#PersonInvolvment">PersonInvolvment</a>
+    <h4 class="field-label">400</h4>
+    Invalid Id supplied
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Match not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="peopleInvolvedInServicesFindByServiceServiceIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /peopleInvolvedInServices/findByService/{serviceId}</code></pre></div>
+    <div class="method-summary">Find involved people by serviceId (<span class="nickname">peopleInvolvedInServicesFindByServiceServiceIdGet</span>)</div>
+    <div class="method-notes">Returns a the person Id and related Id of services</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">serviceId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of a service format: int64</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#PersonInvolvment">PersonInvolvment</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "personId" : 0,
+  "serviceId" : 1
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    succesful operation
+        <a href="#PersonInvolvment">PersonInvolvment</a>
+    <h4 class="field-label">400</h4>
+    Invalid Id supplied
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Match not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="peopleInvolvedInServicesGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /peopleInvolvedInServices</code></pre></div>
+    <div class="method-summary">Id of the people that are involved in some services (<span class="nickname">peopleInvolvedInServicesGet</span>)</div>
+    <div class="method-notes">List of the id of people that take part of some services</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">offset (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Pagination offset </div><div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Maximum number of item per page. Default is 20. </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#PersonInvolvment">PersonInvolvment</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "personId" : 0,
+  "serviceId" : 1
+}, {
+  "personId" : 0,
+  "serviceId" : 1
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A collection of People and related services
+        
+    <h4 class="field-label">404</h4>
+    Unexpected error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Person">Person</a></h1>
+  <div class="method"><a name="peopleGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /people</code></pre></div>
+    <div class="method-summary">People that work in the Association (<span class="nickname">peopleGet</span>)</div>
+    <div class="method-notes">List of the people that works in the Association</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">offset (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Pagination offset </div><div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Maximum number of item per page. Default is 20. </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Person">Person</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "personId" : 0,
+  "nameAndSurname" : "Paolo Grappi",
+  "birthday" : "02/10/1960",
+  "picturePath" : "/img/people/PaoloGrappi",
+  "telephone" : "02 333 456 765",
+  "email" : "paolo.grappi@gmail.com",
+  "descriptionText" : "Entusiastic person..",
+  "profession" : "Public transport",
+  "role" : "assistant"
+}, {
+  "personId" : 0,
+  "nameAndSurname" : "Paolo Grappi",
+  "birthday" : "02/10/1960",
+  "picturePath" : "/img/people/PaoloGrappi",
+  "telephone" : "02 333 456 765",
+  "email" : "paolo.grappi@gmail.com",
+  "descriptionText" : "Entusiastic person..",
+  "profession" : "Public transport",
+  "role" : "assistant"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A collection of People
+        
+    <h4 class="field-label">404</h4>
+    Unexpected error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="peoplePersonIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /people/{personId}</code></pre></div>
+    <div class="method-summary">Find person by Id (<span class="nickname">peoplePersonIdGet</span>)</div>
+    <div class="method-notes">Returns a person</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">personId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of a person format: int64</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Person">Person</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "personId" : 0,
+  "nameAndSurname" : "Paolo Grappi",
+  "birthday" : "02/10/1960",
+  "picturePath" : "/img/people/PaoloGrappi",
+  "telephone" : "02 333 456 765",
+  "email" : "paolo.grappi@gmail.com",
+  "descriptionText" : "Entusiastic person..",
+  "profession" : "Public transport",
+  "role" : "assistant"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    succesful operation
+        <a href="#Person">Person</a>
+    <h4 class="field-label">400</h4>
+    Invalid Id supplied
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Person not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Service">Service</a></h1>
+  <div class="method"><a name="servicesGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /services</code></pre></div>
+    <div class="method-summary">Services offered by the Association (<span class="nickname">servicesGet</span>)</div>
+    <div class="method-notes">List of services of the association</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">offset (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Pagination offset </div><div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Maximum number of item per page. Default is 20. </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Service">Service</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "serviceId" : 1,
+  "name" : "Petanque game",
+  "type" : "fun",
+  "picturePath" : "/img/services/PetanqueGame",
+  "descriptionText" : "Petanque game description",
+  "address" : "Daphne street 19",
+  "eventId" : 1
+}, {
+  "serviceId" : 1,
+  "name" : "Petanque game",
+  "type" : "fun",
+  "picturePath" : "/img/services/PetanqueGame",
+  "descriptionText" : "Petanque game description",
+  "address" : "Daphne street 19",
+  "eventId" : 1
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A collection of Services
+        
+    <h4 class="field-label">404</h4>
+    Unexpected error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="servicesServiceIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /services/{serviceId}</code></pre></div>
+    <div class="method-summary">Find service by Id (<span class="nickname">servicesServiceIdGet</span>)</div>
+    <div class="method-notes">Returns a service</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">serviceId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of a service format: int64</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Service">Service</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "serviceId" : 1,
+  "name" : "Petanque game",
+  "type" : "fun",
+  "picturePath" : "/img/services/PetanqueGame",
+  "descriptionText" : "Petanque game description",
+  "address" : "Daphne street 19",
+  "eventId" : 1
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    succesful operation
+        <a href="#Service">Service</a>
+    <h4 class="field-label">400</h4>
+    Invalid Id supplied
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Service not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="servicesTypeOfServicesGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /services/typeOfServices</code></pre></div>
+    <div class="method-summary">Types of services (<span class="nickname">servicesTypeOfServicesGet</span>)</div>
+    <div class="method-notes">List of the type of the services</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">offset (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Pagination offset </div><div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Maximum number of item per page. Default is 20. </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      array[Service/type]
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "type" : "fun"
+}, {
+  "type" : "adventure"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A collection of the types of the services
+        
+    <h4 class="field-label">404</h4>
+    Unexpected error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="servicesTypeOfServicesTypeIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /services/typeOfServices/{typeId}</code></pre></div>
+    <div class="method-summary">Find all the services for a specific type (<span class="nickname">servicesTypeOfServicesTypeIdGet</span>)</div>
+    <div class="method-notes">Returns services</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">typeId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Type of the service </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Service">Service</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "serviceId" : 1,
+  "name" : "Petanque game",
+  "type" : "fun",
+  "picturePath" : "/img/services/PetanqueGame",
+  "descriptionText" : "Petanque game description",
+  "address" : "Daphne street 19",
+  "eventId" : 1
+}, {
+  "serviceId" : 1,
+  "name" : "Petanque game",
+  "type" : "fun",
+  "picturePath" : "/img/services/PetanqueGame",
+  "descriptionText" : "Petanque game description",
+  "address" : "Daphne street 19",
+  "eventId" : 1
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    succesful operation
+        
+    <h4 class="field-label">400</h4>
+    Invalid Code supplied
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Service not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="ServicePicture">ServicePicture</a></h1>
+  <div class="method"><a name="servicePicturesGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /servicePictures</code></pre></div>
+    <div class="method-summary">Pictures of the services (<span class="nickname">servicePicturesGet</span>)</div>
+    <div class="method-notes">List of images of the services</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">offset (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Pagination offset </div><div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Maximum number of item per page. Default is 20. </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#ServicePicture">ServicePicture</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "serviceId" : 1,
+  "picturePath" : "/img/services/PetanquePic1"
+}, {
+  "serviceId" : 1,
+  "picturePath" : "/img/services/PetanquePic1"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A collection of Images
+        
+    <h4 class="field-label">404</h4>
+    Unexpected error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="servicePicturesServiceIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /servicePictures/{serviceId}</code></pre></div>
+    <div class="method-summary">Images for a specific service Id (<span class="nickname">servicePicturesServiceIdGet</span>)</div>
+    <div class="method-notes">Images URL</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">serviceId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of a service format: int64</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ServicePicture">ServicePicture</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "serviceId" : 1,
+  "picturePath" : "/img/services/PetanquePic1"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    succesful operation
+        <a href="#ServicePicture">ServicePicture</a>
+    <h4 class="field-label">400</h4>
+    Invalid Id supplied
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Images not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#Event"><code>Event</code> - Event</a></li>
+    <li><a href="#Person"><code>Person</code> - Person</a></li>
+    <li><a href="#PersonInvolvment"><code>PersonInvolvment</code> - Person involved in service</a></li>
+    <li><a href="#Service"><code>Service</code> - Service</a></li>
+    <li><a href="#ServicePicture"><code>ServicePicture</code> - Images of the services</a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="Event"><code>Event</code> - Event</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>An event of the association</div>
+    <div class="field-items">
+      <div class="param">eventId (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">hour (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">day (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">month (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">year (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">address (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">city (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">picturePath (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">descriptionText (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">contactPerson (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Person"><code>Person</code> - Person</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>A person that works in the Association</div>
+    <div class="field-items">
+      <div class="param">personId (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">nameAndSurname (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">birthday (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">picturePath (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">telephone (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">descriptionText (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">profession (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">role (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="PersonInvolvment"><code>PersonInvolvment</code> - Person involved in service</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Bind between people and the service that they serve</div>
+    <div class="field-items">
+      <div class="param">personId (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">serviceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Service"><code>Service</code> - Service</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>A Service of the association</div>
+    <div class="field-items">
+      <div class="param">serviceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">picturePath (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">descriptionText (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">address (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">eventId (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ServicePicture"><code>ServicePicture</code> - Images of the services</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Bind between services and the related images</div>
+    <div class="field-items">
+      <div class="param">serviceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">picturePath (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>
