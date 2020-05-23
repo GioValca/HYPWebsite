@@ -1,0 +1,575 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a no profit association for elderly"
+  version: "1.0.0"
+  title: "AVE"
+  contact:
+    email: "info@ave.com"
+  license:
+    name: "Apache-2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "hypermedia-ave.herokuapp.com"
+basePath: "/v2"
+tags:
+- name: "event"
+  description: "Events of the Association"
+- name: "service"
+  description: "Services of the Association"
+- name: "person"
+  description: "People of the Association"
+- name: "peopleInvolved"
+  description: "People involved in the services of the Association"
+- name: "servicePicture"
+  description: "Pictures of the services of the Association"
+schemes:
+- "https"
+paths:
+  /events:
+    get:
+      tags:
+      - "event"
+      summary: "Events of the Association"
+      description: "List of events of the association"
+      operationId: "eventsGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of item per page. Default is 20."
+        required: false
+        type: "integer"
+      responses:
+        "200":
+          description: "A collection of Events"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Event"
+        "404":
+          description: "Unexpected error"
+      x-swagger-router-controller: "Event"
+  /events/{eventId}:
+    get:
+      tags:
+      - "event"
+      summary: "Find event by Id"
+      description: "Returns an event"
+      operationId: "eventsEventIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        description: "Id of an event"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "succesful operation"
+          schema:
+            $ref: "#/definitions/Event"
+        "400":
+          description: "Invalid Id supplied"
+        "404":
+          description: "Event not found"
+      x-swagger-router-controller: "Event"
+  /events/todaysevents:
+    get:
+      tags:
+      - "event"
+      summary: "Events of the current day"
+      description: "List of events of taday"
+      operationId: "eventsTodayseventsGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of item per page. Default is 20."
+        required: false
+        type: "integer"
+      responses:
+        "200":
+          description: "A collection of Events of today"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Event"
+        "404":
+          description: "Unexpected error"
+      x-swagger-router-controller: "Event"
+  /events/eventsbymonth/{monthId}:
+    get:
+      tags:
+      - "event"
+      summary: "Find all the events for a specific Month"
+      description: "Returns events"
+      operationId: "eventsEventsbymonthMonthIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "monthId"
+        in: "path"
+        description: "Month of the events"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "succesful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Event"
+        "400":
+          description: "Invalid Code supplied"
+        "404":
+          description: "Event not found"
+      x-swagger-router-controller: "Event"
+  /services:
+    get:
+      tags:
+      - "service"
+      summary: "Services offered by the Association"
+      description: "List of services of the association"
+      operationId: "servicesGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of item per page. Default is 20."
+        required: false
+        type: "integer"
+      responses:
+        "200":
+          description: "A collection of Services"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Service"
+        "404":
+          description: "Unexpected error"
+      x-swagger-router-controller: "Service"
+  /services/{serviceId}:
+    get:
+      tags:
+      - "service"
+      summary: "Find service by Id"
+      description: "Returns a service"
+      operationId: "servicesServiceIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "serviceId"
+        in: "path"
+        description: "Id of a service"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "succesful operation"
+          schema:
+            $ref: "#/definitions/Service"
+        "400":
+          description: "Invalid Id supplied"
+        "404":
+          description: "Service not found"
+      x-swagger-router-controller: "Service"
+  /services/typeOfServices:
+    get:
+      tags:
+      - "service"
+      summary: "Types of services"
+      description: "List of the type of the services"
+      operationId: "servicesTypeOfServicesGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of item per page. Default is 20."
+        required: false
+        type: "integer"
+      responses:
+        "200":
+          description: "A collection of the types of the services"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Service/type"
+            example:
+            - type: "fun"
+            - type: "adventure"
+        "404":
+          description: "Unexpected error"
+      x-swagger-router-controller: "Service"
+  /services/typeOfServices/{typeId}:
+    get:
+      tags:
+      - "service"
+      summary: "Find all the services for a specific type"
+      description: "Returns services"
+      operationId: "servicesTypeOfServicesTypeIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "typeId"
+        in: "path"
+        description: "Type of the service"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "succesful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Service"
+        "400":
+          description: "Invalid Code supplied"
+        "404":
+          description: "Service not found"
+      x-swagger-router-controller: "Service"
+  /people:
+    get:
+      tags:
+      - "person"
+      summary: "People that work in the Association"
+      description: "List of the people that works in the Association"
+      operationId: "peopleGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of item per page. Default is 20."
+        required: false
+        type: "integer"
+      responses:
+        "200":
+          description: "A collection of People"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Person"
+        "404":
+          description: "Unexpected error"
+      x-swagger-router-controller: "Person"
+  /people/{personId}:
+    get:
+      tags:
+      - "person"
+      summary: "Find person by Id"
+      description: "Returns a person"
+      operationId: "peoplePersonIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "personId"
+        in: "path"
+        description: "Id of a person"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "succesful operation"
+          schema:
+            $ref: "#/definitions/Person"
+        "400":
+          description: "Invalid Id supplied"
+        "404":
+          description: "Person not found"
+      x-swagger-router-controller: "Person"
+  /peopleInvolvedInServices:
+    get:
+      tags:
+      - "peopleInvolved"
+      summary: "Id of the people that are involved in some services"
+      description: "List of the id of people that take part of some services"
+      operationId: "peopleInvolvedInServicesGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of item per page. Default is 20."
+        required: false
+        type: "integer"
+      responses:
+        "200":
+          description: "A collection of People and related services"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/PersonInvolvment"
+        "404":
+          description: "Unexpected error"
+      x-swagger-router-controller: "PeopleInvolved"
+  /peopleInvolvedInServices/findByPerson/{personId}:
+    get:
+      tags:
+      - "peopleInvolved"
+      summary: "Find served services by PersonId"
+      description: "Returns a the person Id and related Id of services"
+      operationId: "peopleInvolvedInServicesFindByPersonPersonIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "personId"
+        in: "path"
+        description: "Id of a person"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "succesful operation"
+          schema:
+            $ref: "#/definitions/PersonInvolvment"
+        "400":
+          description: "Invalid Id supplied"
+        "404":
+          description: "Match not found"
+      x-swagger-router-controller: "PeopleInvolved"
+  /peopleInvolvedInServices/findByService/{serviceId}:
+    get:
+      tags:
+      - "peopleInvolved"
+      summary: "Find involved people by serviceId"
+      description: "Returns a the person Id and related Id of services"
+      operationId: "peopleInvolvedInServicesFindByServiceServiceIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "serviceId"
+        in: "path"
+        description: "Id of a service"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "succesful operation"
+          schema:
+            $ref: "#/definitions/PersonInvolvment"
+        "400":
+          description: "Invalid Id supplied"
+        "404":
+          description: "Match not found"
+      x-swagger-router-controller: "PeopleInvolved"
+  /servicePictures:
+    get:
+      tags:
+      - "servicePicture"
+      summary: "Pictures of the services"
+      description: "List of images of the services"
+      operationId: "servicePicturesGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of item per page. Default is 20."
+        required: false
+        type: "integer"
+      responses:
+        "200":
+          description: "A collection of Images"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ServicePicture"
+        "404":
+          description: "Unexpected error"
+      x-swagger-router-controller: "ServicePicture"
+  /servicePictures/{serviceId}:
+    get:
+      tags:
+      - "servicePicture"
+      summary: "Images for a specific service Id"
+      description: "Images URL"
+      operationId: "servicePicturesServiceIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "serviceId"
+        in: "path"
+        description: "Id of a service"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "succesful operation"
+          schema:
+            $ref: "#/definitions/ServicePicture"
+        "400":
+          description: "Invalid Id supplied"
+        "404":
+          description: "Images not found"
+      x-swagger-router-controller: "ServicePicture"
+definitions:
+  Event:
+    type: "object"
+    properties:
+      eventId:
+        type: "integer"
+      name:
+        type: "string"
+      hour:
+        type: "string"
+      day:
+        type: "integer"
+      month:
+        type: "integer"
+      year:
+        type: "integer"
+      address:
+        type: "string"
+      city:
+        type: "string"
+      picturePath:
+        type: "string"
+      descriptionText:
+        type: "string"
+      contactPerson:
+        type: "integer"
+    title: "Event"
+    description: "An event of the association"
+    example:
+      eventId: 1
+      name: "Petanque game Presentation"
+      hour: 1200
+      day: 10
+      month: 9
+      year: 2020
+      address: "Daphne street 19"
+      city: "London"
+      picturePath: "/img/events/PetanqueGamePresentation"
+      descriptionText: "Opening of the petanque game place"
+      contactPerson: 0
+  Service:
+    type: "object"
+    properties:
+      serviceId:
+        type: "integer"
+      name:
+        type: "string"
+      type:
+        type: "string"
+      picturePath:
+        type: "string"
+      descriptionText:
+        type: "string"
+      address:
+        type: "string"
+      eventId:
+        type: "integer"
+    title: "Service"
+    description: "A Service of the association"
+    example:
+      serviceId: 1
+      name: "Petanque game"
+      type: "fun"
+      picturePath: "/img/services/PetanqueGame"
+      descriptionText: "Petanque game description"
+      address: "Daphne street 19"
+      eventId: 1
+  Person:
+    type: "object"
+    properties:
+      personId:
+        type: "integer"
+      nameAndSurname:
+        type: "string"
+      birthday:
+        type: "string"
+      picturePath:
+        type: "string"
+      telephone:
+        type: "integer"
+      email:
+        type: "string"
+      descriptionText:
+        type: "string"
+      profession:
+        type: "string"
+      role:
+        type: "string"
+    title: "Person"
+    description: "A person that works in the Association"
+    example:
+      personId: 0
+      nameAndSurname: "Paolo Grappi"
+      birthday: "02/10/1960"
+      picturePath: "/img/people/PaoloGrappi"
+      telephone: "02 333 456 765"
+      email: "paolo.grappi@gmail.com"
+      descriptionText: "Entusiastic person.."
+      profession: "Public transport"
+      role: "assistant"
+  PersonInvolvment:
+    type: "object"
+    properties:
+      personId:
+        type: "integer"
+      serviceId:
+        type: "integer"
+    title: "Person involved in service"
+    description: "Bind between people and the service that they serve"
+    example:
+      personId: 0
+      serviceId: 1
+  ServicePicture:
+    type: "object"
+    properties:
+      serviceId:
+        type: "integer"
+      picturePath:
+        type: "string"
+    title: "Images of the services"
+    description: "Bind between services and the related images"
+    example:
+      serviceId: 1
+      picturePath: "/img/services/PetanquePic1"

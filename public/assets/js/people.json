@@ -1,0 +1,13 @@
+[
+   {
+      "personId":0,
+      "nameAndSurname":"Johnny Cash",
+      "birthday":"02/10/1996",
+      "picturePath":"./assets/img/people/joey.jpg",
+      "telephone":"02 333 444 555",
+      "email":"johnnycash@gg.com",
+      "descriptionText":"description",
+      "profession":"Admin",
+      "role":"CEO"
+   }
+]

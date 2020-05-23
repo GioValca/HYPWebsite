@@ -1,0 +1,260 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+html,body {
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	overflow-x: hidden;
+}
+
+.left {
+    text-align: left;
+    float: left;
+}
+
+.centered{
+    text-align: center;
+}
+
+.right {
+    float: right;
+    text-align: right;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 8rem;    /* Footer height */
+}
+
+#footer {
+    position: absolute;
+    bottom: 0px;
+	left: 0px;
+	right: 0px;
+    width: 100%;
+    height: 8rem;            /* Footer height */
+    background-color: rgb(53, 130, 245);
+}
+.space-100{
+    margin-top: 100px;
+}
+
+.space-50{
+  margin-top: 50px;
+}
+
+.text-indent50 {
+    margin-left: 50px;
+}
+
+.space-20 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.right-margin50 {
+    margin-right: 50px;
+}
+
+#map {
+    height: 400px;  /* The height is 400 pixels */
+    width: 100%;  /* The width is the width of the web page */
+}
+
+.navbar-light .navbar-nav .active>.nav-link {
+    border-bottom: 5px solid #F4C127;
+}
+
+/*
+.nav-item :hover{
+    border-bottom: 2px solid white;
+    position: inherit;
+    text-decoration: none;
+}
+*/
+
+.bottom-transparent{
+
+    border-bottom: 3px solid transparent;
+
+}
+
+.navbar-nav .attivo{
+    border-bottom: 3px solid white;
+}
+
+.alert-danger {
+  color: #b91319;
+  background: #ff0000 -webkit-gradient(linear, left top, left bottom, from(#fbd9da), to(#fad2d3)) repeat-x;
+  background: #ff0000 linear-gradient(180deg, #f8babc, #f5a3a5) repeat-x;
+  border-color: #f8bfc1;
+}
+
+.bg-primary {
+  background-color: #0059b3 !important;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h5 {
+  margin-top: 0em;
+  margin-bottom: 0.7em;
+}
+
+.fa {
+  padding: 5px;
+  font-size: 15px;
+  width: 24px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  background: #0016BB;
+  color: white;
+}
+
+.fa-instagram {
+  color: white;
+  vertical-align: middle;
+  background: #d6249f;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+  box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+}
+.larghissimo {
+    max-width: 100%;
+}
+
+.standard-page-width {
+    max-width: 85%;
+}
+
+.space-20 {
+    padding-top: 10px;
+}
+
+.left-15 {
+    margin-left: 15px;
+}
+
+.top-8 {
+    margin-top: 8px;
+}
+
+.top-10 {
+    margin-top: 10px;
+}
+
+.margin-left-30 {
+    margin-left: 30px;
+}
+
+.margin-left-15 {
+    margin-left: 15px;
+}
+
+.button-card {
+
+}
+
+
+.footer-title {
+	padding-top: 7px;
+}
+
+@-webkit-keyframes bounce-button-in {
+  0% {
+    -webkit-transform: translateZ(0) scale(0);
+            transform: translateZ(0) scale(0);
+  }
+  100% {
+    -webkit-transform: translateZ(0) scale(0.7);
+            transform: translateZ(0) scale(0.7);
+  }
+}
+@keyframes bounce-button-in {
+  0% {
+    -webkit-transform: translateZ(0) scale(0);
+            transform: translateZ(0) scale(0);
+  }
+  100% {
+    -webkit-transform: translateZ(0) scale(0.7);
+            transform: translateZ(0) scale(0.7);
+  }
+}
+
+
+.text-black {
+    color: black;
+}
+
+.bottom-15 {
+    margin-bottom: 15px;
+}
+
+
+
+.disappear {
+    display: none;
+}
+
+.max-image-format {
+    max-height: 120px;
+    width: auto;
+}
+
+.space-30 {
+	margin-top: 30px;
+}
+
+.top-50 {
+	margin-top: 50px;
+}
+
+.container-img-homepage {
+  position: relative;
+  text-align: center;
+  display: table;
+  color: white;
+}
+
+.text-over-image-right {
+	font-size: 100%;
+	left: 68%;
+	right: 2%;
+	display: table-column;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	position: absolute;
+	top: 1rem;
+}
+
+.center-block {
+   margin-left:auto;
+   margin-right:auto;
+   display:block;
+}
