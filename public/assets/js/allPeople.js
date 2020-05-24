@@ -1,13 +1,13 @@
 //getting the month to display from the cache
-console.log("Showing all Services");
+console.log("Showing all People");
 
 $(document).ready(function(){
     
     var title = document.getElementById("page-title");
 
-    title.innerHTML = "All of our Services!";
+    title.innerHTML = "All of our People!";
 
-    fetch("https://hyp-ave.herokuapp.com/v2/services").then(function(response){
+    fetch("https://hyp-ave.herokuapp.com/v2/people").then(function(response){
         return response.json();
     }).then(function(json){
         console.log(json);
@@ -15,7 +15,7 @@ $(document).ready(function(){
         var list_len = json.length;
 
         if(list_len == 0){
-            title.innerHTML = "There are no Services stored";
+            title.innerHTML = "There are no People stored";
             var col_container = document.getElementById("col-container");
             var back_button = $("<button />")
                                 .addClass("btn btn-info")
@@ -35,9 +35,9 @@ $(document).ready(function(){
         //put a cards respectively into one column and another!
 
         for(i = 0; i < list_len; i++){
-            let {serviceId, name, type, picturePath, descriptionText, address, eventId} = json[i];
+            let {personId, nameAndSurname, birthday, picturePath, telephone, email, descriptionText, profession, role} = json[i];
             if(col_in_use == 1){
-                var card = createServiceCard(serviceId, name, type, picturePath);
+                var card = createPersonCard(personId, nameAndSurname, role, picturePath);
                 card.appendTo(col1);
                 console.log("appending card to col 1");
                 col_in_use = 2;
@@ -45,7 +45,7 @@ $(document).ready(function(){
             }
 
             if(col_in_use == 2){
-                var card = createServiceCard(serviceId, name, type, picturePath);
+                var card = createPersonCard(personId, nameAndSurname, role, picturePath);
                 card.appendTo(col2);
                 console.log("appending card to col 2");
                 col_in_use = 1;
@@ -58,18 +58,17 @@ $(document).ready(function(){
 
 });
 
-function goToService(serviceId){
-    console.log("Going to service ".concat(serviceId));  
-    serviceId = String(serviceId);  
-    //window.sessionStorage.setItem("service_to_display", serviceId);
-    window.location = "./service.html" + "?id=" + serviceId;
-  }
+function goToPerson(personId){
+    console.log("Going to person ".concat(personId));
+    personId = String(personId);
+    //window.sessionStorage.setItem('person_to_display', personId);
+    window.location= "./person.html" + "?id=" + personId;
+}
 
-function createServiceCard(serviceId, serviceTitle, shortDesc, serviceImagePath){
-
+function createPersonCard(personId, personNameSurname, personRole, img_path){
     var card = $('<div />')
-    .addClass("card mb-3 top-10")
-    .attr("id", serviceId);
+        .addClass("card mb-3")
+        .attr("id", personId);
 
     var row = $('<div />')
         .addClass("row no-gutters")
@@ -78,9 +77,9 @@ function createServiceCard(serviceId, serviceTitle, shortDesc, serviceImagePath)
     var col4 = $('<div />')
         .addClass("col-md-4")
         .appendTo(row);
-
+    
     $('<img />')
-        .attr('src', serviceImagePath)    //image relative path
+        .attr('src', img_path)    //image relative path
         .addClass("img-fluid card-img")
         .width("100%").height("100%")
         .appendTo(col4);
@@ -92,23 +91,23 @@ function createServiceCard(serviceId, serviceTitle, shortDesc, serviceImagePath)
     var cardbody = $("<div />")
         .addClass("card-body")
         .appendTo(col8);
-
+    
     $("<h5 />")
         .addClass("card-title left-15")
-        .text(serviceTitle)
+        .text(personNameSurname)
         .appendTo(cardbody);
         
 
     $("<p />")
         .addClass("card-text left-15")
-        .text(shortDesc)
+        .text(personRole)
         .appendTo(cardbody);
-
-    $("<button />")
+    
+        $("<button />")
         .addClass("button-card btn btn-info left-15")
         .appendTo(cardbody)
-        .attr("onclick", "goToService"+ "("  +  serviceId  +  ")")
-        .text("More about ".concat(serviceTitle));
-    
+        .attr("onclick", "goToPerson(" + personId + ")")
+        .text("More about ".concat(personNameSurname));
+
     return card;
 }

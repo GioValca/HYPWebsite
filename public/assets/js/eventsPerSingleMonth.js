@@ -14,8 +14,12 @@ var months = {
 }
 
 //getting the month to display from the cache
-var month_to_display = window.sessionStorage.getItem("month_to_display");
-console.log("Month to display " + month_to_display);
+//var month_to_display = window.sessionStorage.getItem("month_to_display");
+//console.log("Month to display " + month_to_display);
+
+console.log("Loading events per month page");
+let urlParams = new URLSearchParams(window.location.search);
+let month_to_display = urlParams.get('month');
 
 $(document).ready(function(){
     
@@ -77,12 +81,10 @@ $(document).ready(function(){
 });
 
 function goToEvent(eventId){
-    console.log("Going to event ".concat(eventId));
-  
-    eventId = String(eventId);
-  
-    window.sessionStorage.setItem("event_to_display", eventId);
-    window.location = "./event.html";
+    console.log("Going to event ".concat(eventId));  
+    eventId = String(eventId);  
+    //window.sessionStorage.setItem("event_to_display", eventId);
+    window.location = "./event.html" + "?id=" + eventId;
   }
 
 function createEventCard(eventId, eventTitle, eventDesc, eventImagePath){

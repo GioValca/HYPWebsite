@@ -14,7 +14,11 @@ var months = {
 }
 
 //load dinamically from cache
-var event_to_display = window.sessionStorage.getItem("event_to_display");
+//var event_to_display = window.sessionStorage.getItem("event_to_display");
+
+console.log("Loading event page");
+let urlParams = new URLSearchParams(window.location.search);
+let event_to_display = urlParams.get('id');
 
 $(document).ready(function (){
 
@@ -136,18 +140,16 @@ $(document).ready(function (){
 
 function goToPerson(personId){
     console.log("Going to person ".concat(personId));
-    //TODO modificare cache locale
     personId = String(personId);
-    window.sessionStorage.setItem('person_to_display', personId);
-    window.location= "./person.html"
+    //window.sessionStorage.setItem('person_to_display', personId);
+    window.location= "./person.html" + "?id=" + personId;
 }
 
 function goToService(serviceId){
     console.log("Going to service ".concat(serviceId));
-    //TODO modificare cache locale
     serviceId = String(serviceId);
-    window.sessionStorage.setItem('service_to_display', serviceId);
-    window.location = "./service.html"
+    //window.sessionStorage.setItem('service_to_display', serviceId);
+    window.location = "./service.html" + "?id=" + serviceId;
 }
 
 function createPersonCard(personId, personNameSurname, personRole, img_path){

@@ -1,9 +1,19 @@
 //aggiungere codice che dalla cashe tira fuori quale servizio far vedere
 // e dare ID in input alla chiamata API per servizio
 
+//TODO sostituire sessionStorage con meccanismo di retrieve di parametri dalla URL
+//riporto qui sotto un esempio!
+/*
 
-var service_to_display = window.sessionStorage.getItem("service_to_display");
+*/
+
+//var service_to_display = window.sessionStorage.getItem("service_to_display");
 //service_to_display = 0
+
+console.log("Loading service page");
+let urlParams = new URLSearchParams(window.location.search);
+let service_to_display = urlParams.get('id');
+
 
 //variabili che sono modificate appena vengono caricate le informazioni del servizio
 var event_to_display = 0;
@@ -264,20 +274,16 @@ function createEventCard(eventId, eventName, shortEventDesc, img_path){
 
 function goToPerson(personId){
   console.log("Going to person ".concat(personId));
-
   personId = String(personId);
-
-  window.sessionStorage.setItem("person_to_display", personId);
+  //window.sessionStorage.setItem("person_to_display", personId);
   //lacia la pagina nuova (person.html).
-  window.location = "./person.html";
+  window.location = "./person.html" + "?id=" + personId;
 
 }
 
 function goToEvent(eventId){
   console.log("Going to event ".concat(eventId));
-
   eventId = String(eventId);
-
-  window.sessionStorage.setItem("event_to_display", eventId);
-  window.location = "./event.html";
+  //window.sessionStorage.setItem("event_to_display", eventId);
+  window.location = "./event.html" + "?id=" + eventId;
 }
