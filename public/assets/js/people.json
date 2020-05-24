@@ -1,13 +1,57 @@
 [
-   {
-      "personId":0,
-      "nameAndSurname":"Johnny Cash",
-      "birthday":"02/10/1996",
-      "picturePath":"./assets/img/people/joey.jpg",
-      "telephone":"02 333 444 555",
-      "email":"johnnycash@gg.com",
-      "descriptionText":"description",
-      "profession":"Admin",
-      "role":"CEO"
-   }
+  {
+    "personId": 0,
+    "nameAndSurname": "Joey Trebbiani",
+    "birthday": "3/7/1948",
+    "picturePath": "./assets/img/people/joey.jpg",
+    "telephone": "3334445555",
+    "email": "joey.trebbiani@mailnesia.com",
+    "descriptionText": "Joey Trebbiani is a 71-year-old former spy who enjoys travelling, upcycling and working on cars. He is kind and emphatetic.\r\nHe is Italian and has a degree.\r\nPhysically, Joey is in pretty good shape. He is average-height with fair skin, brown hair and blue eyes.\r\nHe grew up in a middle class neighbourhood. After his father died when he was young, he was raised by his mother.\r\nHe is currently married to Indiana Stephani Glenn. Indiana is 3 years older than him and works as a novelist.\r\nJoey has two children with 2 two different partners: wife Indiana and ex-girlfriend Janie: Madisyn aged 29 and Zola aged 42.\r\nJoey's best friend is a former spy called Doug Bailey. They get on well most of the time. He also hangs around with a former spy called Mya Fenton. They enjoy Rubix cube together.",
+    "profession": "Former Spy",
+    "role": "President"
+  },
+  {
+    "personId": 1,
+    "nameAndSurname": "Chandler White",
+    "birthday": "24/3/1947",
+    "picturePath": "./assets/img/people/chandler.jpg",
+    "telephone": "8553808173",
+    "email": "chandler.white@mailnesia.com",
+    "descriptionText": "Chandler White is a 73-year-old former government politician who enjoys baking, donating blood and drone photography. He is entertaining and generous.\r\nHe is British. He started studying philosophy, politics and economics at college but never finished the course. He is obsessed with selfies.\r\nPhysically, Chandler is in pretty good shape. He is average-height with olive skin, grey hair and brown eyes. He has one or two distinguishing features including an unusually long nose and hisself on his left shoulder.\r\nHe grew up in a middle class neighbourhood. He was raised by his mother, his father having left when he was young.\r\nHe is currently in a relationship with Gwendoline Nuala Leslie. Gwendoline is the same age as him and worked as a senior programmer.\r\nChandler has one child with ex-girlfriend Alexus: Suzanna aged 54.\r\nChandler's best friend is a former government politician called Mirabelle Robert. They get on well most of the time. They enjoy badminton together.",
+    "profession": "Former Politician",
+    "role": "Secretary"
+  },
+  {
+    "personId": 2,
+    "nameAndSurname": "Monica Rocuzzo",
+    "birthday": "26/1/1939",
+    "picturePath": "./assets/img/people/monica.jpg",
+    "telephone": "8222721564",
+    "email": "monica.rocuzzo@mailnesia.com",
+    "descriptionText": "Monica Rocuzzo is a 81-year-old former senior politician who enjoys watching sport, Rubix cube and theatre. She is stable and smart, but can also be very unfriendly.\r\nShe comes from Argentina. She has a degree in philosophy, politics and economics.\r\nPhysically, Monica is in pretty good shape. She is average-height with olive skin, ginger hair and green eyes.\r\nShe grew up in a middle class neighbourhood. She was raised by her mother, her father having left when she was young.\r\nShe is currently married to Warner Ainslie Murray. Warner is 10 years older than her and works as a senior programmer.\r\nMonica's best friend is a former senior politician called Dai Finlay. They get on well most of the time. They enjoy gardening together.",
+    "profession": "Former Politician",
+    "role": "Vice-President"
+  },
+  {
+    "personId": 3,
+    "nameAndSurname": "Phoebe Ratton",
+    "birthday": "12/11/1960",
+    "picturePath": "./assets/img/people/phoebe.jpg",
+    "telephone": "5055888322",
+    "email": "phoebe.ratton@mailnesia.com",
+    "descriptionText": "Phoebe Ratton is a 60-year-old personal trainer who enjoys spreading fake news on Facebook and swimming. She is energetic and kind.\r\nShe is British. She has a post-graduate degree in sports science. She has a severe phobia of cats (Latins would have said \"Nomen omen\").\r\nPhysically, Phoebe is in pretty good shape. She is average-height with olive skin, brown hair and black eyes.\r\nShe grew up in a middle class neighbourhood. After her mother died when she was young, she was raised by her father.\r\nShe is currently married to Riggs Lucky Henderson. Riggs is 8 years older than her and works as a senior programmer.\r\nPhoebe has five children with husband Riggs: Elis aged 32, Cade aged 35, Patrice aged 38, Mayson aged 42 and Joby aged 44.\r\nPhoebe's best friend is a personal trainer called Nikki Turner. They are inseparable. She also hangs around with Rue Gillespie and Travon Lockie. They enjoy glamping together.",
+    "profession": "Personal Trainer",
+    "role": "Councilor"
+  },
+  {
+    "personId": 4,
+    "nameAndSurname": "Rachel Chanel",
+    "birthday": "31/5/1957",
+    "picturePath": "./assets/img/people/rachel.jpg",
+    "telephone": "4565645292",
+    "email": "rachel.chanel@mailnesia.com",
+    "descriptionText": "Rachel Chanel is a 63-year-old CEO who enjoys reading, football and eating out. She is energetic and loyal.\r\nShe is Scottish. She has a post-graduate degree in business studies.\r\nPhysically, Rachel is in pretty good shape. She is average-height with olive skin, copper hair and brown eyes. She has a birthmark on her neck.\r\nShe grew up in a middle class neighbourhood. She was raised by her father, her mother having left when she was young.\r\nShe is currently married to Ray Angus Thomas. Ray is the same age as her and works as a lawyer.\r\nRachel has five children with husband Ray: Kay aged 20, David aged 23, Leslie aged 26, Carmen aged 29 and Keir aged 30.",
+    "profession": "CEO",
+    "role": "Councilor"
+  }
 ]

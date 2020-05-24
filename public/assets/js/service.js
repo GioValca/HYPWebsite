@@ -1,4 +1,13 @@
-var event_id = 0;
+//aggiungere codice che dalla cashe tira fuori quale servizio far vedere
+// e dare ID in input alla chiamata API per servizio
+
+
+var service_to_display = window.sessionStorage.getItem("service_to_display");
+//service_to_display = 0
+
+//variabili che sono modificate appena vengono caricate le informazioni del servizio
+var event_to_display = 0;
+
 
 $(document).ready(function() {
   $("#gallery-carousel").on("slide.bs.carousel", function(e) {
@@ -24,7 +33,8 @@ $(document).ready(function() {
     }
   });
 
-  fetch("./assets/js/services.json").then(function(response){ //chiamata specifica all'elenco di servizi legati all'evento (API pronta)
+  //al posto del numero fissato andrà messo un qualcosa di dinamico che varia in base a cosa l'utente ha cliccato sul front End
+  fetch("https://hyp-ave.herokuapp.com/v2/services/".concat(service_to_display)).then(function(response){ //chiamata specifica all'elenco di servizi legati all'evento (API pronta)
   return response.json();
     }).then(function(json){
 
@@ -41,17 +51,17 @@ $(document).ready(function() {
 
       let {serviceId, name, type, picturePath, descriptionText, address, eventId} = json[0];
 
+      event_to_display = eventId;
+
       title.innerHTML = name;
       breadcrumb.innerHTML = name;
       description.innerHTML = descriptionText;
       type_html.innerHTML = type;
       address_html.innerHTML = address;
       image_path.src = picturePath;
-      event_id = eventId;
+    }).then( function (){   
 
-    });
-
-    fetch("./assets/js/events.json").then(function(response){ //chiamata specifica all evento con id event_id_local
+    fetch("https://hyp-ave.herokuapp.com/v2/events/".concat(event_to_display)).then(function(response){ //chiamata specifica all evento con id event_id_local
       return response.json();
       }).then(function(json){
 
@@ -65,41 +75,42 @@ $(document).ready(function() {
           var related_event_col = document.getElementById("related-event-column")
           related_event_col.classList.add("disappear");
           return;
-        }
-          
-        //TODO fare controllo sul risultato della chiamata (serve??)
+        }          
+
         let {eventId, name, hour, day, month, year, address, city, picturePath, descriptionText, contactPerson} = json[0];
         var event_card_div = document.getElementById("related-event");
-        
+
         var shortDesc = descriptionText.slice(0, 100).concat("...");
         
-        var card = createEventCard(eventId, name, shortDesc,picturePath);
+        var card = createEventCard(eventId, name, shortDesc, picturePath);
         
         card.appendTo(event_card_div);
 
       });
 
-    fetch("./assets/js/people.json").then(function(response){ //chiamata specifica all elenco di persone del servizio (API pronta)
-      return response.json();
-      }).then(function(json){
-          
-        //TODO aggiungere controllo per lista vuota. se vuota bisogna eliminare il master div che contiene le related people.
-        //TODO fare controllo sul risultato della chiamata (serve??)
-        console.log(json);
+    });
 
-        var list_len = json.length;
+    fetch("https://hyp-ave.herokuapp.com/v2/peopleInvolvedInServices/findByService/".concat(service_to_display)).then(function(response){ //chiamata specifica all elenco di persone del servizio (API pronta)
+      return response.json();
+      }).then(function(people_in_service_json){
+          
+        console.log(people_in_service_json);
+
+        var list_len = people_in_service_json.length;
         var i = 0;
+
+        console.log("People for this service: ".concat(list_len));
 
         if(list_len > 5){
           console.log("ERROR TOO MANY PEOPLE IN THIS SERVICE");
-          var related_people_col = document.getElementById("presented-people-col")
+          var related_people_col = document.getElementById("involved-people-col")
           related_people_col.classList.add("disappear");
           return;
         }
 
         if(list_len == 0){
           console.log("ERROR THERE ARE NO PEOPLE IN THIS SERVICE");
-          var related_people_col = document.getElementById("presented-people-col")
+          var related_people_col = document.getElementById("involved-people-col")
           related_people_col.classList.add("disappear");
           return;
         }
@@ -107,15 +118,21 @@ $(document).ready(function() {
         var contact_card_div = document.getElementById("contact-people-cards");
 
         for(i = 0; i < list_len; i++){
-          let {personId, nameAndSurname, birthday, picturePath, telephone, email, descriptionText, profession, role} = json[i];
-          var card = createPersonCard(personId, nameAndSurname, role, picturePath); //fatto apposta così è facile da iterare
-          card.appendTo(contact_card_div);
-
+          let {personId, serviceId} = people_in_service_json[i];
+          fetch("https://hyp-ave.herokuapp.com/v2/people/".concat(personId)).then(function(response){ //chiamata specifica all elenco di persone del servizio (API pronta)
+          return response.json();
+          }).then(function(json_person){
+            console.log("logging json person")
+            console.log(json_person);
+            var card = createPersonCard(json_person[0]['personId'],json_person[0]['nameAndSurname'], json_person[0]['role'], json_person[0]['picturePath']); //fatto apposta così è facile da iterare
+            card.appendTo(contact_card_div)              
+          });
+          
         }
           
       });
 
-      fetch("./assets/js/service-images.json").then(function(response){ //chiamata specifica all elenco di persone del servizio (API pronta)
+      fetch("https://hyp-ave.herokuapp.com/v2/servicePictures/".concat(service_to_display)).then(function(response){ //chiamata specifica all elenco di persone del servizio (API pronta)
         return response.json();
         }).then(function(json){
             
@@ -149,7 +166,7 @@ $(document).ready(function() {
           }
            
           for(i = 0; i < list_len; i++){
-            let {picturePath} = json[i];
+            let {serviceId, picturePath} = json[i];
             
             var gallery_image = document.getElementById("gallery-".concat(i+1));
             gallery_image.src = picturePath;
@@ -161,7 +178,6 @@ $(document).ready(function() {
         });
 
 });
-
 
 function createPersonCard(personId, personNameSurname, personRole, img_path){
   var card = $('<div />')
@@ -204,6 +220,7 @@ function createPersonCard(personId, personNameSurname, personRole, img_path){
   $("<button />")
       .addClass("button-card btn btn-info left-15")
       .appendTo(cardbody)
+      .attr("onclick", "goToPerson("  +  personId  +  ")")
       .text("More about ".concat(personNameSurname));
 
   return card;
@@ -238,8 +255,29 @@ function createEventCard(eventId, eventName, shortEventDesc, img_path){
   
   $("<button />")
       .addClass("btn btn-info ")
+      .attr("onclick", "goToEvent(" + eventId  + ")")
       .appendTo(body)
       .text("More about ".concat(eventName));
 
   return card;
+}
+
+function goToPerson(personId){
+  console.log("Going to person ".concat(personId));
+
+  personId = String(personId);
+
+  window.sessionStorage.setItem("person_to_display", personId);
+  //lacia la pagina nuova (person.html).
+  window.location = "./person.html";
+
+}
+
+function goToEvent(eventId){
+  console.log("Going to event ".concat(eventId));
+
+  eventId = String(eventId);
+
+  window.sessionStorage.setItem("event_to_display", eventId);
+  window.location = "./event.html";
 }
