@@ -62,8 +62,23 @@ exports.servicesServicesOfEventEventIdGET = function(eventId) {
  **/
 exports.servicesTypeOfServicesGET = function(offset,limit) {
   //TODO restituisci solo uno per tipo
-  console.log("type of services:", sqlDb("services"), typeof sqlDb("services"));
-  return sqlDb("services");
+  var tmp = sqlDb("services");
+  var listOfTypes = [];
+  for (var i = 0; i < tmp.length; i++) {
+    listOfTypes.push(tmp[i].type) ;
+  }
+  var uniqueTypes = Array.from(new Set(listOfTypes));
+
+  var newTable = [];
+
+  for (var i = 0; i < tmp.length; i++) {
+    if (uniqueTypes.has(tmp[i].type)) {
+      uniqueTypes.delete(tmp[i].type);
+      newTable.push(tmp[i]);
+    }
+  }
+
+  return newTable;
 }
 
 
