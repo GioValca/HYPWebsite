@@ -1,15 +1,80 @@
 [
-   {
-      "eventId":777,
-      "name":"Library Opening",
-      "hour":"3 p.m.",
-      "day":22,
-      "month":5,
-      "year":2020,
-      "address":"Regent Street, 12",
-      "city":"London",
-      "picturePath":"./assets/img/events/library-opening.jpg",
-      "descriptionText":"Come to the opening of our new library! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "contactPerson":0
-   }
+  {
+    "eventId": 0,
+    "name": "Library Opening",
+    "hour": "3 p.m.",
+    "day": 25,
+    "month": 5,
+    "year": 2020,
+    "address": "Regent Street, 15",
+    "city": "London",
+    "picturePath": "./assets/img/events/library-opening.jpg",
+    "descriptionText": "Come to the opening of our new library! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "contactPerson": 0
+  },
+  {
+    "eventId": 2,
+    "name": "Petanque Competition",
+    "hour": "9 a.m.",
+    "day": 1,
+    "month": 7,
+    "year": 2020,
+    "address": "Petanque Park ",
+    "city": "London",
+    "picturePath": "./assets/img/events/petanque.jpg",
+    "descriptionText": "Show us your skills in Petanque! Bla bla bla bla bla . . .",
+    "contactPerson": 3
+  },
+  {
+    "eventId": 4,
+    "name": "Annual Opening Ceremony",
+    "hour": "8 p.m.",
+    "day": 10,
+    "month": 1,
+    "year": 2020,
+    "address": "Daphne Street, 991",
+    "city": "London",
+    "picturePath": "./assets/img/events/opening-ceremony.jpg",
+    "descriptionText": "Come and discover the news about our association for this new year!",
+    "contactPerson": 2
+  },
+  {
+    "eventId": 1,
+    "name": "Social Walk",
+    "hour": "10 a.m.",
+    "day": 30,
+    "month": 5,
+    "year": 2020,
+    "address": "Hyde Park",
+    "city": "London",
+    "picturePath": "./assets/img/events/park-walk.jpg",
+    "descriptionText": "Come walking with us and make some new friends! ",
+    "contactPerson": 1
+  },
+  {
+    "eventId": 5,
+    "name": "Presentation of New Tours",
+    "hour": "5 p.m.",
+    "day": 8,
+    "month": 6,
+    "year": 2020,
+    "address": "Daphne Street, 991",
+    "city": "London",
+    "picturePath": "./assets/img/events/new-tours.jpg",
+    "descriptionText": "Come hear about the new tour that we offer for the summer season",
+    "contactPerson": 4
+  },
+  {
+    "eventId": 3,
+    "name": "Social Lunch",
+    "hour": "12 a.m.",
+    "day": 10,
+    "month": 6,
+    "year": 2020,
+    "address": "MammaMia Pizzeria! Baker Street, 40",
+    "city": "London",
+    "picturePath": "./assets/img/events/social-lunch.jpg",
+    "descriptionText": "Try out with us the new pizza by MammaMia Pizzeria!",
+    "contactPerson": 2
+  }
 ]

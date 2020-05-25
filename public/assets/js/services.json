@@ -1,11 +1,47 @@
 [
-   {
-      "serviceId":0,
-      "name":"Library",
-      "type":"Entertainment",
-      "picturePath":"./assets/img/services/library0.jpg",
-      "descriptionText":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.s",
-      "address":"Regent Street 12, London",
-      "eventId":"1"
-   }
+  {
+    "serviceId": 0,
+    "name": "Library",
+    "type": "Culture",
+    "picturePath": "./assets/img/services/library0.jpg",
+    "descriptionText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.s",
+    "address": "Regent Street 12, London",
+    "eventId": 0
+  },
+  {
+    "serviceId": 3,
+    "name": "Bar",
+    "type": "Relax",
+    "picturePath": "./assets/img/services/bar0.jpg",
+    "descriptionText": "Enjoy sofisticated and traditional cocktails with us!",
+    "address": "Daphne Street, 991",
+    "eventId": null
+  },
+  {
+    "serviceId": 1,
+    "name": "Discounts",
+    "type": "Other",
+    "picturePath": "./assets/img/services/discounts0.jpg",
+    "descriptionText": "Enjoy discounts with our partner stores and companies.",
+    "address": "Daphne Street, 991",
+    "eventId": null
+  },
+  {
+    "serviceId": 4,
+    "name": "Guided Tourism",
+    "type": "Relax",
+    "picturePath": "./assets/img/services/tour0.jpg",
+    "descriptionText": "Want to travel but you don't know where? Come with us to the next trip!",
+    "address": "Daphne Street, 991",
+    "eventId": null
+  },
+  {
+    "serviceId": 2,
+    "name": "Computer Course",
+    "type": "Culture",
+    "picturePath": "./assets/img/services/computer-course0.jpg",
+    "descriptionText": "We offer very simple courses to help you enjoy the newest technology!",
+    "address": "Daphne Street, 991",
+    "eventId": null
+  }
 ]

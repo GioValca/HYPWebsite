@@ -13,7 +13,7 @@
       <link  href="./assets/css/myCSS.css" rel="stylesheet">
       <!-- Scripts -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-      <script src="assets/img/people/person.js"></script>
+      <script src="assets/js/person.js"></script>
       <title>AVE | Association Voluntary Elderly</title>
    </head>
    <body>
@@ -74,43 +74,53 @@
                </div>
             </nav>
             <ol class="breadcrumb">
-               <li class="breadcrumb-item"><a href="#">PastPage</a></li>
-               <li class="breadcrumb-item active">CurrentPage</li>
+               <li class="breadcrumb-item"><a href="people.html">All People</a></li>
+               <li class="breadcrumb-item active" id="current-page"></li>
             </ol>
             <!-- METTERE CONTENUTO QUI -->
             <div class="container standard-page-width">
                <div class="row">
                   <div class="col-md-5" id="main-image">	
-                     <img src="./assets/img/people/chandler.jpg" id="img_person" class="img-fluid">
+                     <img id="img_person" class="img-fluid center-block bottom-20">
                   </div>
                   <div class="col-md-7 text-justify">
-                     <h1 id="name"> Chandler White </h1>
-                     <h5 id="age">  
-                        Age: <b>retrieve from DB</b> 
-                     </h5>
-                     <h5 id="profession">  
-                        Profession:  <b>retrieve from DB</b>
-                     </h5>
-                     <h5 id="role"> Role: <b>retrieve from DB</b> </h5>
-                     <p class="text-justify" id="description-text">                    
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.         
+                     <h1 id="name"> Name &amp; Surname </h1>
+                     <h5 id="age"> Age </h5>
+                     <h5 id="profession"> Profession </h5>
+                     <h5 id="role"> Role </h5>
+                     <p class="text-justify" id="descriptionText"> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.         
                      </p>
                   </div>
                </div>
-               <div class="space-50"></div>
-               <div id="involved-services">
-                  <h2 id="involved-services-title"> <b>Services in which he/she is involved:</b></h2>
-                  <div class="row" id="show_services"></div>
+               <div class="row">
+               <div class="col-md-6 space-50" id="involved-services">
+                  <h2 id="involved-services-title"> </h2>
+                  <div class="row center-block" id="show_services"></div>
                </div>
-               <div class="space-50"></div>
-               <div id="involved-events">
-                  <h2 id="involved-events-title"> <b>Events in which he/she is involved:</b></h2>
-                  <div class="row" id="show_events"></div>
+               <div class="col-md-6 space-50 center-block" id="involved-events">
+                  <h2 id="involved-events-title"> </h2>
+                  <div class="row center-block" id="show_events"></div>
                </div>
+				   </div>
+            </div>
+			 
+			  <div class="row space-50" id="nav-buttons">
+
+                <div class="col-md-6 text-center space-20">
+                    <button class="btn btn-info btn-lg" id="previous-service">Previous Person</button>
+
+                </div>
+
+                <div class="col-md-6 text-center space-20">
+                    <button class="btn btn-info btn-lg" id="next-service">Next Person</button>
+
+                </div>
+
+
             </div>
 
          <!-- non toccare sto div -->
-         <div class="space-100"></div>
+         <div class="space-50"></div>
          <footer id="footer">
                <div class="row text-center bg-primary">
                   <div class="col-md-4">

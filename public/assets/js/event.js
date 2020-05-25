@@ -13,13 +13,21 @@ var months = {
     12: "December"
 }
 
+//load dinamically from cache
+//var event_to_display = window.sessionStorage.getItem("event_to_display");
+
+console.log("Loading event page");
+let urlParams = new URLSearchParams(window.location.search);
+let event_to_display = urlParams.get('id');
+
 $(document).ready(function (){
 
-    var contact_id = 0;
-    var event_id = 0; //qui verrà caricato dalla variabile cache nel caso di raggiungimento dall'esterno
+    //this var is updated when the info about the event is retrieved
+    var contact_to_display = 0;
+    
     
     //con questa prima fetch andiamo a RIEMPIRE gli elementi statici della pagina
-    fetch("./assets/js/events.json").then(function(response){ //qui la query la facciamo all'evento specifico con ID
+    fetch("https://hyp-ave.herokuapp.com/v2/events/".concat(event_to_display)).then(function(response){ //qui la query la facciamo all'evento specifico con ID
         return response.json();
     }).then( function(json){
         console.log(json);
@@ -36,10 +44,13 @@ $(document).ready(function (){
         var address_html = document.getElementById("address");
     
         let {eventId, name, hour, day, month, year, address, city, picturePath, descriptionText, contactPerson} = json[0];
+        
+        console.log("contact person found in event object: ".concat(contactPerson));
 
-        contact_id = contactPerson;
-        event_id = eventId;
-    
+        contact_to_display = contactPerson;
+
+        console.log("contact person id: ".concat(contact_to_display));
+           
         title.innerHTML = name;
         description.innerHTML = descriptionText;
         image_path.src = picturePath;
@@ -54,14 +65,11 @@ $(document).ready(function (){
         city_html.children[0].innerHTML = city;
         address_html.innerHTML = address;
 
-    });
-
-    //con questa fetch andiamo a prendere e COSTRUIRE l'elenco di servizi che sono stati presentati all'evento in questione
-    fetch("./assets/js/people.json").then(function(response){ //chiamata specifica alla persona con id contact_id
+    }).then(function(){
+        fetch("https://hyp-ave.herokuapp.com/v2/people/".concat(contact_to_display)).then(function(response){ //chiamata specifica alla persona con id contact_to_display
         return response.json();
-    }).then(function(json){
-        
-        //TODO fare controllo sul risultato della chiamata (serve??)
+        }).then(function(json){
+
         console.log(json);
 
         if(json.length > 1){
@@ -83,16 +91,22 @@ $(document).ready(function (){
         var card = createPersonCard(personId, nameAndSurname, role, picturePath); //fatto apposta così è facile da iterare
         card.appendTo(contact_card_div);
 
+        });
     });
 
     //creazione dell'elenco di servizi legati allo specifico evento
-    fetch("./assets/js/services.json").then(function(response){ //chiamata specifica all'elenco di servizi legati all'evento (API pronta)
+    fetch("https://hyp-ave.herokuapp.com/v2/services").then(function(response){ //chiamata specifica all'elenco di servizi legati all'evento (API pronta)
         return response.json();
-    }).then(function(json){
+    }).then(function(all_services){
 
-        //TODO aggiungere controllo, se il return è vuoto eliminare il div dei servizi aggiungendo disappear come classe
-        //TODO fare controllo sul risultato della chiamata (serve??)
-        console.log(json);
+        console.log(all_services);
+
+        //Filtro solo i servizi connessi all'evento che sto visualizzando
+        var json = all_services.filter(function(el){
+            return el.eventId == event_to_display;
+        });
+
+        //AGGIUNGERE FILTRO SUI SERVIZI CON CAMPO event UGUALE ALL'EVENTO CHE SI STA CARICANDO
 
         var list_len = json.length;
         var i = 0;
@@ -123,6 +137,20 @@ $(document).ready(function (){
     });
 
 });
+
+function goToPerson(personId){
+    console.log("Going to person ".concat(personId));
+    personId = String(personId);
+    //window.sessionStorage.setItem('person_to_display', personId);
+    window.location= "./person.html" + "?id=" + personId;
+}
+
+function goToService(serviceId){
+    console.log("Going to service ".concat(serviceId));
+    serviceId = String(serviceId);
+    //window.sessionStorage.setItem('service_to_display', serviceId);
+    window.location = "./service.html" + "?id=" + serviceId;
+}
 
 function createPersonCard(personId, personNameSurname, personRole, img_path){
     var card = $('<div />')
@@ -162,18 +190,19 @@ function createPersonCard(personId, personNameSurname, personRole, img_path){
         .text(personRole)
         .appendTo(cardbody);
     
-    $("<button />")
+        $("<button />")
         .addClass("button-card btn btn-info left-15")
         .appendTo(cardbody)
+        .attr("onclick", "goToPerson(" + personId + ")")
         .text("More about ".concat(personNameSurname));
 
     return card;
 }
 
-function createServiceCard(serivceId, serviceName, serviceType, img_path){
+function createServiceCard(serviceId, serviceName, serviceType, img_path){
     var card = $('<div />')
         .addClass("card mb-3")
-        .attr("id", serivceId);
+        .attr("id", serviceId);
 
     var row = $('<div />')
         .addClass("row no-gutters")
@@ -209,6 +238,7 @@ function createServiceCard(serivceId, serviceName, serviceType, img_path){
     
     $("<button />")
         .addClass("button-card btn btn-info left-15")
+        .attr("onclick", "goToService(" + serviceId + ")")
         .appendTo(cardbody)
         .text("More");
 
