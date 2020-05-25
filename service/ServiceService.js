@@ -41,8 +41,44 @@ exports.servicesServiceIdGET = function(serviceId) {
 
 
 /**
- * Types of services
- * List of the type of the services
+ * Find all the services related to an Event
+ * Returns services
+ *
+ * eventId String Event to search to retrieve the related services
+ * returns List
+ **/
+exports.servicesServicesOfEventEventIdGET = function(eventId) {
+  return new Promise(function(resolve, reject) {
+    var examples = {};
+    examples['application/json'] = [ {
+  "serviceId" : 1,
+  "name" : "Petanque game",
+  "type" : "fun",
+  "picturePath" : "/img/services/PetanqueGame",
+  "descriptionText" : "Petanque game description",
+  "address" : "Daphne street 19",
+  "eventId" : 1
+}, {
+  "serviceId" : 1,
+  "name" : "Petanque game",
+  "type" : "fun",
+  "picturePath" : "/img/services/PetanqueGame",
+  "descriptionText" : "Petanque game description",
+  "address" : "Daphne street 19",
+  "eventId" : 1
+} ];
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
+  });
+}
+
+
+/**
+ * A service for each type
+ * Example of service for each type
  *
  * offset Integer Pagination offset (optional)
  * limit Integer Maximum number of item per page. Default is 20. (optional)

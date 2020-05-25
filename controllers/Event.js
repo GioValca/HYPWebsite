@@ -14,6 +14,17 @@ module.exports.eventsEventIdGET = function eventsEventIdGET (req, res, next) {
     });
 };
 
+module.exports.eventsEventsOfAPersonPersonIdGET = function eventsEventsOfAPersonPersonIdGET (req, res, next) {
+  var personId = req.swagger.params['personId'].value;
+  Event.eventsEventsOfAPersonPersonIdGET(personId)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.eventsEventsbymonthMonthIdGET = function eventsEventsbymonthMonthIdGET (req, res, next) {
   var monthId = req.swagger.params['monthId'].value;
   Event.eventsEventsbymonthMonthIdGET(monthId)

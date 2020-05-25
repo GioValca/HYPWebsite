@@ -77,7 +77,7 @@ paths:
           schema:
             $ref: "#/definitions/Event"
         "400":
-          description: "Invalid Id supplied"
+          description: "Invalid eventId supplied"
         "404":
           description: "Event not found"
       x-swagger-router-controller: "Event"
@@ -135,7 +135,36 @@ paths:
             items:
               $ref: "#/definitions/Event"
         "400":
-          description: "Invalid Code supplied"
+          description: "Invalid monthId supplied"
+        "404":
+          description: "Event not found"
+      x-swagger-router-controller: "Event"
+  /events/eventsOfAPerson/{personId}:
+    get:
+      tags:
+      - "event"
+      summary: "Find all the events where the person is the person to contact for\
+        \ the event"
+      description: "Returns events"
+      operationId: "eventsEventsOfAPersonPersonIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "personId"
+        in: "path"
+        description: "Person Id that manage the event"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "succesful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Event"
+        "400":
+          description: "Invalid PersonId supplied"
         "404":
           description: "Event not found"
       x-swagger-router-controller: "Event"
@@ -191,7 +220,7 @@ paths:
           schema:
             $ref: "#/definitions/Service"
         "400":
-          description: "Invalid Id supplied"
+          description: "Invalid serviceId supplied"
         "404":
           description: "Service not found"
       x-swagger-router-controller: "Service"
@@ -199,8 +228,8 @@ paths:
     get:
       tags:
       - "service"
-      summary: "Types of services"
-      description: "List of the type of the services"
+      summary: "A service for each type"
+      description: "Example of service for each type"
       operationId: "servicesTypeOfServicesGET"
       produces:
       - "application/json"
@@ -221,10 +250,7 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Service/type"
-            example:
-            - type: "fun"
-            - type: "adventure"
+              $ref: "#/definitions/Service"
         "404":
           description: "Unexpected error"
       x-swagger-router-controller: "Service"
@@ -251,7 +277,34 @@ paths:
             items:
               $ref: "#/definitions/Service"
         "400":
-          description: "Invalid Code supplied"
+          description: "Invalid typeId supplied"
+        "404":
+          description: "Service not found"
+      x-swagger-router-controller: "Service"
+  /services/servicesOfEvent/{eventId}:
+    get:
+      tags:
+      - "service"
+      summary: "Find all the services related to an Event"
+      description: "Returns services"
+      operationId: "servicesServicesOfEventEventIdGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        description: "Event to search to retrieve the related services"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "succesful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Service"
+        "400":
+          description: "Invalid eventId supplied"
         "404":
           description: "Service not found"
       x-swagger-router-controller: "Service"
@@ -307,7 +360,7 @@ paths:
           schema:
             $ref: "#/definitions/Person"
         "400":
-          description: "Invalid Id supplied"
+          description: "Invalid personId supplied"
         "404":
           description: "Person not found"
       x-swagger-router-controller: "Person"
@@ -363,7 +416,7 @@ paths:
           schema:
             $ref: "#/definitions/PersonInvolvment"
         "400":
-          description: "Invalid Id supplied"
+          description: "Invalid personId supplied"
         "404":
           description: "Match not found"
       x-swagger-router-controller: "PeopleInvolved"
@@ -389,7 +442,7 @@ paths:
           schema:
             $ref: "#/definitions/PersonInvolvment"
         "400":
-          description: "Invalid Id supplied"
+          description: "Invalid serviceId supplied"
         "404":
           description: "Match not found"
       x-swagger-router-controller: "PeopleInvolved"
@@ -445,7 +498,7 @@ paths:
           schema:
             $ref: "#/definitions/ServicePicture"
         "400":
-          description: "Invalid Id supplied"
+          description: "Invalid serviceId supplied"
         "404":
           description: "Images not found"
       x-swagger-router-controller: "ServicePicture"
@@ -528,7 +581,7 @@ definitions:
       picturePath:
         type: "string"
       telephone:
-        type: "integer"
+        type: "string"
       email:
         type: "string"
       descriptionText:

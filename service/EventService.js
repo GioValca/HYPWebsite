@@ -13,6 +13,8 @@ exports.eventsDbSetup = function(connection){
     }
   });
 }
+
+
 /**
  * Find event by Id
  * Returns an event
@@ -22,6 +24,18 @@ exports.eventsDbSetup = function(connection){
  **/
 exports.eventsEventIdGET = function(eventId) {
   return sqlDb("events").where("eventId", eventId);
+}
+
+
+/**
+ * Find all the events where the person is the person to contact for the event
+ * Returns events
+ *
+ * personId Long Person Id that manage the event
+ * returns List
+ **/
+exports.eventsEventsOfAPersonPersonIdGET = function(personId) {
+  return sqlDb("events").where("contactPerson", personId);
 }
 
 
@@ -68,5 +82,4 @@ exports.eventsTodayseventsGET = function(offset,limit) {
 
   if(!limit) limit = 10;
   return sqlDb("events").where('day', day).andWhere('month', month).andWhere('year', year).limit(limit).offset(offset);
-
 }
