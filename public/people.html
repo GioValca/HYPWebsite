@@ -14,6 +14,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link  href="./assets/css/myCSS.css" rel="stylesheet">
+	 <link href="assets/css/cards.css" rel="stylesheet">
+	  
+	<!-- Scripts -->
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	 <script src="assets/js/allPeople.js"></script>
 
     <title>AVE | Association Voluntary Elderly</title>
   </head>
@@ -91,23 +96,26 @@
             <div class="row justify-content-center space-50">
                     <h1 id="page-title"> </h1>
             </div>
+			
+			<div class="row justify-content-center space-20" id="first-row">
+				<div class="col-md-auto" id="president"><b>President</b></div>
 
-            <div class="row space-50 justify-content-center" id="col-container">                               
-                <div class="col-md-6" id="col1">
-
-                </div>
-
-                <div class="col-md-6" id="col2">
-
-                </div>                 
-
-            </div>
+			</div>
+			
+			<div class="row justify-content-center space-20" id="second-row">
+				<div class="col-md-auto" id="vice-pres"><b>Vice-President</b></div>
+				<div class="col-md-auto" id="secretary"><b>Secretary</b></div>
+			</div>
+			
+			<div class="row justify-content-center space-20" id="third-row"><b>Councilors</b>
+			</div>
+			
 
         </div>
             
         
         <div class="space-100"></div>
-            <footer id="footer" >
+         <footer id="footer">
                <div class="row text-center bg-primary">
                   <div class="col-md-4">
                      <h5 class="text-light footer-title font-weight-bold"> AVE </h5>
@@ -124,31 +132,19 @@
                      <p class="text-light"><u> Cookies </u></p>
                   </div>
                   <div class="col-md-4">
-                     <h5 class="text-light footer-title font-weight-bold"> Social Media </h5>
-                     <div class="row justify-content-center">
-                        <div class="col-md-2"><a href="#" class="fa fa-facebook fa-hover"></a></div>
-                        <div class="col-md-4">
-                           <p class="text-light"> Facebook </p>
-                        </div>
-                     </div>
-                     <div class="row justify-content-center">
-                        <div class="col-md-2"><a href="#" class="fa fa-instagram fa-hover"></a></div>
-                        <div class="col-md-4">
-                           <p class="text-light"> Instagram </p>
-                        </div>
-                     </div>
-                  </div>
+                     <h5 class="text-light footer-title font-weight-bold" style="text-align: center;"> Social Media </h5>
+					  <ul id="stats">
+    <li><a href="https://facebook.com" class="fa fa-facebook fa-hover" style="text-decoration: none;"></a></li>
+    <li><a href="https://instagram.com" class="fa fa-instagram fa-hover" style="text-decoration: none;"></a></li>
+	<li><a href="https://twitter.com" class="fa fa-twitter fa-hover" style="text-decoration: none;"></a></li>
+</ul>
+                     
+                     
+                                       </div>
                </div>     
             </footer>
          </div>
 
       </div>
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <script src="assets/js/allPeople.js"></script>
   </body>
 </html>
