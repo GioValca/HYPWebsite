@@ -61,14 +61,17 @@ exports.servicesServicesOfEventEventIdGET = function(eventId) {
  * returns List
  **/
 exports.servicesTypeOfServicesGET = function(offset,limit) {
-  //TODO restituisci solo uno per tipo
   var tmp = sqlDb("services");
   var listOfTypes = [];
   for (var i = 0; i < tmp.length; i++) {
     listOfTypes.push(tmp[i].type) ;
   }
+  console.log(tmp);
+
   var uniqueTypes = Array.from(new Set(listOfTypes));
 
+  console.log(uniqueTypes);
+  
   var newTable = [];
 
   for (var i = 0; i < tmp.length; i++) {
