@@ -62,7 +62,6 @@ exports.servicesServicesOfEventEventIdGET = function(eventId) {
  **/
 exports.servicesTypeOfServicesGET = function(offset,limit) {
   if(!limit) limit = 10;
-  console.log("RISPOSTA: ",sqlDb("services").limit(limit).offset(offset));
   return sqlDb("services").limit(limit).offset(offset);
 }
 
