@@ -61,18 +61,7 @@ exports.servicesServicesOfEventEventIdGET = function(eventId) {
  * returns List
  **/
 exports.servicesTypeOfServicesGET = function(offset,limit) {
-  var table = sqlDb("services");
-  console.log(table);
-  table.forEach((item, i) => {
-    table.forEach((it, x) => {
-      if (item.type == it.type) {
-        item.slice(it, x)
-      }
-    });
-  });
-
-  return table;
-
+  return sqlDb("services");
 }
 
 
