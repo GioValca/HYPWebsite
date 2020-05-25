@@ -1,13 +1,13 @@
 //getting the month to display from the cache
-console.log("Showing today's events");
+console.log("Showing all types of Services");
 
 $(document).ready(function(){
     
     var title = document.getElementById("page-title");
 
-    title.innerHTML = " Events of Today";
+    title.innerHTML = "Types Of Services";
 
-    fetch("https://hyp-ave.herokuapp.com/v2/events/todaysevents").then(function(response){
+    fetch("https://hyp-ave.herokuapp.com/v2/services/typeOfServices").then(function(response){
         return response.json();
     }).then(function(json){
         console.log(json);
@@ -15,7 +15,7 @@ $(document).ready(function(){
         var list_len = json.length;
 
         if(list_len == 0){
-            title.innerHTML = "There are no Events planned for today";
+            title.innerHTML = "There are no Types stored";
             var col_container = document.getElementById("col-container");
             var back_button = $("<button />")
                                 .addClass("btn btn-info")
@@ -35,9 +35,9 @@ $(document).ready(function(){
         //put a cards respectively into one column and another!
 
         for(i = 0; i < list_len; i++){
-            let {eventId, name, hour, day, month, year, address, city, picturePath, descriptionText, contactPerson} = json[i];
+            let {type} = json[i];
             if(col_in_use == 1){
-                var card = createEventCard(eventId, name, descriptionText, picturePath);
+                var card = createTypeCard(type);
                 card.appendTo(col1);
                 console.log("appending card to col 1");
                 col_in_use = 2;
@@ -45,7 +45,7 @@ $(document).ready(function(){
             }
 
             if(col_in_use == 2){
-                var card = createEventCard(eventId, name, descriptionText, picturePath);
+                var card = createTypeCard(type);
                 card.appendTo(col2);
                 console.log("appending card to col 2");
                 col_in_use = 1;
@@ -58,20 +58,18 @@ $(document).ready(function(){
 
 });
 
-function goToEvent(eventId){
-    console.log("Going to event ".concat(eventId));  
-    eventId = String(eventId);  
-    //window.sessionStorage.setItem("event_to_display", eventId);
-    window.location = "./event.html" + "?id=" + eventId + "&event-gt=today";
-  }
+function goToServicsOfType(typeId){
+    console.log("Going to service of type ".concat(typeId));  
+    typeId = String(typeId);  
+    //window.sessionStorage.setItem("service_to_display", typeId);
+    window.location = "./servicesOfType.html" + "?service-type=" + typeId;
+}
 
-function createEventCard(eventId, eventTitle, eventDesc, eventImagePath){
-
-    var shortDesc = eventDesc.slice(0, 100).concat("..."); 
+function createTypeCard(type){
 
     var card = $('<div />')
     .addClass("card mb-3 top-10")
-    .attr("id", eventId);
+    .attr("id", type);
 
     var row = $('<div />')
         .addClass("row no-gutters")
@@ -82,7 +80,7 @@ function createEventCard(eventId, eventTitle, eventDesc, eventImagePath){
         .appendTo(row);
 
     $('<img />')
-        .attr('src', eventImagePath)    //image relative path
+        .attr('src', "serviceImagePath")    //image relative path
         .addClass("img-fluid card-img")
         .width("100%").height("100%")
         .appendTo(col4);
@@ -97,20 +95,14 @@ function createEventCard(eventId, eventTitle, eventDesc, eventImagePath){
 
     $("<h5 />")
         .addClass("card-title left-15")
-        .text(eventTitle)
-        .appendTo(cardbody);
-        
-
-    $("<p />")
-        .addClass("card-text left-15")
-        .text(shortDesc)
-        .appendTo(cardbody);
+        .text(type)
+        .appendTo(cardbody);        
 
     $("<button />")
         .addClass("button-card btn btn-info left-15")
         .appendTo(cardbody)
-        .attr("onclick", "goToEvent"+ "("  +  eventId  +  ")")
-        .text("More about ".concat(eventTitle));
+        .attr("onclick", "goToServicsOfType"+ "("  + "\"" + type  + "\"" +   ")")
+        .text("More "+ type + " services");
     
     return card;
 }

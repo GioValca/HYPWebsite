@@ -3,6 +3,7 @@ $(document).ready(function() {
     var card_max_width = "95%"
     //var person_to_display = window.sessionStorage.getItem("person_to_display");
 
+    //loading from the URL which is the event to display
     console.log("Loading person page");
     let urlParams = new URLSearchParams(window.location.search);
     let person_to_display = urlParams.get('id');
@@ -24,6 +25,8 @@ $(document).ready(function() {
                     profession = person_json.profession;
                     role = person_json.role;
                     img_path = person_json.picturePath;
+					phone = person_json.telephone;
+					mail = person_json.email;
 
                     $("#name").text(name);
                     $("#age").text("Age: " + age);
@@ -32,6 +35,10 @@ $(document).ready(function() {
                     $("#descriptionText").text(descriptionText);
                     $("#img_person").attr("src", img_path);
                     $("#current-page").text(name);
+					$("#mail").text(mail)
+							  .attr("href", "mailto:" + mail)
+					$("#phone").text(phone)
+							   .attr("href", "tel:" + phone)
 		}
     });
 
@@ -56,10 +63,10 @@ $(document).ready(function() {
 
                 img_path = json_service[0].picturePath;
                 name = json_service[0].name;
-                descriptionText = json_service[0].descriptionText;
+                type = json_service[0].type;
                 serviceId = String(json_service[0].serviceId)
 
-                var new_card = createServiceCard(serviceId, card_max_width, img_path, name, descriptionText)
+                var new_card = createServiceCard(serviceId, card_max_width, img_path, name, type)
 				}
 				});
 
@@ -95,10 +102,38 @@ $(document).ready(function() {
             });
         }
     });
+	
+	 $.ajax({
+        type: 'GET',
+        url: 'https://hyp-ave.herokuapp.com/v2/people/',
+        dataType: 'json',
+        success: function(json) {
+					
+					var num_of_people = json.length;
+					console.log(num_of_people);
+					let current_id = parseInt(person_to_display);
+			
+					if ((current_id + 1) == num_of_people) {
+						var next_person_id = 0;
+					} else {
+						var next_person_id = current_id + 1;
+					}
+			
+					if ((current_id) == 0) {
+						var prev_person_id = num_of_people - 1;
+					} else {
+						var prev_person_id = current_id - 1;
+					}
+			
+					$("#previous-person").attr("onclick", "goToPerson("  +  prev_person_id  +  ")")
+					
+					$("#next-person").attr("onclick", "goToPerson("  +  next_person_id  +  ")")
+		}
+    });
 
 });
 
-function createServiceCard(serviceId, card_max_width, img_path, name, descriptionText) {
+function createServiceCard(serviceId, card_max_width, img_path, name, type) {
 
     var blockDiv = $('<div />')
         .addClass("row center-block")
@@ -139,12 +174,10 @@ function createServiceCard(serviceId, card_max_width, img_path, name, descriptio
         .appendTo(cardbody)
         .text(name)
 
-    var brief_description = descriptionText.slice(0, 50);
-
     $("<p />")
         .addClass("card-text")
         .appendTo(cardbody)
-        .text(brief_description + "...")
+        .text(type)
 
     $("<a />")
         .addClass("button-card btn btn-info text-light")
@@ -194,7 +227,7 @@ function createEventCard(eventId, card_max_width, img_path, name, descriptionTex
         .appendTo(cardbody)
         .text(name)
 
-    var brief_description = descriptionText.slice(0, 50);
+    var brief_description = descriptionText.slice(0, 30);
 
     $("<p />")
         .addClass("card-text")
@@ -222,4 +255,11 @@ function goToEvent(eventId){
   eventId = String(eventId);
   //window.sessionStorage.setItem("event_to_display", eventId);
   window.location = "./event.html" + "?id=" + eventId;
+}
+
+function goToPerson(personId){
+  console.log("Going to person ".concat(personId));
+  personId = String(personId);
+  //window.sessionStorage.setItem("event_to_display", eventId);
+  window.location = "./person.html" + "?id=" + personId;
 }

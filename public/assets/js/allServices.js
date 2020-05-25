@@ -5,7 +5,7 @@ $(document).ready(function(){
     
     var title = document.getElementById("page-title");
 
-    title.innerHTML = "All of our Services!";
+    title.innerHTML = "All of our Services";
 
     fetch("https://hyp-ave.herokuapp.com/v2/services").then(function(response){
         return response.json();
@@ -13,6 +13,9 @@ $(document).ready(function(){
         console.log(json);
 
         var list_len = json.length;
+
+        //storing all the services for the guided tour thing
+        window.sessionStorage.setItem("allServices", JSON.stringify(json));
 
         if(list_len == 0){
             title.innerHTML = "There are no Services stored";
@@ -62,8 +65,8 @@ function goToService(serviceId){
     console.log("Going to service ".concat(serviceId));  
     serviceId = String(serviceId);  
     //window.sessionStorage.setItem("service_to_display", serviceId);
-    window.location = "./service.html" + "?id=" + serviceId;
-  }
+    window.location = "./service.html" + "?id=" + serviceId + "&service-gt=all";
+}
 
 function createServiceCard(serviceId, serviceTitle, shortDesc, serviceImagePath){
 

@@ -13,9 +13,11 @@ var months = {
     12: "December"
 }
 
-//load dinamically from cache
+//load dinamically from cache (deprecated system)
 //var event_to_display = window.sessionStorage.getItem("event_to_display");
 
+
+//loading from the URL which is the event to display
 console.log("Loading event page");
 let urlParams = new URLSearchParams(window.location.search);
 let event_to_display = urlParams.get('id');
@@ -149,7 +151,7 @@ function goToService(serviceId){
     console.log("Going to service ".concat(serviceId));
     serviceId = String(serviceId);
     //window.sessionStorage.setItem('service_to_display', serviceId);
-    window.location = "./service.html" + "?id=" + serviceId;
+    window.location = "./service.html" + "?id=" + serviceId + "&service-gt=person";
 }
 
 function createPersonCard(personId, personNameSurname, personRole, img_path){

@@ -10,13 +10,77 @@
 //var service_to_display = window.sessionStorage.getItem("service_to_display");
 //service_to_display = 0
 
+//loading from the URL which is the event to display
 console.log("Loading service page");
 let urlParams = new URLSearchParams(window.location.search);
 let service_to_display = urlParams.get('id');
 
+//retrieve the guided tour mode from the URL
+let gt_mode = urlParams.get("service-gt");
 
 //variabili che sono modificate appena vengono caricate le informazioni del servizio
 var event_to_display = 0;
+
+//guided tour functions, work on the paramenter service-gt
+//there are 4 possibilities
+//among all the services
+//among the services of a certain type
+//among the services related to a person
+//among the services related to an event
+function nextService(){
+  var nextService_id = 0;
+
+  if(gt_mode == "all"){
+    all_services = window.sessionStorage.getItem("allServices");
+    all_services = JSON.parse(all_services);
+
+    var len = all_services.length;
+
+    if(service_to_display == len - 1){
+      nextService_id = 0;
+    }
+    else{
+      nextService_id = parseInt(service_to_display) + 1;
+    }
+  }
+
+  if(gt_mode == "type"){
+
+  }
+
+  if(gt_mode == "person"){
+
+  }
+
+  if(gt_mode == "event"){
+
+  }
+
+  window.location = "./service.html" + "?id=" + nextService_id + "&service-gt=all";
+}
+
+function previousService(){
+  var prevService_id = 0;
+
+  if(gt_mode == "all"){
+    all_services = window.sessionStorage.getItem("allServices");
+    all_services = JSON.parse(all_services);
+
+    var len = all_services.length;
+
+    if(service_to_display == 0){
+      prevService_id = len - 1;
+    }
+    else{
+      prevService_id = parseInt(service_to_display) - 1;
+    }
+  }
+
+  //inserire qui altri casi
+
+
+  window.location = "./service.html" + "?id=" + prevService_id + "&service-gt=all";
+}
 
 
 $(document).ready(function() {
@@ -238,36 +302,46 @@ function createPersonCard(personId, personNameSurname, personRole, img_path){
 
 function createEventCard(eventId, eventName, shortEventDesc, img_path){
   var card = $('<div />')
-    .addClass("card left-15 ")
-    .attr("id", eventId);
+  .addClass("card mb-3 top-10")
+  .attr("id", eventId);
+
+  var row = $('<div />')
+    .addClass("row no-gutters")
+    .appendTo(card);
+
+  var col4 = $('<div />')
+    .addClass("col-md-4")
+    .appendTo(row);
 
   $('<img />')
     .attr('src', img_path)    //image relative path
-    .addClass("img-fluid card-img-top ")
+    .addClass("img-fluid card-img")
     .width("100%").height("100%")
-    .appendTo(card);
+    .appendTo(col4);
 
-  var body = $('<div />')
-      .addClass("card-body")
-      .appendTo(card);
+  var col8 = $('<div />')
+    .addClass("col-md-8")
+    .appendTo(row)
 
-  
+  var cardbody = $("<div />")
+    .addClass("card-body")
+    .appendTo(col8);
+
   $("<h5 />")
-      .addClass("card-title ")
-      .text(eventName)
-      .appendTo(body);
-      
+    .addClass("card-title left-15")
+    .text(eventName)
+    .appendTo(cardbody);    
 
   $("<p />")
-      .addClass("card-text ")
-      .text(shortEventDesc)
-      .appendTo(body);
-  
+    .addClass("card-text left-15")
+    .text(shortEventDesc)
+    .appendTo(cardbody);
+
   $("<button />")
-      .addClass("btn btn-info ")
-      .attr("onclick", "goToEvent(" + eventId  + ")")
-      .appendTo(body)
-      .text("More about ".concat(eventName));
+    .addClass("button-card btn btn-info left-15")
+    .appendTo(cardbody)
+    .attr("onclick", "goToEvent("  +  eventId  +  ")")
+    .text("More about ".concat(eventName));
 
   return card;
 }

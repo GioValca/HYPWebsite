@@ -115,12 +115,14 @@ h5 {
 }
 
 .fa {
-  padding: 5px;
-  font-size: 15px;
-  width: 24px;
+  padding: 0;
+  font-size: 30px;
+  width: 40px;
+  height: 40px;
   text-align: center;
   text-decoration: none;
-  border-radius: 5px;
+  vertical-align: middle;
+  border-radius: 50px;
 }
 
 /* Add a hover effect if you want */
@@ -133,11 +135,23 @@ h5 {
 
 /* Facebook */
 .fa-facebook {
+	padding: 5px;
+  vertical-align: middle;
   background: #0016BB;
   color: white;
+  box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+}
+
+.fa-twitter {
+	padding: 5px;
+  vertical-align: middle;
+  background: #00aced;
+  color: white;
+  box-shadow: 0px 3px 10px rgba(0,0,0,.25);
 }
 
 .fa-instagram {
+	padding: 5px;
   color: white;
   vertical-align: middle;
   background: #d6249f;
@@ -182,6 +196,7 @@ h5 {
 
 
 .footer-title {
+	text-align: center;
 	padding-top: 7px;
 }
 
@@ -261,4 +276,28 @@ h5 {
 
 .bottom-20 {
 	padding-bottom: 20px;
+}
+
+#stats li {
+  display: inline;
+  list-style-type: none;
+  padding-right: 1em;
+	text-align: center;
+  float: none;
+}
+
+.social-icon {
+	text-decoration: none;
+}
+
+.text-madsomma {
+    display: inline-block;
+    margin: 0px;
+    padding: 5px;
+}
+
+.text-info-card-contact {
+	margin-left: 10%; 
+	vertical-align: middle; 
+
 }
