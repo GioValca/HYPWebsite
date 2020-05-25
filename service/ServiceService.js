@@ -48,31 +48,7 @@ exports.servicesServiceIdGET = function(serviceId) {
  * returns List
  **/
 exports.servicesServicesOfEventEventIdGET = function(eventId) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "serviceId" : 1,
-  "name" : "Petanque game",
-  "type" : "fun",
-  "picturePath" : "/img/services/PetanqueGame",
-  "descriptionText" : "Petanque game description",
-  "address" : "Daphne street 19",
-  "eventId" : 1
-}, {
-  "serviceId" : 1,
-  "name" : "Petanque game",
-  "type" : "fun",
-  "picturePath" : "/img/services/PetanqueGame",
-  "descriptionText" : "Petanque game description",
-  "address" : "Daphne street 19",
-  "eventId" : 1
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
+  return sqlDb("services").where("eventId", eventId);
 }
 
 
@@ -85,7 +61,9 @@ exports.servicesServicesOfEventEventIdGET = function(eventId) {
  * returns List
  **/
 exports.servicesTypeOfServicesGET = function(offset,limit) {
-  return sqlDb.select('type').table('services');
+  //TODO restituisci solo uno per tipo
+  console.log("type of services:", sqlDb("services"), typeof sqlDb("services"));
+  return sqlDb("services");
 }
 
 
