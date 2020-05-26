@@ -77,14 +77,9 @@ $(document).ready(function() {
 
     $.ajax({
         type: 'GET',
-		url: 'https://hyp-ave.herokuapp.com/v2/events/',
-        //url: './assets/js/events.json',
+		url: 'https://hyp-ave.herokuapp.com/v2/events/eventsOfAPerson/' + person_to_display,
         dataType: 'json',
-        success: function(all_events) {
-			
-			var json = all_events.filter(function(el){
-            return el.contactPerson == person_to_display;
-        });
+        success: function(json) {
 			
             if (json.length > 0) {
                 $("#involved-events-title").text("Related events");

@@ -36,6 +36,9 @@ $(document).ready(function(){
 
         var list_len = json.length;
 
+        //saving the list of events of the spiecific month in the cache
+        window.sessionStorage.setItem("events-of-month", JSON.stringify(json));
+
         if(list_len == 0){
             title.innerHTML = "There are no Events planned for " + months[month_to_display];
             var col_container = document.getElementById("col-container");
@@ -84,7 +87,7 @@ function goToEvent(eventId){
     console.log("Going to event ".concat(eventId));  
     eventId = String(eventId);  
     //window.sessionStorage.setItem("event_to_display", eventId);
-    window.location = "./event.html" + "?id=" + eventId + "&event-gt=month";
+    window.location = "./event.html" + "?id=" + eventId + "&month=" + month_to_display + "&event-gt=month";
   }
 
 function createEventCard(eventId, eventTitle, eventDesc, eventImagePath){
