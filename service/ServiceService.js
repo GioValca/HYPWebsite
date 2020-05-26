@@ -61,8 +61,9 @@ exports.servicesServicesOfEventEventIdGET = function(eventId) {
  * returns List
  **/
 exports.servicesTypeOfServicesGET = function(offset,limit) {
-  if(!limit) limit = 10;
-  return sqlDb("services").limit(limit).offset(offset);
+  if(!limit) limit = 15;
+  return sqlDb.select(sqlDb.raw('distinct on ("type")')).from('services').limit(limit).offset(offset);
+  //return sqlDb("services").limit(limit).offset(offset);
 }
 
 
