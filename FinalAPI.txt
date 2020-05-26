@@ -207,10 +207,10 @@ paths:
           description: Service not found
   /services/typeOfServices:
     get:
-      summary: Types of services
+      summary: A service for each type
       tags:
         - service
-      description: 'List of the type of the services'
+      description: 'Example of service for each type'
       produces:
         - application/json
       parameters:
@@ -229,11 +229,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Service/type'
-            example:
-              - type: fun
-              - type: adventure
-              
+              $ref: '#/definitions/Service'
         '404':
           description: Unexpected error
   /services/typeOfServices/{typeId}:
