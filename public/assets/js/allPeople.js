@@ -47,7 +47,7 @@ $(document).ready(function(){
 
 function createPersonCard(personId, name, img_path, max_width){
     var container = $('<div />')
-        .addClass("card-box-a container_img top-10")
+        .addClass("card-box-a container_img top-10 center-block")
         .attr("id", "person" + personId)
 		.attr("style", "max-width:" + max_width + ";");
 	
