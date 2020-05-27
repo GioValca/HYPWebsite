@@ -3,7 +3,7 @@
    <head>
       <!-- Required meta tags -->
       <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- Favicon -->
       <link rel="shortcut icon" href="./assets/img/favicon.ico">
       <!-- Icons library CSS-->
@@ -24,7 +24,7 @@
          <div id="content-wrap">
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                <a class="navbar-brand" href="index.html">
-               <img src="./assets/img/logo.png" width="150" height="auto" class="img-responsive">
+               <img src="./assets/img/logo.png" width="150px" id="logo-ave" height="auto" class="img-fluid">
                </a>
                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Togglez navigation">
                <span class="navbar-toggler-icon"></span>
@@ -54,7 +54,7 @@
                         </div>
                      </li>
                      <li class="nav-item">
-                        <a class="text-light nav-link" href="people.html">People </a>
+                        <a class="text-light nav-link" href="people.html">People</a>
                      </li>
                      <li class="nav-item dropdown">
                         <a class="text-light nav-link dropdown-toggle" href="contactsInfo.html" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -66,38 +66,56 @@
                         </div>
                      </li>
                   </ul>
-                  <!-- Barra di Ricerca
-                     <form class="form-inline my-2 my-lg-0">
-                       <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                     </form>
-                      -->
                </div>
             </nav>
-            <div class="space-50"></div>
             <!-- METTERE CONTENUTO QUI -->
-            <div class="container standard-page-width">
-               <div class="row justify-content-center">
-                  <div class="col-md-11" >
-                        <img src="assets/img/villa.jpg" alt="Image of the center" class="img-fluid center-block" style="max-height: 550px; width: 100%;">
-					 <div class="row justify-content-center text-center">
+			 
+            <div class="center-block justify-content-center">
+				
+				<div id="carousel-home" class="carousel slide" data-ride="carousel" data-interval="1000000">
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-home" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-home" data-slide-to="1"></li>
+    <li data-target="#carousel-home" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+		<img class="min-vh-home" src="assets/img/home/villa-new.jpg" alt="Our Villa">
+		<div class="carousel-caption d-none d-md-block">
+    <h5>...</h5>
+  </div>
+    </div>
+	  <div class="carousel-item">
+      <img class="min-vh-home" src="assets/img/home/library-new.jpg" alt="Our library">
+		  <div class="text-carousel-home d-md-block">
+    <div><b><span id="first-word">DISCOVER</span> MORE ABOUT OUR SERVICES</b></div>
+	  </div>
+		      </div>
+    <div class="carousel-item">
+      <img class="min-vh-home" src="assets/img/home/old-new.jpg" alt="Meet us">
+    </div>
+  </div>
+  
+</div>
+			<div class="standard-page-width container">
+					 <div class="row text-center">
 					  <div class="col-md-6"> 
-						  <br>
-						  <h2><b>Info</b></h2>
+						  
+						  <h2><br><b>Info</b></h2>
 						 <p class="text-justify">
                         AVE is an association for social promotion, aimed primarily at the elderly. It is based in the multi-purpose Social Center in 991 Daphne Street, London.
                         It was established in 1991 with the aim of promoting, using, implementing and designing social activities that improve the quality of life of its member and of all visitors.   
                      </p>
-                     <div style="text-align:center;">   
+                     <div class="text-center">   
                         <a type="button" class="btn btn-link" href="association.html">View more</a>
                      </div>
 						 </div>
 						 <div class="col-md-2"></div>
 						<div class="col-md-4"> 
 						 <div style="text-align:center;">
-				<br>
-                  <h2><b>News</b></h2>
-                  <br>
+
+                  <h2><br><b>News</b><br></h2>
+
                   <div class="alert alert-danger" role="alert" style="width: 100%">
                      <b>Attention:</b> Due to the COVID-19 outbreak, we will be closed until new provisions.
                   </div>
@@ -106,10 +124,9 @@
 					  </div>
                      
                   
-               
-               <br>
+              
                <h2 style="text-align:center;"><b>Next Events</b></h2>
-               <br>
+              				
                <div class="row">
                   <div class="col-md-6">
                      <div ng-app='calendarApp' ng-cloak='true'>
@@ -143,9 +160,8 @@
                      </ul>
                   </div>
                </div>
-			 </div>
-				   </div>
                </div>
+				</div>
 			 <div class="space-50"></div>
             <!-- non toccare sto div -->
          <footer id="footer">

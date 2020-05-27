@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 html,body {
@@ -170,6 +170,7 @@ h5 {
 
 .standard-page-width {
     max-width: 85%;
+	align-content: center;
 }
 
 
@@ -308,4 +309,42 @@ h5 {
 
 .space-40 {
 	margin-top: 40px
+}
+
+#logo-ave {
+	border-radius: 10px;
+	box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+#carousel-home {
+	width: 100vw;
+}
+
+.space-5 {
+	margin-top: 5px;
+}
+
+.min-vh-home {
+	height: 92vh;
+	min-width: 100vw;
+}
+
+
+#first-word {
+	color: #0059b3; 
+}
+
+.text-carousel-home {
+  position: absolute;
+  right: 50%;
+  bottom: 30%;
+  left: 20%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.65);
+  color: white;
+  text-align: justify-all;
+  font-size: 300%;
+	line-height: 1em;
+	padding: 10px;
+
 }
