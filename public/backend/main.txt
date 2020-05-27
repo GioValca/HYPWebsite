@@ -5,7 +5,7 @@
 |-----------|---------------|------------|-----------|-----------|-----------------|
 | 1 | administrator | Giovanni | Valcarenghi | 946999 | giovanni.valcarenghi@mail.polimi.it | 
 | 2 | member | Edoardo | Realini | 78982 | edoardo.realini@mail.polimi.it | 
-| 3 | member | Riccardo | Sommaruga | 78982 | riccardo.sommaruga@mail.polimi.it |
+| 3 | member | Riccardo | Sommaruga | 944772 | riccardo.sommaruga@mail.polimi.it |
 
 ## Links to other deliverables
 - Deliverable D0: the web application is accessible at [this address](https://hyp-ave.herokuapp.com/).
@@ -20,6 +20,11 @@ Describe here, with a diagram, the components of your web application and how th
 ### API
 #### REST compliance
 Describe here to what extent did you follow REST principles and what are the reasons for which you might have decided to diverge. Note, you must not describe the whole API here, just the design decisions.
+Our API is REST compliance indeed it adheres to the most important REST architectural constraints:
+- The resources are uniquely identifiable through a single URL, and only by using the underlying methods of the network protocol is possible to manipulate a resource.
+- It is Client-Server based.
+- Any state management that is required take place on the client, not on the server.
+- It allows for an architecture composed of multiple layers of servers.
 #### OpenAPI Resource models
 Describe here synthetically, which models you have introduced for resources.
 ### Data model
@@ -27,16 +32,29 @@ Describe with an ER diagram the model used in the data layer of your web applica
 ## Implementation
 ### Tools used
 There are many tools we have used for the development of our backend.
-- Swagger Editor: for the creation of the API
-- Knex.js: for the query creation
-- Heroku: for the hosting of the WebApp
-- Amazon Web Services: for the hosting of the Database
+- Swagger Editor: for the creation of the API.
+- Knex.js: for the query creation.
+- Heroku: for the hosting of the WebApp.
+- Amazon Web Services: for the hosting of the Database (automatically generated through the Heroku plug-in for the postgress database).
+- Postgress: to create localhost Databases.
+- Postico: to manage the localhost and the Amazon Database (MacOS).
+- Datagrip: to manage the localhost and the Amazon Database (Windows).
 ### Discussion
-Describe here:
 - How did you make sure your web application adheres to the provided OpenAPI specification? Which method did you use to test all APIs endpoints against the expected response?
-- Why do you think your web application adheres to common practices to partition a REST-based web application (static assets vs. application data)
+
+Since the API was not so large we have had the possibility to manually check for each endpoints and assure that everything work properly. This was made by making directed requests to the API through the browser.
+
+- Why do you think your web application adheres to common practices to partition a REST-based web application (static assets vs. application data)?
+As it is the common practices for a REST-based web application, we have partition our web application into two:
+    - the static assets, that contains all the static pages of the website and is part of the presentation layer.
+    - the application data, that contains all the logic and API definitions of the web application, that is part of the Backend structure.
+
 - Describe synthetically why and how did you manage session state, what are the state change triggering actions (e.g., POST to login etc..).
+ ???
+
 - Which technology did you use (relational or a no-SQL database) for managing the data model?
+We have used a relational databaase for managing the data model.
+
 ## Other information
 ### Task assignment
 Describe here how development tasks have been subdivided among members of the group, e.g.:
@@ -53,5 +71,6 @@ Or
 ### Learning outcome
 What was the most important thing all the members have learned while developing this part of the project, what questions remained unanswered, how you will use what you've learned in your everyday life?
 Examples:
-- Foo learned to write SQL queries and Javascript but wanted to know more about caching, he's probably going to create his own startup with what she has learned
+- Giovanni learned how to manage Databases and how to retrieve data with the use of Knex.js, moreover has understood the mechanism used to deploy a web application over the internet and how to access the API through the browser. Unfortunately he doesn't use too much the type of POST requests and coockies storage, but is certainly something that is going to deepen in the future.
+to write SQL queries and Javascript but wanted to know more about caching, he's probably going to create his own startup with what she has learned
 - Bar learned how to deploy on a cloud platform, he would have liked to know more about promises for asynchronous code..
