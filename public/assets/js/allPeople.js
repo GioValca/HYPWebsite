@@ -1,10 +1,6 @@
 console.log("Showing all People");
 
 $(document).ready(function(){
-    
-    var title = document.getElementById("page-title");
-
-    title.innerHTML = "Meet the members of AVE";
 	
 	$.ajax({
         type: 'GET',

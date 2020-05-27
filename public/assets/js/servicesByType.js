@@ -35,9 +35,9 @@ $(document).ready(function(){
         //put a cards respectively into one column and another!
 
         for(i = 0; i < list_len; i++){
-            let {type} = json[i];
+            let {type, picturePath} = json[i];
             if(col_in_use == 1){
-                var card = createTypeCard(type);
+                var card = createTypeCard(type, picturePath);
                 card.appendTo(col1);
                 console.log("appending card to col 1");
                 col_in_use = 2;
@@ -45,7 +45,7 @@ $(document).ready(function(){
             }
 
             if(col_in_use == 2){
-                var card = createTypeCard(type);
+                var card = createTypeCard(type, picturePath);
                 card.appendTo(col2);
                 console.log("appending card to col 2");
                 col_in_use = 1;
@@ -65,7 +65,7 @@ function goToServicsOfType(typeId){
     window.location = "./servicesOfType.html" + "?service-type=" + typeId;
 }
 
-function createTypeCard(type){
+function createTypeCard(type, picturePath){
 
     var card = $('<div />')
     .addClass("card mb-3 top-10")
@@ -80,7 +80,7 @@ function createTypeCard(type){
         .appendTo(row);
 
     $('<img />')
-        .attr('src', "serviceImagePath")    //image relative path
+        .attr('src', picturePath)    //image relative path
         .addClass("img-fluid card-img")
         .width("100%").height("100%")
         .appendTo(col4);

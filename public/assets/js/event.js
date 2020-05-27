@@ -21,11 +21,22 @@ var months = {
 console.log("Loading event page");
 let urlParams = new URLSearchParams(window.location.search);
 let event_to_display = urlParams.get('id');
+let gt_mode = urlParams.get("event-gt");
+let event_month = 0;
+let events = window.sessionStorage.getItem("events-of-month");
+events = JSON.parse(events);
 
 $(document).ready(function (){
 
     //this var is updated when the info about the event is retrieved
     var contact_to_display = 0;
+
+    if(events.length == 1){
+        nextButton = document.getElementById("next-event");
+        prevButton = document.getElementById("previous-event");
+        nextButton.classList.add("disappear");
+        prevButton.classList.add("disappear");
+    }
     
     
     //con questa prima fetch andiamo a RIEMPIRE gli elementi statici della pagina
@@ -57,6 +68,8 @@ $(document).ready(function (){
         description.innerHTML = descriptionText;
         image_path.src = picturePath;
         breadcrumb.innerHTML = name;
+
+        event_month = month;
 
         var string_month = months[month];
         var string_day = pretty_day(day);
@@ -97,16 +110,11 @@ $(document).ready(function (){
     });
 
     //creazione dell'elenco di servizi legati allo specifico evento
-    fetch("https://hyp-ave.herokuapp.com/v2/services").then(function(response){ //chiamata specifica all'elenco di servizi legati all'evento (API pronta)
+    fetch("https://hyp-ave.herokuapp.com/v2/services/servicesOfEvent/" + event_to_display).then(function(response){ //chiamata specifica all'elenco di servizi legati all'evento (API pronta)
         return response.json();
-    }).then(function(all_services){
+    }).then(function(json){
 
-        console.log(all_services);
-
-        //Filtro solo i servizi connessi all'evento che sto visualizzando
-        var json = all_services.filter(function(el){
-            return el.eventId == event_to_display;
-        });
+        console.log(json);
 
         //AGGIUNGERE FILTRO SUI SERVIZI CON CAMPO event UGUALE ALL'EVENTO CHE SI STA CARICANDO
 
@@ -152,6 +160,62 @@ function goToService(serviceId){
     serviceId = String(serviceId);
     //window.sessionStorage.setItem('service_to_display', serviceId);
     window.location = "./service.html" + "?id=" + serviceId + "&service-gt=person";
+}
+
+function previousEvent(){
+
+    id_list = getListOfIds(events);
+    id_list_len = id_list.length;
+
+    event_to_show = 0;
+
+    if(gt_mode == "month"){
+        index = findIndex(event_to_display, id_list);
+        if(index == 0){
+            event_to_show = id_list_len - 1;
+        }
+        else{
+            event_to_show = id_list[index - 1];
+        }
+
+        window.location = "./event.html" + "?id=" + event_to_show + "&month=" + event_month + "&event-gt=month";
+    }
+
+}
+
+function nextEvent(){
+
+    id_list = getListOfIds(events);
+    id_list_len = id_list.length;
+
+    event_to_show = 0;
+
+    if(gt_mode == "month"){
+        index = findIndex(event_to_display, id_list);
+        if(index == id_list_len - 1){
+            event_to_show = id_list[0];
+        }
+        else{
+            event_to_show = id_list[index + 1];
+        }
+
+        window.location = "./event.html" + "?id=" + event_to_show + "&month=" + event_month + "&event-gt=month";
+    }    
+
+}
+
+function getListOfIds(events){
+    id_list = [];
+    for(event of events){
+        id_list.push(event["eventId"]);
+    }
+    return id_list;
+}
+
+function findIndex(event_code, code_list){
+    return code_list.findIndex(function check(el){
+        return el == event_code;
+    });
 }
 
 function createPersonCard(personId, personNameSurname, personRole, img_path){
