@@ -4,7 +4,7 @@
 | Member n. | Role | First name | Last Name | Matricola | Email address |
 |-----------|---------------|------------|-----------|-----------|-----------------|
 | 1 | administrator | Giovanni | Valcarenghi | 946999 | giovanni.valcarenghi@mail.polimi.it |
-| 2 | member | Edoardo | Realini | 78982 | edoardo.realini@mail.polimi.it |
+| 2 | member | Edoardo | Realini | 944737 | edoardo.realini@mail.polimi.it |
 | 3 | member | Riccardo | Sommaruga | 944772 | riccardo.sommaruga@mail.polimi.it |
 
 ## Links to other deliverables
@@ -28,6 +28,18 @@ Our API is REST compliance indeed it adheres to the most important REST architec
 - It allows for an architecture composed of multiple layers of servers.
 #### OpenAPI Resource models
 Describe here synthetically, which models you have introduced for resources.
+
+In our website for the voluntary association we have introduced the following main entities. All these entities contains the main specific data for each category, the only common thing is the Id, each entity has its own unique Id so that is possible to uniquely identify each of them.
+- People: who are the people that works in the association.
+- Services: that are the services that the association offers.
+- Event: which are the evnts of the association.
+
+However we needed other entities to support these mains, so we have added two more:
+- People involved in services: this eentity shows the link between the people that work in the association and the services that people deal with.
+- Pictures of the services: this entity is useful to have a link between all the pictures of the services and the service they belong to.
+
+All these different resouces has their own path so that is possible to retrieve each of them separately. For more info please refer to Deliverable 2 and Deliverable 3. 
+
 ### Data model
 Describe with an ER diagram the model used in the data layer of your web application. How these map to the OpenAPI data model?
 ## Implementation

@@ -22,15 +22,15 @@
 <td>Giovanni</td>
 <td>Valcarenghi</td>
 <td>946999</td>
-<td><a href="/cdn-cgi/l/email-protection#c2a5abadb4a3acacabecb4a3aea1a3b0a7aca5aaab82afa3abaeecb2adaeabafabecabb6"><span class="__cf_email__" data-cfemail="f3949a9c85929d9d9add85929f909281969d949b9ab39e929a9fdd839c9f9a9e9add9a87">[email&#160;protected]</span></a></td>
+<td><a href="/cdn-cgi/l/email-protection#8fe8e6e0f9eee1e1e6a1f9eee3eceefdeae1e8e7e6cfe2eee6e3a1ffe0e3e6e2e6a1e6fb"><span class="__cf_email__" data-cfemail="c6a1afa9b0a7a8a8afe8b0a7aaa5a7b4a3a8a1aeaf86aba7afaae8b6a9aaafabafe8afb2">[email&#160;protected]</span></a></td>
 </tr>
 <tr>
 <td>2</td>
 <td>member</td>
 <td>Edoardo</td>
 <td>Realini</td>
-<td>78982</td>
-<td><a href="/cdn-cgi/l/email-protection#6500010a0417010a4b170004090c0b0c2508040c094b150a090c080c4b0c11"><span class="__cf_email__" data-cfemail="bcd9d8d3ddced8d392ced9ddd0d5d2d5fcd1ddd5d092ccd3d0d5d1d592d5c8">[email&#160;protected]</span></a></td>
+<td>944737</td>
+<td><a href="/cdn-cgi/l/email-protection#4a2f2e252b382e2564382f2b262324230a272b2326643a252623272364233e"><span class="__cf_email__" data-cfemail="7316171c1201171c5d0116121f1a1d1a331e121a1f5d031c1f1a1e1a5d1a07">[email&#160;protected]</span></a></td>
 </tr>
 <tr>
 <td>3</td>
@@ -38,7 +38,7 @@
 <td>Riccardo</td>
 <td>Sommaruga</td>
 <td>944772</td>
-<td><a href="/cdn-cgi/l/email-protection#ff8d969c9c9e8d9b90d18c9092929e8d8a989ebf929e9693d18f9093969296d1968b"><span class="__cf_email__" data-cfemail="46342f2525273422296835292b2b2734332127062b272f2a6836292a2f2b2f682f32">[email&#160;protected]</span></a></td>
+<td><a href="/cdn-cgi/l/email-protection#d5a7bcb6b6b4a7b1bafba6bab8b8b4a7a0b2b495b8b4bcb9fba5bab9bcb8bcfbbca1"><span class="__cf_email__" data-cfemail="9eecf7fdfdffecfaf1b0edf1f3f3ffecebf9ffdef3fff7f2b0eef1f2f7f3f7b0f7ea">[email&#160;protected]</span></a></td>
 </tr>
 </tbody>
 </table>
@@ -66,68 +66,80 @@ Our API is REST compliance indeed it adheres to the most important REST architec
 </ul>
 <h4 class="code-line" data-line-start=28 data-line-end=29><a id="OpenAPI_Resource_models_28"></a>OpenAPI Resource models</h4>
 <p class="has-line-data" data-line-start="29" data-line-end="30">Describe here synthetically, which models you have introduced for resources.</p>
-<h3 class="code-line" data-line-start=30 data-line-end=31><a id="Data_model_30"></a>Data model</h3>
-<p class="has-line-data" data-line-start="31" data-line-end="32">Describe with an ER diagram the model used in the data layer of your web application. How these map to the OpenAPI data model?</p>
-<h2 class="code-line" data-line-start=32 data-line-end=33><a id="Implementation_32"></a>Implementation</h2>
-<h3 class="code-line" data-line-start=33 data-line-end=34><a id="Tools_used_33"></a>Tools used</h3>
-<p class="has-line-data" data-line-start="34" data-line-end="35">There are many tools we have used for the development of our backend.</p>
+<p class="has-line-data" data-line-start="31" data-line-end="32">In our website for the voluntary association we have introduced the following main entities. All these entities contains the main specific data for each category, the only common thing is the Id, each entity has its own unique Id so that is possible to uniquely identify each of them.</p>
 <ul>
-<li class="has-line-data" data-line-start="35" data-line-end="36">Swagger Editor: for the creation of the API.</li>
-<li class="has-line-data" data-line-start="36" data-line-end="37">Knex.js: for the query creation.</li>
-<li class="has-line-data" data-line-start="37" data-line-end="38">Heroku: for the hosting of the WebApp.</li>
-<li class="has-line-data" data-line-start="38" data-line-end="39">Amazon Web Services: for the hosting of the Database (automatically generated through the Heroku plug-in for the postgress database).</li>
-<li class="has-line-data" data-line-start="39" data-line-end="40">Postgress: to create localhost Databases.</li>
-<li class="has-line-data" data-line-start="40" data-line-end="41">Postico: to manage the localhost and the Amazon Database (MacOS).</li>
-<li class="has-line-data" data-line-start="41" data-line-end="42">Datagrip: to manage the localhost and the Amazon Database (Windows).</li>
+<li class="has-line-data" data-line-start="32" data-line-end="33">People: who are the people that works in the association.</li>
+<li class="has-line-data" data-line-start="33" data-line-end="34">Services: that are the services that the association offers.</li>
+<li class="has-line-data" data-line-start="34" data-line-end="36">Event: which are the evnts of the association.</li>
 </ul>
-<h3 class="code-line" data-line-start=42 data-line-end=43><a id="Discussion_42"></a>Discussion</h3>
+<p class="has-line-data" data-line-start="36" data-line-end="37">However we needed other entities to support these mains, so we have added two more:</p>
 <ul>
-<li class="has-line-data" data-line-start="43" data-line-end="45">How did you make sure your web application adheres to the provided OpenAPI specification? Which method did you use to test all APIs endpoints against the expected response?</li>
+<li class="has-line-data" data-line-start="37" data-line-end="38">People involved in services: this eentity shows the link between the people that work in the association and the services that people deal with.</li>
+<li class="has-line-data" data-line-start="38" data-line-end="40">Pictures of the services: this entity is useful to have a link between all the pictures of the services and the service they belong to.</li>
 </ul>
-<p class="has-line-data" data-line-start="45" data-line-end="46">Since the API was not so large we have had the possibility to manually check for each endpoints and assure that everything work properly. This was made by making directed requests to the API through the browser.</p>
+<p class="has-line-data" data-line-start="40" data-line-end="41">All these different resouces has their own path so that is possible to retrieve each of them separately. For more info please refer to Deliverable 2 and Deliverable 3.</p>
+<h3 class="code-line" data-line-start=42 data-line-end=43><a id="Data_model_42"></a>Data model</h3>
+<p class="has-line-data" data-line-start="43" data-line-end="44">Describe with an ER diagram the model used in the data layer of your web application. How these map to the OpenAPI data model?</p>
+<h2 class="code-line" data-line-start=44 data-line-end=45><a id="Implementation_44"></a>Implementation</h2>
+<h3 class="code-line" data-line-start=45 data-line-end=46><a id="Tools_used_45"></a>Tools used</h3>
+<p class="has-line-data" data-line-start="46" data-line-end="47">There are many tools we have used for the development of our backend.</p>
 <ul>
-<li class="has-line-data" data-line-start="47" data-line-end="52">
-<p class="has-line-data" data-line-start="47" data-line-end="49">Why do you think your web application adheres to common practices to partition a REST-based web application (static assets vs. application data)?<br>
+<li class="has-line-data" data-line-start="47" data-line-end="48">Swagger Editor: for the creation of the API.</li>
+<li class="has-line-data" data-line-start="48" data-line-end="49">Knex.js: for the query creation.</li>
+<li class="has-line-data" data-line-start="49" data-line-end="50">Heroku: for the hosting of the WebApp.</li>
+<li class="has-line-data" data-line-start="50" data-line-end="51">Amazon Web Services: for the hosting of the Database (automatically generated through the Heroku plug-in for the postgress database).</li>
+<li class="has-line-data" data-line-start="51" data-line-end="52">Postgress: to create localhost Databases.</li>
+<li class="has-line-data" data-line-start="52" data-line-end="53">Postico: to manage the localhost and the Amazon Database (MacOS).</li>
+<li class="has-line-data" data-line-start="53" data-line-end="54">Datagrip: to manage the localhost and the Amazon Database (Windows).</li>
+</ul>
+<h3 class="code-line" data-line-start=54 data-line-end=55><a id="Discussion_54"></a>Discussion</h3>
+<ul>
+<li class="has-line-data" data-line-start="55" data-line-end="57">How did you make sure your web application adheres to the provided OpenAPI specification? Which method did you use to test all APIs endpoints against the expected response?</li>
+</ul>
+<p class="has-line-data" data-line-start="57" data-line-end="58">Since the API was not so large we have had the possibility to manually check for each endpoints and assure that everything work properly. This was made by making directed requests to the API through the browser.</p>
+<ul>
+<li class="has-line-data" data-line-start="59" data-line-end="64">
+<p class="has-line-data" data-line-start="59" data-line-end="61">Why do you think your web application adheres to common practices to partition a REST-based web application (static assets vs. application data)?<br>
 As it is the common practices for a REST-based web application, we have partition our web application into two:</p>
 <ul>
-<li class="has-line-data" data-line-start="49" data-line-end="50">the static assets, that contains all the static pages of the website and is part of the presentation layer.</li>
-<li class="has-line-data" data-line-start="50" data-line-end="52">the application data, that contains all the logic and API definitions of the web application, that is part of the Backend structure.</li>
+<li class="has-line-data" data-line-start="61" data-line-end="62">the static assets, that contains all the static pages of the website and is part of the presentation layer.</li>
+<li class="has-line-data" data-line-start="62" data-line-end="64">the application data, that contains all the logic and API definitions of the web application, that is part of the Backend structure.</li>
 </ul>
 </li>
-<li class="has-line-data" data-line-start="52" data-line-end="55">
-<p class="has-line-data" data-line-start="52" data-line-end="54">Describe synthetically why and how did you manage session state, what are the state change triggering actions (e.g., POST to login etc…).<br>
+<li class="has-line-data" data-line-start="64" data-line-end="67">
+<p class="has-line-data" data-line-start="64" data-line-end="66">Describe synthetically why and how did you manage session state, what are the state change triggering actions (e.g., POST to login etc…).<br>
 ???</p>
 </li>
-<li class="has-line-data" data-line-start="55" data-line-end="58">
-<p class="has-line-data" data-line-start="55" data-line-end="57">Which technology did you use (relational or a no-SQL database) for managing the data model?<br>
+<li class="has-line-data" data-line-start="67" data-line-end="70">
+<p class="has-line-data" data-line-start="67" data-line-end="69">Which technology did you use (relational or a no-SQL database) for managing the data model?<br>
 We have used a relational databaase for managing the data model.</p>
 </li>
 </ul>
-<h2 class="code-line" data-line-start=58 data-line-end=59><a id="Other_information_58"></a>Other information</h2>
-<h3 class="code-line" data-line-start=59 data-line-end=60><a id="Task_assignment_59"></a>Task assignment</h3>
-<p class="has-line-data" data-line-start="60" data-line-end="61">Describe here how development tasks have been subdivided among members of the group, e.g.:</p>
+<h2 class="code-line" data-line-start=70 data-line-end=71><a id="Other_information_70"></a>Other information</h2>
+<h3 class="code-line" data-line-start=71 data-line-end=72><a id="Task_assignment_71"></a>Task assignment</h3>
+<p class="has-line-data" data-line-start="72" data-line-end="73">Describe here how development tasks have been subdivided among members of the group, e.g.:</p>
 <blockquote>
 <ul>
-<li class="has-line-data" data-line-start="61" data-line-end="62">Giovanni worked on front end (30%) and OpenAPI Spec (70% of the time)</li>
-<li class="has-line-data" data-line-start="62" data-line-end="63">Edoardo worked on front end (70%) and OpenAPI Spec (30% of the time)</li>
-<li class="has-line-data" data-line-start="63" data-line-end="64">Riccardo worked on front end (70%) and OpenAPI Spec (30% of the time)</li>
+<li class="has-line-data" data-line-start="73" data-line-end="74">Giovanni worked on front end (30%) and OpenAPI Spec (70% of the time)</li>
+<li class="has-line-data" data-line-start="74" data-line-end="75">Edoardo worked on front end (70%) and OpenAPI Spec (30% of the time)</li>
+<li class="has-line-data" data-line-start="75" data-line-end="76">Riccardo worked on front end (70%) and OpenAPI Spec (30% of the time)</li>
 </ul>
 </blockquote>
-<h3 class="code-line" data-line-start=64 data-line-end=65><a id="Analysis_of_existing_API_64"></a>Analysis of existing API</h3>
-<p class="has-line-data" data-line-start="65" data-line-end="67">Describe here the research of (full or part of) existing APIs that are similar in objectives and scope to the one implemented, that have possibly guided implementation choices (these should not be necessarily OpenAPI implementations). Toy APIs (such as the Swagger’s Pet Store) or the example shown during lectures are not a valid response.<br>
+<h3 class="code-line" data-line-start=76 data-line-end=77><a id="Analysis_of_existing_API_76"></a>Analysis of existing API</h3>
+<p class="has-line-data" data-line-start="77" data-line-end="79">Describe here the research of (full or part of) existing APIs that are similar in objectives and scope to the one implemented, that have possibly guided implementation choices (these should not be necessarily OpenAPI implementations). Toy APIs (such as the Swagger’s Pet Store) or the example shown during lectures are not a valid response.<br>
 Use TWO or more items of the form:</p>
 <blockquote>
-<p class="has-line-data" data-line-start="67" data-line-end="71">We took (full/partial) inspiration from API &lt;XYZ&gt;(link) for the part of the<br>
+<p class="has-line-data" data-line-start="79" data-line-end="83">We took (full/partial) inspiration from API &lt;XYZ&gt;(link) for the part of the<br>
 API that manages &lt;ABC&gt; because of &lt;REASON&gt;.<br>
 Or<br>
 For the part of the API that manages &lt;ABC&gt; we considered/studied &lt;XYZ&gt;(link) &gt; because of &lt;REASON&gt; but wasn’t completely fitting to our purpose because of &gt; &lt;REASON&gt;.</p>
 </blockquote>
-<h3 class="code-line" data-line-start=71 data-line-end=72><a id="Learning_outcome_71"></a>Learning outcome</h3>
-<p class="has-line-data" data-line-start="72" data-line-end="74">What was the most important thing all the members have learned while developing this part of the project, what questions remained unanswered, how you will use what you’ve learned in your everyday life?<br>
+<h3 class="code-line" data-line-start=83 data-line-end=84><a id="Learning_outcome_83"></a>Learning outcome</h3>
+<p class="has-line-data" data-line-start="84" data-line-end="86">What was the most important thing all the members have learned while developing this part of the project, what questions remained unanswered, how you will use what you’ve learned in your everyday life?<br>
 Examples:</p>
 <ul>
-<li class="has-line-data" data-line-start="74" data-line-end="76">Giovanni learned how to manage Databases and how to retrieve data with the use of Knex.js, moreover has understood the mechanism used to deploy a web application over the internet and how to access the API through the browser. Unfortunately he doesn’t use too much the type of POST requests and coockies storage, but is certainly something that is going to deepen in the future.<br>
+<li class="has-line-data" data-line-start="86" data-line-end="88">Giovanni learned how to manage Databases and how to retrieve data with the use of Knex.js, moreover has understood the mechanism used to deploy a web application over the internet and how to access the API through the browser. Unfortunately he doesn’t use too much the type of POST requests and coockies storage, but is certainly something that is going to deepen in the future.<br>
 to write SQL queries and Javascript but wanted to know more about caching, he’s probably going to create his own startup with what she has learned</li>
-<li class="has-line-data" data-line-start="76" data-line-end="77">Bar learned how to deploy on a cloud platform, he would have liked to know more about promises for asynchronous code…</li>
+<li class="has-line-data" data-line-start="88" data-line-end="89">Bar learned how to deploy on a cloud platform, he would have liked to know more about promises for asynchronous code…</li>
 </ul>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body></html>
