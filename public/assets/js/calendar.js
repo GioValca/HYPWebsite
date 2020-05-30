@@ -39,14 +39,11 @@
 
     // Place Dates In Correct Place
     function placeIt() {
-		var def_marg = 14.28
-		console.log(def_marg)
-		console.log(now.getFullYear())
-		var firstDay = new Date(now.getFullYear(), month, 1)
-		var weekDay = (firstDay.getDay() + 6) % 7
-		var margin = def_marg * weekDay
-		console.log(margin)
-		var perc_margin = String(margin) + "%"
+		var def_marg = 14.28;
+		var firstDay = new Date(now.getFullYear(), month, 1);
+		var weekDay = (firstDay.getDay() + 6) % 7;
+		var margin = def_marg * weekDay;
+		var perc_margin = String(margin) + "%";
 		$(".date_item").first().css({
           'margin-left': perc_margin
         })
@@ -114,7 +111,7 @@
       for (var i = 1; i < days; i++) {
         var uidi = i;
         var uidm = month;
-        var uid = uidi.toString() + uidm.toString();
+        var uid = uidi.toString() + '-' + uidm.toString();
         $(".dates").append("<div class='date_item' data='" + uid + "'>" + i + "</div>");
       }
     }

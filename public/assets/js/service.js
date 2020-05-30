@@ -17,6 +17,7 @@ let service_to_display = urlParams.get('id');
 
 //retrieve the guided tour mode from the URL
 let gt_mode = urlParams.get("service-gt");
+let service_type = urlParams.get("service-type");
 
 //variabili che sono modificate appena vengono caricate le informazioni del servizio
 var event_to_display = 0;
@@ -25,8 +26,8 @@ var event_to_display = 0;
 //there are 4 possibilities
 //among all the services
 //among the services of a certain type
-//among the services related to a person
-//among the services related to an event
+//among the services related to a person ??
+//among the services related to an event ??
 function nextService(){
   var nextService_id = 0;
 
@@ -42,21 +43,38 @@ function nextService(){
     else{
       nextService_id = parseInt(service_to_display) + 1;
     }
+
+    window.location = "./service.html" + "?id=" + nextService_id + "&service-gt=all";
   }
 
   if(gt_mode == "type"){
+    services_by_type = window.sessionStorage.getItem("servicesByType");
+    services_by_type = JSON.parse(services_by_type);
 
+    id_list = getListOfIds(services_by_type);
+    id_list_len = id_list.length;
+
+    event_to_show = 0;
+    
+    index = findIndex(service_to_display, id_list);
+    if(index == id_list_len - 1){
+        service_to_show = id_list[0];
+    }
+    else{
+        service_to_show = id_list[index + 1];
+    }
+
+    window.location = "./service.html" + "?id=" + service_to_show + "&type=" + service_type + "&service-gt=type";
   }
 
   if(gt_mode == "person"){
-
+    //si fa o no?
   }
 
   if(gt_mode == "event"){
-
+    //si fa o no?
   }
-
-  window.location = "./service.html" + "?id=" + nextService_id + "&service-gt=all";
+  
 }
 
 function previousService(){
@@ -74,12 +92,49 @@ function previousService(){
     else{
       prevService_id = parseInt(service_to_display) - 1;
     }
+
+    window.location = "./service.html" + "?id=" + prevService_id + "&service-gt=all";
+  }
+
+  if(gt_mode == "type"){
+    services_by_type = window.sessionStorage.getItem("servicesByType");
+    services_by_type = JSON.parse(services_by_type);
+
+    id_list = getListOfIds(services_by_type);
+    id_list_len = id_list.length;
+
+    event_to_show = 0;
+    
+    index = findIndex(service_to_display, id_list);
+    if(index == 0){
+        service_to_show = id_list[id_list_len - 1];
+    }
+    else{
+        service_to_show = id_list[index - 1];
+    }
+
+    window.location = "./service.html" + "?id=" + service_to_show + "&type=" + service_type + "&service-gt=type";
+ 
   }
 
   //inserire qui altri casi
 
 
-  window.location = "./service.html" + "?id=" + prevService_id + "&service-gt=all";
+ 
+}
+
+function getListOfIds(services){
+  id_list = [];
+  for(service of services){
+      id_list.push(service["serviceId"]);
+  }
+  return id_list;
+}
+
+function findIndex(service_code, code_list){
+  return code_list.findIndex(function check(el){
+      return el == service_code;
+  });
 }
 
 
