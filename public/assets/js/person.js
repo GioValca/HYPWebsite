@@ -1,4 +1,14 @@
+let urlParams = new URLSearchParams(window.location.search);
+let gt_mode = urlParams.get("person-gt");
+
 $(document).ready(function() {
+
+    if(gt_mode == "none"){
+        nextButton = document.getElementById("next-person");
+        prevButton = document.getElementById("previous-person");
+        nextButton.classList.add("disappear");
+        prevButton.classList.add("disappear");
+    }
 
     var card_max_width = "95%"
     //var person_to_display = window.sessionStorage.getItem("person_to_display");
@@ -105,7 +115,6 @@ $(document).ready(function() {
         success: function(json) {
 					
 					var num_of_people = json.length;
-					console.log(num_of_people);
 					let current_id = parseInt(person_to_display);
 			
 					if ((current_id + 1) == num_of_people) {
@@ -241,7 +250,7 @@ function goToService(serviceId){
   console.log("Going to service ".concat(serviceId));
   personId = String(serviceId);
   //window.sessionStorage.setItem("service_to_display", serviceId);
-  window.location = "./service.html" + "?id=" + serviceId;
+  window.location = "./service.html" + "?id=" + serviceId + "&service-gt=none";
 
 }
 
@@ -249,7 +258,7 @@ function goToEvent(eventId){
   console.log("Going to event ".concat(eventId));
   eventId = String(eventId);
   //window.sessionStorage.setItem("event_to_display", eventId);
-  window.location = "./event.html" + "?id=" + eventId;
+  window.location = "./event.html" + "?id=" + eventId + "&event-gt=none";
 }
 
 function goToPerson(personId){
