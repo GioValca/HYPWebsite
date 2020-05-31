@@ -139,6 +139,13 @@ function findIndex(service_code, code_list){
 
 
 $(document).ready(function() {
+  if(gt_mode == "none"){
+    nextButton = document.getElementById("next-service");
+    prevButton = document.getElementById("previous-service");
+    nextButton.classList.add("disappear");
+    prevButton.classList.add("disappear");
+  }
+
   $("#gallery-carousel").on("slide.bs.carousel", function(e) {
     var $e = $(e.relatedTarget);
     var idx = $e.index();
@@ -406,7 +413,7 @@ function goToPerson(personId){
   personId = String(personId);
   //window.sessionStorage.setItem("person_to_display", personId);
   //lacia la pagina nuova (person.html).
-  window.location = "./person.html" + "?id=" + personId;
+  window.location = "./person.html" + "?id=" + personId + "&person-gt=none";
 
 }
 
@@ -414,5 +421,5 @@ function goToEvent(eventId){
   console.log("Going to event ".concat(eventId));
   eventId = String(eventId);
   //window.sessionStorage.setItem("event_to_display", eventId);
-  window.location = "./event.html" + "?id=" + eventId;
+  window.location = "./event.html" + "?id=" + eventId + "&event-gt=none";
 }

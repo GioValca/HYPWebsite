@@ -23,15 +23,15 @@ let urlParams = new URLSearchParams(window.location.search);
 let event_to_display = urlParams.get('id');
 let gt_mode = urlParams.get("event-gt");
 let event_month = 0;
-let events = window.sessionStorage.getItem("events-of-month");
-events = JSON.parse(events);
+
+
 
 $(document).ready(function (){
 
     //this var is updated when the info about the event is retrieved
     var contact_to_display = 0;
 
-    if(events.length == 1){
+    if(gt_mode == "none"){
         nextButton = document.getElementById("next-event");
         prevButton = document.getElementById("previous-event");
         nextButton.classList.add("disappear");
@@ -152,24 +152,26 @@ function goToPerson(personId){
     console.log("Going to person ".concat(personId));
     personId = String(personId);
     //window.sessionStorage.setItem('person_to_display', personId);
-    window.location= "./person.html" + "?id=" + personId;
+    window.location= "./person.html" + "?id=" + personId + "&person-gt=none";
 }
 
 function goToService(serviceId){
     console.log("Going to service ".concat(serviceId));
     serviceId = String(serviceId);
     //window.sessionStorage.setItem('service_to_display', serviceId);
-    window.location = "./service.html" + "?id=" + serviceId + "&service-gt=person";
+    window.location = "./service.html" + "?id=" + serviceId + "&service-gt=none";
 }
 
 function previousEvent(){
 
-    id_list = getListOfIds(events);
-    id_list_len = id_list.length;
-
-    event_to_show = 0;
-
     if(gt_mode == "month"){
+
+        let events = window.sessionStorage.getItem("events-of-month");
+        events = JSON.parse(events);
+        id_list = getListOfIds(events);
+        id_list_len = id_list.length;
+    
+        event_to_show = 0;
         index = findIndex(event_to_display, id_list);
         if(index == 0){
             event_to_show = id_list_len - 1;
@@ -181,16 +183,23 @@ function previousEvent(){
         window.location = "./event.html" + "?id=" + event_to_show + "&month=" + event_month + "&event-gt=month";
     }
 
+    if(gt_mode == "today"){
+        //TODO
+    }
+
 }
 
 function nextEvent(){
 
-    id_list = getListOfIds(events);
-    id_list_len = id_list.length;
-
-    event_to_show = 0;
 
     if(gt_mode == "month"){
+        let events = window.sessionStorage.getItem("events-of-month");
+        events = JSON.parse(events);
+        id_list = getListOfIds(events);
+        id_list_len = id_list.length;
+
+        event_to_show = 0;
+
         index = findIndex(event_to_display, id_list);
         if(index == id_list_len - 1){
             event_to_show = id_list[0];
@@ -200,7 +209,12 @@ function nextEvent(){
         }
 
         window.location = "./event.html" + "?id=" + event_to_show + "&month=" + event_month + "&event-gt=month";
-    }    
+    }  
+    
+    if(gt_mode == "today"){
+        //TODO
+    }
+
 
 }
 

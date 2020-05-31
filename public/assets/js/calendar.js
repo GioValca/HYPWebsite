@@ -31,7 +31,6 @@
     vm.dataId;
     vm.events = [];
     vm.description;
-    vm.type = 'Social';
     vm.month = months[month];
     vm.next = next;
     vm.prev = prev;
@@ -104,6 +103,7 @@
     // Highlight Present Day
     function presentDay() {
       $(".date_item").eq(n - 1).addClass("present");
+	  getNextEvents();
     }
 
     // Print List Of Dates For Current Month
@@ -164,6 +164,11 @@
       vm.id = $(this).attr('data');
       vm.dataId = $(this).attr('data');
       $(this).addClass("present").siblings().removeClass("present");
+				for (var i = 0; i < 3; i++) {
+			id_el = "#next-event" + i;
+			$(id_el).html('');
+		}
+		getNextEvents();
       $scope.$apply();
     });
 
@@ -176,3 +181,167 @@
   }
 
 })();
+
+
+
+
+
+
+
+function getNextEvents() {
+
+    var id_day = $(".present").attr("data");
+	
+	var months = {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December"
+}
+
+    console.log(id_day);
+
+    var month = id_day.split('-')[1];
+    var day = id_day.split('-')[0];
+    var next_events = new Array();
+    var card_max_width = "100%";
+    var month_right = String(parseInt(month) + 1);
+
+    console.log(month);
+    console.log(day);
+
+    $.ajax({
+        type: 'GET',
+        url: 'https://hyp-ave.herokuapp.com/v2/events/eventsbymonth/' + month_right,
+        dataType: 'json',
+        success: function(json) {
+
+
+            $.each(json, function(index, event) {
+                if (event.month >= parseInt(month_right) && event.day >= parseInt(day)) {
+                    var temp = new Object();
+                    temp["eventId"] = event.eventId;
+                    temp["img_path"] = event.picturePath;
+                    temp["name"] = event.name;
+                    temp["day"] = event.day;
+					temp["year"] = event.year;
+                    temp["month"] = months[event.month];
+                    temp["descriptionText"] = event.descriptionText;
+                    next_events.push(temp);
+                }
+            })
+        }
+    });
+
+    console.log(next_events);
+
+	//sort the events incrementally
+    next_events.sort(function(a, b) {
+        return a.day - b.day;
+    })
+
+
+	setTimeout(function(){
+		for (var i = 0; i < 3; i++) {
+        if (i < next_events.length) {
+            let event = next_events[i];
+            console.log(event);
+            let img_path = event.img_path;
+            let name = event.name;
+            let descriptionText = event.descriptionText;
+            let eventId = String(event.eventId);
+			var string_day = pretty_day(event.day);
+            var pretty_date = event.month + " " + string_day + " " + event.year;
+            var new_card = createNextEventCard(eventId, card_max_width, img_path, name, pretty_date, i);
+        }
+    }
+	}, 500)
+
+}
+
+function createNextEventCard(eventId, card_max_width, img_path, name, pretty_date, i) {
+
+    var id_tag = "#next-event" + i;
+
+    console.log(id_tag);
+
+    var blockDiv = $('<div />')
+        .addClass("row center-block")
+        .attr("id", eventId)
+        .appendTo($(id_tag)); //div in which load the card
+
+    var card = $('<div />')
+        .addClass("card top-10")
+        .attr("style", "max-width: " + card_max_width + ";")
+        .appendTo(blockDiv)
+
+    var row = $('<div />')
+        .addClass("row no-gutters")
+        .appendTo(card)
+
+    var col4 = $('<div />')
+        .addClass("col-md-4")
+        .appendTo(row)
+
+    $('<img />')
+        .attr('src', img_path) //image relative path
+        .addClass("img-fluid card-img")
+        .attr('name', name)
+        .width("100%").height("100%")
+        .appendTo(col4);
+
+    var col8 = $('<div />')
+        .addClass("col-md-8")
+        .appendTo(row)
+
+    var cardbody = $("<div />")
+        .addClass("card-body")
+        .appendTo(col8);
+
+    $("<h5 />")
+        .addClass("card-title")
+        .appendTo(cardbody)
+        .text(name)
+
+    $("<p />")
+        .addClass("card-text")
+        .appendTo(cardbody)
+        .text(pretty_date)
+
+    $("<a />")
+        .addClass("button-card btn btn-info text-light")
+        .attr("onclick", "goToEvent(" + eventId + ")")
+        .appendTo(cardbody)
+        .text("Read more")
+
+}
+
+function goToEvent(eventId) {
+    console.log("Going to event ".concat(eventId));
+    eventId = String(eventId);
+    //window.sessionStorage.setItem("event_to_display", eventId);
+    window.location = "./event.html" + "?id=" + eventId;
+}
+
+function pretty_day(day){
+    var j = day % 10,
+    k = day % 100;
+    if (j == 1 && k != 11) {
+        return day + "st";
+    }
+    if (j == 2 && k != 12) {
+        return day + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return day + "rd";
+    }
+    return day + "th";
+}

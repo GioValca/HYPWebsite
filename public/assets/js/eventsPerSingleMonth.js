@@ -61,8 +61,11 @@ $(document).ready(function(){
 
         for(i = 0; i < list_len; i++){
             let {eventId, name, hour, day, month, year, address, city, picturePath, descriptionText, contactPerson} = json[i];
+            var string_month = months[month];
+            var string_day = pretty_day(day);
+            var pretty_date = string_month.concat(" ").concat(string_day).concat(" ".concat(year));
             if(col_in_use == 1){
-                var card = createEventCard(eventId, name, descriptionText, picturePath);
+                var card = createEventCard(eventId, name, pretty_date, picturePath);
                 card.appendTo(col1);
                 console.log("appending card to col 1");
                 col_in_use = 2;
@@ -70,7 +73,7 @@ $(document).ready(function(){
             }
 
             if(col_in_use == 2){
-                var card = createEventCard(eventId, name, descriptionText, picturePath);
+                var card = createEventCard(eventId, name, pretty_date, picturePath);
                 card.appendTo(col2);
                 console.log("appending card to col 2");
                 col_in_use = 1;
@@ -83,6 +86,22 @@ $(document).ready(function(){
 
 });
 
+function pretty_day(day){
+    var j = day % 10,
+    k = day % 100;
+    if (j == 1 && k != 11) {
+        return day + "st";
+    }
+    if (j == 2 && k != 12) {
+        return day + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return day + "rd";
+    }
+    return day + "th";
+}
+
+
 function goToEvent(eventId){
     console.log("Going to event ".concat(eventId));  
     eventId = String(eventId);  
@@ -90,10 +109,8 @@ function goToEvent(eventId){
     window.location = "./event.html" + "?id=" + eventId + "&month=" + month_to_display + "&event-gt=month";
   }
 
-function createEventCard(eventId, eventTitle, eventDesc, eventImagePath){
-
-    var shortDesc = eventDesc.slice(0, 100).concat("..."); 
-
+function createEventCard(eventId, eventTitle, eventDate, eventImagePath){
+    
     var card = $('<div />')
     .addClass("card mb-3 top-10")
     .attr("id", eventId);
@@ -128,7 +145,7 @@ function createEventCard(eventId, eventTitle, eventDesc, eventImagePath){
 
     $("<p />")
         .addClass("card-text left-15")
-        .text(shortDesc)
+        .text(eventDate)
         .appendTo(cardbody);
 
     $("<button />")
