@@ -21,7 +21,7 @@ We hereby declare that this is a private repository and, upon request, we will g
 ### API
 #### REST compliance
 "Describe here to what extent did you follow REST principles and what are the reasons for which you might have decided to diverge. Note, you must not describe the whole API here, just the design decisions."
-Our API is REST compliance indeed it adheres to the most important REST architectural constraints:
+Our API is REST compliance since we have used the REST principles to create an API that allows client and server to grow independently. It adheres to the most important REST architectural constraints:
 - The resources are uniquely identifiable through a single URL, and only by using the underlying methods of the network protocol is possible to manipulate a resource.
 - It is Client-Server based.
 - Any state management that is required take place on the client, not on the server.
@@ -33,14 +33,15 @@ In our website for the voluntary association we have introduced the following ma
 - Services: that are the services that the association offers.
 - Event: which are the evnts of the association.
 
-However we needed other entities to support these mains, so we have added two more:
-- People involved in services: this eentity shows the link between the people that work in the association and the services that people deal with.
-- Pictures of the services: this entity is useful to have a link between all the pictures of the services and the service they belong to.
-
 All these different resouces has their own path so that is possible to retrieve each of them separately. For more info please refer to Deliverable 2 and Deliverable 3. 
 
 ### Data model
 "Describe with an ER diagram the model used in the data layer of your web application. How these map to the OpenAPI data model?"
+
+The represented tables are the one that has been already presented in the resource model paragraph.
+However we had transform two relationship into tables, those are:
+- People involved in services: this table shows the link between the people that work in the association and the services that people deal with.
+- Pictures of the services: this table is useful to have a link between all the pictures of the services and the service they belong to.
 
 ## Implementation
 ### Tools used
@@ -65,11 +66,11 @@ As it is the common practices for a REST-based web application, we have partitio
 
 "Describe synthetically why and how did you manage session state, what are the state change triggering actions (e.g., POST to login etc..)."
 
-In our project was not required to manage session state.
+For the session state management we don't have looked at it because it was not required for the implementation of this project.
 
 "Which technology did you use (relational or a no-SQL database) for managing the data model?"
 
-We have used a relational databaase for managing the data model.
+We have used a relational databaase for managing the data model because the nature of the entities and relationships occurring among the entities suggested this type of structure could perform better.
 
 ## Other information
 ### Task assignment
@@ -77,6 +78,9 @@ Describe here how development tasks have been subdivided among members of the gr
 > - Giovanni worked on front end (30%) and OpenAPI Spec (70% of the time)
 > - Edoardo worked on front end (70%) and OpenAPI Spec (30% of the time)
 > - Riccardo worked on front end (70%) and OpenAPI Spec (30% of the time)
+
+Since we have subdivided the workload between front end and backend part at every weekly meeting we explained each other the recently implemented features and helped each other. In this way, everybody could constantly understand what was going on in every part of the project.
+
 ### Analysis of existing API
 "Describe here the research of (full or part of) existing APIs that are similar in objectives and scope to the one implemented, that have possibly guided implementation choices (these should not be necessarily OpenAPI implementations). Toy APIs (such as the Swagger's Pet Store) or the example shown during lectures are not a valid response."
 
