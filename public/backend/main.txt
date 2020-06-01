@@ -17,18 +17,17 @@ We hereby declare that this is a private repository and, upon request, we will g
 
 ## Specification
 ### Web Architecture
-Describe here, with a diagram, the components of your web application and how they interact. Highlight which parts belong to the application layer, data layer or presentation layer. How did you ensure that HTML is not rendered server side?
+"Describe here, with a diagram, the components of your web application and how they interact. Highlight which parts belong to the application layer, data layer or presentation layer. How did you ensure that HTML is not rendered server side?"
 ### API
 #### REST compliance
-Describe here to what extent did you follow REST principles and what are the reasons for which you might have decided to diverge. Note, you must not describe the whole API here, just the design decisions.
+"Describe here to what extent did you follow REST principles and what are the reasons for which you might have decided to diverge. Note, you must not describe the whole API here, just the design decisions."
 Our API is REST compliance indeed it adheres to the most important REST architectural constraints:
 - The resources are uniquely identifiable through a single URL, and only by using the underlying methods of the network protocol is possible to manipulate a resource.
 - It is Client-Server based.
 - Any state management that is required take place on the client, not on the server.
 - It allows for an architecture composed of multiple layers of servers.
 #### OpenAPI Resource models
-Describe here synthetically, which models you have introduced for resources.
-
+"Describe here synthetically, which models you have introduced for resources."
 In our website for the voluntary association we have introduced the following main entities. All these entities contains the main specific data for each category, the only common thing is the Id, each entity has its own unique Id so that is possible to uniquely identify each of them.
 - People: who are the people that works in the association.
 - Services: that are the services that the association offers.
@@ -41,7 +40,8 @@ However we needed other entities to support these mains, so we have added two mo
 All these different resouces has their own path so that is possible to retrieve each of them separately. For more info please refer to Deliverable 2 and Deliverable 3. 
 
 ### Data model
-Describe with an ER diagram the model used in the data layer of your web application. How these map to the OpenAPI data model?
+"Describe with an ER diagram the model used in the data layer of your web application. How these map to the OpenAPI data model?"
+
 ## Implementation
 ### Tools used
 There are many tools we have used for the development of our backend.
@@ -53,19 +53,22 @@ There are many tools we have used for the development of our backend.
 - Postico: to manage the localhost and the Amazon Database (MacOS).
 - Datagrip: to manage the localhost and the Amazon Database (Windows).
 ### Discussion
-- How did you make sure your web application adheres to the provided OpenAPI specification? Which method did you use to test all APIs endpoints against the expected response?
+"How did you make sure your web application adheres to the provided OpenAPI specification? Which method did you use to test all APIs endpoints against the expected response?"
 
 Since the API was not so large we have had the possibility to manually check for each endpoints and assure that everything work properly. This was made by making directed requests to the API through the browser.
 
-- Why do you think your web application adheres to common practices to partition a REST-based web application (static assets vs. application data)?
+"Why do you think your web application adheres to common practices to partition a REST-based web application (static assets vs. application data)?"
+
 As it is the common practices for a REST-based web application, we have partition our web application into two:
-    - the static assets, that contains all the static pages of the website and is part of the presentation layer.
-    - the application data, that contains all the logic and API definitions of the web application, that is part of the Backend structure.
+- the static assets, that contains all the static pages of the website and is part of the presentation layer.
+- the application data, that contains all the logic and API definitions of the web application, that is part of the Backend structure.
 
-- Describe synthetically why and how did you manage session state, what are the state change triggering actions (e.g., POST to login etc..).
- ???
+"Describe synthetically why and how did you manage session state, what are the state change triggering actions (e.g., POST to login etc..)."
 
-- Which technology did you use (relational or a no-SQL database) for managing the data model?
+In our project was not required to manage session state.
+
+"Which technology did you use (relational or a no-SQL database) for managing the data model?"
+
 We have used a relational databaase for managing the data model.
 
 ## Other information
@@ -75,15 +78,16 @@ Describe here how development tasks have been subdivided among members of the gr
 > - Edoardo worked on front end (70%) and OpenAPI Spec (30% of the time)
 > - Riccardo worked on front end (70%) and OpenAPI Spec (30% of the time)
 ### Analysis of existing API
-Describe here the research of (full or part of) existing APIs that are similar in objectives and scope to the one implemented, that have possibly guided implementation choices (these should not be necessarily OpenAPI implementations). Toy APIs (such as the Swagger's Pet Store) or the example shown during lectures are not a valid response.
-Use TWO or more items of the form:
-> We took (full/partial) inspiration from API <XYZ>(link) for the part of the
-> API that manages <ABC> because of <REASON>.
-Or
-> For the part of the API that manages <ABC> we considered/studied <XYZ>(link) > because of <REASON> but wasn't completely fitting to our purpose because of > <REASON>.
+"Describe here the research of (full or part of) existing APIs that are similar in objectives and scope to the one implemented, that have possibly guided implementation choices (these should not be necessarily OpenAPI implementations). Toy APIs (such as the Swagger's Pet Store) or the example shown during lectures are not a valid response."
+
+One API which we have found really intresting was the API of visit tuscany at [this address](https://www.visittuscany.com/en/plan-your-trip/modalita-di-utilizzo-delle-api/).
+> We took partial inspiration from API [ link ](https://www.visittuscany.com/en/plan-your-trip/modalita-di-utilizzo-delle-api/) for the part of the API that manages "Events" because they have used a grouping on the bases of the typology of the events, and that was our identical case for the "Events" entity, where we have also divided it on the bases of the type. That was performed by adding the TypeId in the path of the API request.
+
+> We also have took inspiration from API [ link ](https://www.visittuscany.com/en/plan-your-trip/modalita-di-utilizzo-delle-api/) for the management of the pagination, they have called "rows" and "start" what we have called "offset" and "limit" that allows to limit the number of rows and offset of the returned data by the Database.
+
 ### Learning outcome
-What was the most important thing all the members have learned while developing this part of the project, what questions remained unanswered, how you will use what you've learned in your everyday life?
-Examples:
+"What was the most important thing all the members have learned while developing this part of the project, what questions remained unanswered, how you will use what you've learned in your everyday life?
+Examples:"
 - Giovanni learned how to manage Databases and how to retrieve data with the use of Knex.js, moreover has understood the mechanism used to deploy a web application over the internet and how to access the API through the browser. Unfortunately he doesn't use too much the type of POST requests and coockies storage, but is certainly something that is going to deepen in the future.
 to write SQL queries and Javascript but wanted to know more about caching, he's probably going to create his own startup with what she has learned
 - Bar learned how to deploy on a cloud platform, he would have liked to know more about promises for asynchronous code..
