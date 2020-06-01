@@ -22,6 +22,8 @@ $(document).ready(function(){
 
         var list_len = json.length;
 
+        window.sessionStorage.setItem("servicesByType", JSON.stringify(json));
+
         if(list_len == 0){
             title.innerHTML = "There are no services stored of this type";
             var col_container = document.getElementById("col-container");
