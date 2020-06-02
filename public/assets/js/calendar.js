@@ -274,36 +274,35 @@ function createNextEventCard(eventId, card_max_width, img_path, name, pretty_dat
     console.log(id_tag);
 
     var blockDiv = $('<div />')
-        .addClass("row center-block")
+        .addClass("row center-block top-10")
         .attr("id", eventId)
         .appendTo($(id_tag)); //div in which load the card
 
     var card = $('<div />')
-        .addClass("card top-10")
+        .addClass("card card-dim")
         .attr("style", "max-width: " + card_max_width + ";")
         .appendTo(blockDiv)
 
     var row = $('<div />')
-        .addClass("row no-gutters")
+        .addClass("row-card")
         .appendTo(card)
 
     var col4 = $('<div />')
-        .addClass("col-md-4")
+        .addClass("col-img-card")
         .appendTo(row)
 
     $('<img />')
         .attr('src', img_path) //image relative path
-        .addClass("img-fluid card-img")
-        .attr('name', name)
-        .width("100%").height("100%")
+        .addClass("img-card-madsomma card-img")
+        .attr("alt", "image-event-" + name)
         .appendTo(col4);
 
     var col8 = $('<div />')
-        .addClass("col-md-8")
+        .addClass("col-body-card")
         .appendTo(row)
 
     var cardbody = $("<div />")
-        .addClass("card-body")
+        .addClass("card-body-mad")
         .appendTo(col8);
 
     $("<h5 />")
@@ -317,8 +316,8 @@ function createNextEventCard(eventId, card_max_width, img_path, name, pretty_dat
         .text(pretty_date)
 
     $("<a />")
-        .addClass("button-card btn btn-info text-light")
-        .attr("onclick", "goToEvent(" + eventId + ")")
+        .addClass("button-card btn text-light")
+       	.attr("onclick", "goToEvent("  +  eventId  +  ")")
         .appendTo(cardbody)
         .text("Read more")
 

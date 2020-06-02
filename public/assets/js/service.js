@@ -181,7 +181,7 @@ $(document).ready(function() {
       var title = document.getElementById("service-title");
       var description = document.getElementById("description-text");
       var type_html = document.getElementById("service-type");
-      var image_path = document.getElementById("main-image");
+      var image = document.getElementById("main-image");
       var breadcrumb = document.getElementById("current-page");
       var address_html = document.getElementById("service-address");
 
@@ -194,7 +194,8 @@ $(document).ready(function() {
       description.innerHTML = descriptionText;
       type_html.innerHTML = type;
       address_html.innerHTML = address;
-      image_path.src = picturePath;
+      image.src = picturePath;
+      image.alt = "main-service-image-" + serviceId;
     }).then( function (){   
 
     fetch("https://hyp-ave.herokuapp.com/v2/events/".concat(event_to_display)).then(function(response){ //chiamata specifica all evento con id event_id_local
@@ -306,6 +307,7 @@ $(document).ready(function() {
             
             var gallery_image = document.getElementById("gallery-".concat(i+1));
             gallery_image.src = picturePath;
+            gallery_image.alt = "service-image-gallery-"+i;
 
             console.log(gallery_image.src, picturePath)
   
@@ -331,6 +333,7 @@ function createPersonCard(personId, personNameSurname, personRole, img_path){
   $('<img />')
       .attr('src', img_path)    //image relative path
       .addClass("img-fluid card-img")
+      .attr('alt', "person-image-"+personId)
       .width("100%").height("100%")
       .appendTo(col4);
 
@@ -378,6 +381,7 @@ function createEventCard(eventId, eventName, shortEventDesc, img_path){
   $('<img />')
     .attr('src', img_path)    //image relative path
     .addClass("img-fluid card-img")
+    .attr('alt', "event-image-"+eventId)
     .width("100%").height("100%")
     .appendTo(col4);
 

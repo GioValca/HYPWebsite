@@ -82,6 +82,7 @@ function createTypeCard(type, picturePath){
     $('<img />')
         .attr('src', picturePath)    //image relative path
         .addClass("img-fluid card-img")
+        .attr('alt', "img-service-" + type)
         .width("100%").height("100%")
         .appendTo(col4);
 

@@ -126,6 +126,7 @@ function createEventCard(eventId, eventTitle, eventDate, eventImagePath){
     $('<img />')
         .attr('src', eventImagePath)    //image relative path
         .addClass("img-fluid card-img")
+        .attr('alt', "event-image-"+eventId)
         .width("100%").height("100%")
         .appendTo(col4);
 

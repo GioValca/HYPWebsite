@@ -85,6 +85,7 @@ function createServiceCard(serviceId, serviceTitle, shortDesc, serviceImagePath)
     $('<img />')
         .attr('src', serviceImagePath)    //image relative path
         .addClass("img-fluid card-img")
+        .attr('alt', "img-service-" + serviceId)
         .width("100%").height("100%")
         .appendTo(col4);
 

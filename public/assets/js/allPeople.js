@@ -53,6 +53,7 @@ function createPersonCard(personId, name, img_path, max_width){
 	
 		$('<img />')
 			.attr("src", img_path)
+			.attr("alt", "image-person-"+personId)
 			.addClass("img-fluid")
 			.appendTo(link_img);
 	

@@ -49,7 +49,7 @@ $(document).ready(function (){
 
         var title = document.getElementById("event-title");
         var description = document.getElementById("description-text");
-        var image_path = document.getElementById("main-image");
+        var image = document.getElementById("main-image");
         var breadcrumb = document.getElementById("current-page");
         var date = document.getElementById("date");
         var time = document.getElementById("time");
@@ -66,7 +66,8 @@ $(document).ready(function (){
            
         title.innerHTML = name;
         description.innerHTML = descriptionText;
-        image_path.src = picturePath;
+        image.src = picturePath;
+        image.alt = "main-image-event-"+eventId;
         breadcrumb.innerHTML = name;
 
         event_month = month;
@@ -248,6 +249,7 @@ function createPersonCard(personId, personNameSurname, personRole, img_path){
     $('<img />')
         .attr('src', img_path)    //image relative path
         .addClass("img-fluid card-img")
+        .attr('alt', "image-person-"+personId)
         .width("100%").height("100%")
         .appendTo(col4);
 
@@ -295,6 +297,7 @@ function createServiceCard(serviceId, serviceName, serviceType, img_path){
     $('<img />')
         .attr('src', img_path)    //image relative path
         .addClass("img-fluid card-img")
+        .attr('alt', "image-service-"+serviceId)
         .width("100%").height("100%")
         .appendTo(col4);
 

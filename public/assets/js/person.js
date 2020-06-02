@@ -1,6 +1,22 @@
 let urlParams = new URLSearchParams(window.location.search);
 let gt_mode = urlParams.get("person-gt");
 
+var months = {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December"
+}
+
+
 $(document).ready(function() {
 
     if(gt_mode == "none"){
@@ -10,7 +26,7 @@ $(document).ready(function() {
         prevButton.classList.add("disappear");
     }
 
-    var card_max_width = "95%"
+    var card_max_width = "100%";
     //var person_to_display = window.sessionStorage.getItem("person_to_display");
 
     //loading from the URL which is the event to display
@@ -44,6 +60,7 @@ $(document).ready(function() {
                     $("#role").text("Role: " + role);
                     $("#descriptionText").text(descriptionText);
                     $("#img_person").attr("src", img_path);
+                    $("#img_person").attr("alt", "main-image-person-"+person_json.personId)
                     $("#current-page").text(name);
 					$("#mail").text(mail)
 							  .attr("href", "mailto:" + mail)
@@ -100,10 +117,11 @@ $(document).ready(function() {
 
                 img_path = event.picturePath;
                 name = event.name;
-                descriptionText = event.descriptionText;
+                var string_day = pretty_day(event.day);
+				var date = months[event.month] + " " + string_day + " " + event.year;
                 eventId = String(event.eventId)
 
-                var new_card = createEventCard(eventId, card_max_width, img_path, name, descriptionText)
+                var new_card = createEventCard(eventId, card_max_width, img_path, name, date)
             });
         }
     });
@@ -139,38 +157,36 @@ $(document).ready(function() {
 
 function createServiceCard(serviceId, card_max_width, img_path, name, type) {
 
-    var blockDiv = $('<div />')
-        .addClass("row center-block")
+var blockDiv = $('<div />')
+        .addClass("row center-block top-10")
         .attr("id", serviceId)
         .appendTo($('#show_services')); //div in which load the images
 
     var card = $('<div />')
-        .addClass("card top-10")
+        .addClass("card card-dim")
         .attr("style", "max-width: " + card_max_width + ";")
         .appendTo(blockDiv)
 
     var row = $('<div />')
-        .addClass("row no-gutters")
+        .addClass("row-card")
         .appendTo(card)
 
     var col4 = $('<div />')
-        .addClass("col-md-4")
+        .addClass("col-img-card")
         .appendTo(row)
 
     $('<img />')
         .attr('src', img_path) //image relative path
-        .addClass("img-fluid card-img")
-        .attr('name', name)
-        .width("100%").height("100%")
+        .addClass("img-card-madsomma card-img")
+        .attr("alt", "image-event-" + serviceId)
         .appendTo(col4);
 
     var col8 = $('<div />')
-        .addClass("col-md-8")
+        .addClass("col-body-card")
         .appendTo(row)
 
     var cardbody = $("<div />")
-        .addClass("card-body")
-        .attr("style", "max-width:90%")
+        .addClass("card-body-mad")
         .appendTo(col8);
 
     $("<h5 />")
@@ -185,45 +201,44 @@ function createServiceCard(serviceId, card_max_width, img_path, name, type) {
 
     $("<a />")
         .addClass("button-card btn btn-info text-light")
-        .attr("onclick", "goToService("  +  serviceId  +  ")")
+       	.attr("onclick", "goToEvent("  +  serviceId  +  ")")
         .appendTo(cardbody)
         .text("Read more")
 
 }
 
-function createEventCard(eventId, card_max_width, img_path, name, descriptionText) {
+function createEventCard(eventId, card_max_width, img_path, name, date) {
 
     var blockDiv = $('<div />')
-        .addClass("row center-block")
+        .addClass("row center-block top-10")
         .attr("id", eventId)
         .appendTo($('#show_events')); //div in which load the images
 
     var card = $('<div />')
-        .addClass("card top-10")
+        .addClass("card card-dim")
         .attr("style", "max-width: " + card_max_width + ";")
         .appendTo(blockDiv)
 
     var row = $('<div />')
-        .addClass("row no-gutters")
+        .addClass("row-card")
         .appendTo(card)
 
     var col4 = $('<div />')
-        .addClass("col-md-4")
+        .addClass("col-img-card")
         .appendTo(row)
 
     $('<img />')
         .attr('src', img_path) //image relative path
-        .addClass("img-fluid card-img")
-        .attr('name', name)
-        .width("100%").height("100%")
+        .addClass("img-card-madsomma card-img")
+        .attr("alt", "image-event-" + eventId)
         .appendTo(col4);
 
     var col8 = $('<div />')
-        .addClass("col-md-8")
+        .addClass("col-body-card")
         .appendTo(row)
 
     var cardbody = $("<div />")
-        .addClass("card-body")
+        .addClass("card-body-mad")
         .appendTo(col8);
 
     $("<h5 />")
@@ -231,12 +246,10 @@ function createEventCard(eventId, card_max_width, img_path, name, descriptionTex
         .appendTo(cardbody)
         .text(name)
 
-    var brief_description = descriptionText.slice(0, 30);
-
     $("<p />")
         .addClass("card-text")
         .appendTo(cardbody)
-        .text(brief_description + "...")
+        .text(date)
 
     $("<a />")
         .addClass("button-card btn btn-info text-light")
@@ -266,4 +279,19 @@ function goToPerson(personId){
   personId = String(personId);
   //window.sessionStorage.setItem("event_to_display", eventId);
   window.location = "./person.html" + "?id=" + personId;
+}
+
+function pretty_day(day){
+    var j = day % 10,
+    k = day % 100;
+    if (j == 1 && k != 11) {
+        return day + "st";
+    }
+    if (j == 2 && k != 12) {
+        return day + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return day + "rd";
+    }
+    return day + "th";
 }

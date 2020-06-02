@@ -6,8 +6,8 @@
 }
 
 html,body {
-	height: 100%;
-	width: 100%;
+	height: 100vh;
+	width: 100vw;
 	margin: 0px;
 	padding: 0px;
 	overflow-x: hidden;
@@ -29,21 +29,15 @@ html,body {
 
 #page-container {
   position: relative;
-  min-height: 100vh;
-}
-
-#content-wrap {
-  padding-bottom: 8rem;    /* Footer height */
+  min-height: calc(100vh - 11rem);
 }
 
 #footer {
-    position: absolute;
-    bottom: 0px;
-	left: 0px;
-	right: 0px;
-    width: 100%;
-    height: 8rem;            /* Footer height */
-    background-color: rgb(53, 130, 245);
+	display: block;
+    position: relative;
+	margin-top: 2rem;
+    width: 100vw;
+	min-height: 9rem;
 }
 .space-100{
     margin-top: 100px;
@@ -100,8 +94,9 @@ margin-top: 20px;
 }
 
 .bg-primary {
-  background-color: #0059b3 !important;
+	background-color: #0059b3 !important;
 }
+
 
 p {
   margin-top: 0;
@@ -193,10 +188,6 @@ h5 {
 
 .margin-left-15 {
     margin-left: 15px;
-}
-
-.button-card {
-
 }
 
 
@@ -298,7 +289,7 @@ h5 {
 .text-madsomma {
     display: inline-block;
     margin: 0px;
-    padding: 5px;
+    padding: 3px;
 }
 
 .text-info-card-contact {
@@ -325,26 +316,114 @@ h5 {
 }
 
 .min-vh-home {
-	height: 92vh;
+	height: calc(100vh - 81px);
 	min-width: 100vw;
 }
 
 
 #first-word {
-	color: #0059b3; 
+	color: #0059b3;
+	font-weight: 750;
 }
 
 .text-carousel-home {
   position: absolute;
-  right: 50%;
-  bottom: 30%;
-  left: 20%;
+	min-width: 320px;
+  bottom: 20vh;
+  left: 8vw;
+	right: 50vw;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0.77);
   color: white;
   text-align: justify-all;
-  font-size: 300%;
+  font-size: 275%;
 	line-height: 1em;
 	padding: 10px;
+}
+
+.img-card-madsomma {
+  display: block;
+	max-height: 256px;
+
+  width: 100%;
+  height: 100%;
+}
+
+.card-dim {
+	height: auto;
+	width: 100%;
+}
+
+.col-img-card {
+	flex: 1;
+	width: 50%;
+}
+
+.col-body-card {
+	flex: 1;
+	width: 50%;
+	height: 100%;
+}
+
+.row-card {
+	display: flex;
+}
+
+.card-body-mad {
+width: 100%;
+  height: 100%;
+  min-height: 1px;
+  padding: 1.25rem;
+}
+
+.button-card {
+	background-color: #0078CD !important;
+	color: #fff !important;
+}
+
+
+
+/* for iPad and mobile*/
+@media screen and (max-width: 768px) {
+  .row-card {
+    display: block;
+  }
+	
+	.img-card-madsomma {
+  display: block;
+	max-height: 180px;
+  width: 100%;
+  height: 100%;
+}
+	
+	.col-img-card {
+	width: 100%;
+}
+
+.col-body-card {
+	width: 100%;
+}
+	
+	.button-card {
+	position: absolute;
+		height: 35px;
+		bottom: 1.2rem;
+	right: 1rem;		
+}
+	
+	.card-dim {
+	height: auto;
+		margin: auto;
+	width: 100%;
+}
+	
+	#involved-events-title {
+		text-align: center;
+	}
+	
+	#involved-services-title {
+		text-align: center;
+	}
 
 }
+
