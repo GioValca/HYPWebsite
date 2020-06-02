@@ -22,7 +22,7 @@
 <td>Giovanni</td>
 <td>Valcarenghi</td>
 <td>946999</td>
-<td><a href="/cdn-cgi/l/email-protection#4d2a24223b2c232324633b2c212e2c3f28232a25240d202c2421633d2221242024632439"><span class="__cf_email__" data-cfemail="fb9c92948d9a959592d58d9a97989a899e959c9392bb969a9297d58b9497929692d5928f">[email&#160;protected]</span></a></td>
+<td><a href="/cdn-cgi/l/email-protection#c1a6a8aeb7a0afafa8efb7a0ada2a0b3a4afa6a9a881aca0a8adefb1aeada8aca8efa8b5"><span class="__cf_email__" data-cfemail="385f51574e59565651164e59545b594a5d565f505178555951541648575451555116514c">[email&#160;protected]</span></a></td>
 </tr>
 <tr>
 <td>2</td>
@@ -30,7 +30,7 @@
 <td>Edoardo</td>
 <td>Realini</td>
 <td>944737</td>
-<td><a href="/cdn-cgi/l/email-protection#0762636866756368297562666b6e696e476a666e6b2977686b6e6a6e296e73"><span class="__cf_email__" data-cfemail="1a7f7e757b687e7534687f7b767374735a777b7376346a757673777334736e">[email&#160;protected]</span></a></td>
+<td><a href="/cdn-cgi/l/email-protection#f89d9c97998a9c97d68a9d9994919691b895999194d6889794919591d6918c"><span class="__cf_email__" data-cfemail="f194959e9083959edf8394909d989f98b19c90989ddf819e9d989c98df9885">[email&#160;protected]</span></a></td>
 </tr>
 <tr>
 <td>3</td>
@@ -38,7 +38,7 @@
 <td>Riccardo</td>
 <td>Sommaruga</td>
 <td>944772</td>
-<td><a href="/cdn-cgi/l/email-protection#dfadb6bcbcbeadbbb0f1acb0b2b2beadaab8be9fb2beb6b3f1afb0b3b6b2b6f1b6ab"><span class="__cf_email__" data-cfemail="2e5c474d4d4f5c4a41005d4143434f5c5b494f6e434f4742005e414247434700475a">[email&#160;protected]</span></a></td>
+<td><a href="/cdn-cgi/l/email-protection#1e6c777d7d7f6c7a71306d7173737f6c6b797f5e737f7772306e717277737730776a"><span class="__cf_email__" data-cfemail="c6b4afa5a5a7b4a2a9e8b5a9ababa7b4b3a1a786aba7afaae8b6a9aaafabafe8afb2">[email&#160;protected]</span></a></td>
 </tr>
 </tbody>
 </table>
@@ -54,6 +54,7 @@ We hereby declare that this is a private repository and, upon request, we will g
 <h2 class="code-line" data-line-start=17 data-line-end=18><a id="Specification_17"></a>Specification</h2>
 <h3 class="code-line" data-line-start=18 data-line-end=19><a id="Web_Architecture_18"></a>Web Architecture</h3>
 <p class="has-line-data" data-line-start="19" data-line-end="20">“Describe here, with a diagram, the components of your web application and how they interact. Highlight which parts belong to the application layer, data layer or presentation layer. How did you ensure that HTML is not rendered server side?”</p>
+<img src="/ClassDiagram.png">
 <h3 class="code-line" data-line-start=20 data-line-end=21><a id="API_20"></a>API</h3>
 <h4 class="code-line" data-line-start=21 data-line-end=22><a id="REST_compliance_21"></a>REST compliance</h4>
 <p class="has-line-data" data-line-start="22" data-line-end="24">“Describe here to what extent did you follow REST principles and what are the reasons for which you might have decided to diverge. Note, you must not describe the whole API here, just the design decisions.”<br>
@@ -75,6 +76,8 @@ In our website for the voluntary association we have introduced the following ma
 <p class="has-line-data" data-line-start="35" data-line-end="36">All these different resouces has their own path so that is possible to retrieve each of them separately. For more info please refer to Deliverable 2 and Deliverable 3.</p>
 <h3 class="code-line" data-line-start=37 data-line-end=38><a id="Data_model_37"></a>Data model</h3>
 <p class="has-line-data" data-line-start="38" data-line-end="39">“Describe with an ER diagram the model used in the data layer of your web application. How these map to the OpenAPI data model?”</p>
+<img src="/Er.jpg">
+<img src="/Er-API.png">
 <p class="has-line-data" data-line-start="40" data-line-end="42">The represented tables are the one that has been already presented in the resource model paragraph.<br>
 However we had transform two relationship into tables, those are:</p>
 <ul>
@@ -119,7 +122,7 @@ However we had transform two relationship into tables, those are:</p>
 <p class="has-line-data" data-line-start="81" data-line-end="82">Since we have subdivided the workload between front end and backend part at every weekly meeting we explained each other the recently implemented features and helped each other. In this way, everybody could constantly understand what was going on in every part of the project.</p>
 <h3 class="code-line" data-line-start=83 data-line-end=84><a id="Analysis_of_existing_API_83"></a>Analysis of existing API</h3>
 <p class="has-line-data" data-line-start="84" data-line-end="85">“Describe here the research of (full or part of) existing APIs that are similar in objectives and scope to the one implemented, that have possibly guided implementation choices (these should not be necessarily OpenAPI implementations). Toy APIs (such as the Swagger’s Pet Store) or the example shown during lectures are not a valid response.”</p>
-<p class="has-line-data" data-line-start="86" data-line-end="87">One API which we have found really intresting was the API of visit tuscany at <a href="https://www.visittuscany.com/en/plan-your-trip/modalita-di-utilizzo-delle-api/">this address</a>.</p>
+<p class="has-line-data" data-line-start="86" data-line-end="87">One API which we have found really intresting was the one used by the website of “visit tuscany” (<a href="https://www.visittuscany.com/en/plan-your-trip/modalita-di-utilizzo-delle-api/">this address</a>).</p>
 <blockquote>
 <p class="has-line-data" data-line-start="87" data-line-end="88">We took partial inspiration from API <a href="https://www.visittuscany.com/en/plan-your-trip/modalita-di-utilizzo-delle-api/"> link </a> for the part of the API that manages “Events” because they have used a grouping on the bases of the typology of the events, and that was our identical case for the “Events” entity, where we have also divided it on the bases of the type. That was performed by adding the TypeId in the path of the API request.</p>
 </blockquote>
@@ -130,8 +133,8 @@ However we had transform two relationship into tables, those are:</p>
 <p class="has-line-data" data-line-start="92" data-line-end="94">“What was the most important thing all the members have learned while developing this part of the project, what questions remained unanswered, how you will use what you’ve learned in your everyday life?<br>
 Examples:”</p>
 <ul>
-<li class="has-line-data" data-line-start="94" data-line-end="96">Giovanni learned how to manage Databases and how to retrieve data with the use of Knex.js, moreover has understood the mechanism used to deploy a web application over the internet and how to access the API through the browser. Unfortunately he doesn’t use too much the type of POST requests and coockies storage, but is certainly something that is going to deepen in the future.<br>
-to write SQL queries and Javascript but wanted to know more about caching, he’s probably going to create his own startup with what she has learned</li>
-<li class="has-line-data" data-line-start="96" data-line-end="97">Bar learned how to deploy on a cloud platform, he would have liked to know more about promises for asynchronous code…</li>
+<li class="has-line-data" data-line-start="94" data-line-end="95">Giovanni learned how to manage Databases and how to retrieve data with the use of Knex.js, moreover has understood the mechanism used to deploy a web application over the internet and how to access the API through the browser. Unfortunately he doesn’t use too much the type of POST requests and coockies storage, but is certainly something that is going to deepen in the future.</li>
+<li class="has-line-data" data-line-start="95" data-line-end="96">Edoardo learned how to create functional html and JS. Mainly he understood the relationship between these technologies and how to exploit them at best for our purposes. He also understood the concept of promises in JS which is very important to create good dynamic content in html pages. Also the use of session storage and cookies is generally more clear. However Edoardo would have liked to see more about the setup of a database and in general of the API system of the backend part. Nevertheless he is much more aquantied with the on hand use of a database through different clients such as JetBrain’s DataGrip.</li>
+<li class="has-line-data" data-line-start="96" data-line-end="97">Riccardo learned how to manage dynamic content on html pages and how to use API in order to retrieve data from the Database. He also has understoond the mechanism of API and how it is related to a Database.</li>
 </ul>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body></html>
