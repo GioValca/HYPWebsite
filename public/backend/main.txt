@@ -70,7 +70,7 @@ For the session state management we don't have looked at it because it was not r
 
 "Which technology did you use (relational or a no-SQL database) for managing the data model?"
 
-We have used a relational databaase for managing the data model because the nature of the entities and relationships occurring among the entities suggested this type of structure could perform better.
+We have used a relational database for managing the data model because the nature of the entities and relationships occurring among the entities suggested this type of structure could perform better.
 
 ## Other information
 ### Task assignment
@@ -94,4 +94,4 @@ One API which we have found really intresting was the one used by the website of
 Examples:"
 - Giovanni learned how to manage Databases and how to retrieve data with the use of Knex.js, moreover has understood the mechanism used to deploy a web application over the internet and how to access the API through the browser. Unfortunately he doesn't use too much the type of POST requests and coockies storage, but is certainly something that is going to deepen in the future.
 - Edoardo learned how to create functional html and JS. Mainly he understood the relationship between these technologies and how to exploit them at best for our purposes. He also understood the concept of promises in JS which is very important to create good dynamic content in html pages.  Also the use of session storage and cookies is generally more clear. However Edoardo would have liked to see more about the setup of a database and in general of the API system of the backend part. Nevertheless he is much more aquantied with the on hand use of a database through different clients such as JetBrain's DataGrip.
-- Riccardo learned how to manage dynamic content on html pages and how to use API in order to retrieve data from the Database. He also has understoond the mechanism of API and how it is related to a Database. 
+- Riccardo learned how to manage dynamic content on HTML pages through jQuery and how to use API through AJAX in order to retrieve specific data from the Database. Particularly, he focused on understanding how the style of a page is set through CSS. He has also understood the mechanism of API and how it is related to a Database. About this point, he is now able to use Datagrip client in order to make operations on a database.
