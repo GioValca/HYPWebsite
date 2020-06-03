@@ -129,5 +129,5 @@ function goToEvent(eventId) {
     console.log("Going to event ".concat(eventId));
     eventId = String(eventId);
     //window.sessionStorage.setItem("event_to_display", eventId);
-    window.location = "./event.html" + "?id=" + eventId;
+    window.location = "./event.html" + "?id=" + eventId + "&event-gt=none";
 }

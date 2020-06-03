@@ -43,7 +43,7 @@ $(document).ready(function(){
             title.innerHTML = "There are no Events planned for " + months[month_to_display];
             var col_container = document.getElementById("col-container");
             var back_button = $("<button />")
-                                .addClass("btn btn-info")
+                                .addClass("button-card btn btn-info")
                                 .attr("onclick", "window.location =" + " \"" +  "./eventsByMonth.html"  +" \"")
                                 .text("Go back to the months view");
 
