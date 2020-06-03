@@ -146,7 +146,7 @@
   padding: 1em !important;
   color: #0078CD !important;
   z-index: 0;
-  box-shadow: 10px 10px 5px #32AAFF;;
+  box-shadow: 10px 10px 5px #0059b3;
   -webkit-animation: bounce-button-in 0.5s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
           animation: bounce-button-in 0.5s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }

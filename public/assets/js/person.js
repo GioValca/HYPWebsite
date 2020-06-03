@@ -201,7 +201,7 @@ var blockDiv = $('<div />')
 
     $("<a />")
         .addClass("button-card btn btn-info text-light")
-       	.attr("onclick", "goToEvent("  +  serviceId  +  ")")
+       	.attr("onclick", "goToService("  +  serviceId  +  ")")
         .appendTo(cardbody)
         .text("Read more")
 

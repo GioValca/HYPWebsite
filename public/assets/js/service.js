@@ -1,3 +1,19 @@
+var months = {
+  1: "January",
+  2: "February",
+  3: "March",
+  4: "April",
+  5: "May",
+  6: "June",
+  7: "July",
+  8: "August",
+  9: "September",
+  10: "October",
+  11: "November",
+  12: "December"
+}
+
+
 //aggiungere codice che dalla cashe tira fuori quale servizio far vedere
 // e dare ID in input alla chiamata API per servizio
 
@@ -217,9 +233,11 @@ $(document).ready(function() {
         let {eventId, name, hour, day, month, year, address, city, picturePath, descriptionText, contactPerson} = json[0];
         var event_card_div = document.getElementById("related-event");
 
-        var shortDesc = descriptionText.slice(0, 100).concat("...");
+        var string_month = months[month];
+        var string_day = pretty_day(day);
+        var pretty_date = string_month.concat(" ").concat(string_day).concat(" ".concat(year));
         
-        var card = createEventCard(eventId, name, shortDesc, picturePath);
+        var card = createEventCard(eventId, name, pretty_date, picturePath);
         
         card.appendTo(event_card_div);
 
@@ -365,7 +383,7 @@ function createPersonCard(personId, personNameSurname, personRole, img_path){
   return card;
 }
 
-function createEventCard(eventId, eventName, shortEventDesc, img_path){
+function createEventCard(eventId, eventName, eventDate, img_path){
   var card = $('<div />')
   .addClass("card mb-3 top-10")
   .attr("id", eventId);
@@ -400,7 +418,7 @@ function createEventCard(eventId, eventName, shortEventDesc, img_path){
 
   $("<p />")
     .addClass("card-text left-15")
-    .text(shortEventDesc)
+    .text(eventDate)
     .appendTo(cardbody);
 
   $("<button />")
@@ -426,4 +444,20 @@ function goToEvent(eventId){
   eventId = String(eventId);
   //window.sessionStorage.setItem("event_to_display", eventId);
   window.location = "./event.html" + "?id=" + eventId + "&event-gt=none";
+}
+
+
+function pretty_day(day){
+  var j = day % 10,
+  k = day % 100;
+  if (j == 1 && k != 11) {
+      return day + "st";
+  }
+  if (j == 2 && k != 12) {
+      return day + "nd";
+  }
+  if (j == 3 && k != 13) {
+      return day + "rd";
+  }
+  return day + "th";
 }
