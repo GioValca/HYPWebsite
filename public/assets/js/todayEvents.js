@@ -18,7 +18,7 @@ $(document).ready(function(){
             title.innerHTML = "There are no Events planned for today";
             var col_container = document.getElementById("col-container");
             var back_button = $("<button />")
-                                .addClass("button-card btn btn-info")
+                                .addClass("our-button-color btn btn-info")
                                 .attr("onclick", "window.location =" + " \"" +  "./index.html"  +" \"")
                                 .text("Go back to the home page");
 
