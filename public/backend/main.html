@@ -22,7 +22,7 @@
 <td>Giovanni</td>
 <td>Valcarenghi</td>
 <td>946999</td>
-<td><a href="/cdn-cgi/l/email-protection#fa9d93958c9b949493d48c9b96999b889f949d9293ba979b9396d48a9596939793d4938e"><span class="__cf_email__" data-cfemail="88efe1e7fee9e6e6e1a6fee9e4ebe9faede6efe0e1c8e5e9e1e4a6f8e7e4e1e5e1a6e1fc">[email&#160;protected]</span></a></td>
+<td><a href="/cdn-cgi/l/email-protection#8cebe5e3faede2e2e5a2faede0efedfee9e2ebe4e5cce1ede5e0a2fce3e0e5e1e5a2e5f8"><span class="__cf_email__" data-cfemail="c9aea0a6bfa8a7a7a0e7bfa8a5aaa8bbaca7aea1a089a4a8a0a5e7b9a6a5a0a4a0e7a0bd">[email&#160;protected]</span></a></td>
 </tr>
 <tr>
 <td>2</td>
@@ -30,7 +30,7 @@
 <td>Edoardo</td>
 <td>Realini</td>
 <td>944737</td>
-<td><a href="/cdn-cgi/l/email-protection#dcb9b8b3bdaeb8b3f2aeb9bdb0b5b2b59cb1bdb5b0f2acb3b0b5b1b5f2b5a8"><span class="__cf_email__" data-cfemail="2247464d4350464d0c5047434e4b4c4b624f434b4e0c524d4e4b4f4b0c4b56">[email&#160;protected]</span></a></td>
+<td><a href="/cdn-cgi/l/email-protection#f194959e9083959edf8394909d989f98b19c90989ddf819e9d989c98df9885"><span class="__cf_email__" data-cfemail="0f6a6b606e7d6b60217d6a6e636661664f626e6663217f606366626621667b">[email&#160;protected]</span></a></td>
 </tr>
 <tr>
 <td>3</td>
@@ -38,7 +38,7 @@
 <td>Riccardo</td>
 <td>Sommaruga</td>
 <td>944772</td>
-<td><a href="/cdn-cgi/l/email-protection#592b303a3a382b3d36772a363434382b2c3e3819343830357729363530343077302d"><span class="__cf_email__" data-cfemail="43312a20202231272c6d302c2e2e2231362422032e222a2f6d332c2f2a2e2a6d2a37">[email&#160;protected]</span></a></td>
+<td><a href="/cdn-cgi/l/email-protection#087a616b6b697a6c67267b676565697a7d6f6948656961642678676461656126617c"><span class="__cf_email__" data-cfemail="ec9e858f8f8d9e8883c29f8381818d9e998b8dac818d8580c29c8380858185c28598">[email&#160;protected]</span></a></td>
 </tr>
 </tbody>
 </table>
@@ -53,85 +53,80 @@ We hereby declare that this is a private repository and, upon request, we will g
 </ul>
 <h2 class="code-line" data-line-start=17 data-line-end=18><a id="Specification_17"></a>Specification</h2>
 <h3 class="code-line" data-line-start=18 data-line-end=19><a id="Web_Architecture_18"></a>Web Architecture</h3>
-<p class="has-line-data" data-line-start="19" data-line-end="20">“Describe here, with a diagram, the components of your web application and how they interact. Highlight which parts belong to the application layer, data layer or presentation layer. How did you ensure that HTML is not rendered server side?”</p>
+<p class="has-line-data" data-line-start="19" data-line-end="20">The following picture depicts the components diagram of our web application and its interactions. With a clear division of the three layers: presentation, application and data. We are sure that the HTML is not rendered served side because the pages and the Javascripts are called by the presentation layer and rendered by the Browser of the user.</p>
+<img src="assets/ClassDiagram.png">
 <h3 class="code-line" data-line-start=20 data-line-end=21><a id="API_20"></a>API</h3>
 <h4 class="code-line" data-line-start=21 data-line-end=22><a id="REST_compliance_21"></a>REST compliance</h4>
-<p class="has-line-data" data-line-start="22" data-line-end="24">“Describe here to what extent did you follow REST principles and what are the reasons for which you might have decided to diverge. Note, you must not describe the whole API here, just the design decisions.”<br>
-Our API is REST compliance since we have used the REST principles to create an API that allows client and server to grow independently. It adheres to the most important REST architectural constraints:</p>
+<p class="has-line-data" data-line-start="22" data-line-end="23">Our API is REST compliance since we have used the REST principles to create an API that allows client and server to grow independently. It adheres to the most important REST architectural constraints:</p>
 <ul>
-<li class="has-line-data" data-line-start="24" data-line-end="25">The resources are uniquely identifiable through a single URL, and only by using the underlying methods of the network protocol is possible to manipulate a resource.</li>
-<li class="has-line-data" data-line-start="25" data-line-end="26">It is Client-Server based.</li>
-<li class="has-line-data" data-line-start="26" data-line-end="27">Any state management that is required take place on the client, not on the server.</li>
-<li class="has-line-data" data-line-start="27" data-line-end="28">It allows for an architecture composed of multiple layers of servers.</li>
+<li class="has-line-data" data-line-start="23" data-line-end="24">The resources are uniquely identifiable through a single URL, and only by using the underlying methods of the network protocol is possible to manipulate a resource.</li>
+<li class="has-line-data" data-line-start="24" data-line-end="25">It is Client-Server based.</li>
+<li class="has-line-data" data-line-start="25" data-line-end="26">Any state management that is required take place on the client, not on the server.</li>
+<li class="has-line-data" data-line-start="26" data-line-end="27">It allows for an architecture composed of multiple layers of servers.</li>
 </ul>
-<h4 class="code-line" data-line-start=28 data-line-end=29><a id="OpenAPI_Resource_models_28"></a>OpenAPI Resource models</h4>
-<p class="has-line-data" data-line-start="29" data-line-end="31">“Describe here synthetically, which models you have introduced for resources.”<br>
-In our website for the voluntary association we have introduced the following main entities. All these entities contains the main specific data for each category, the only common thing is the Id, each entity has its own unique Id so that is possible to uniquely identify each of them.</p>
+<h4 class="code-line" data-line-start=27 data-line-end=28><a id="OpenAPI_Resource_models_27"></a>OpenAPI Resource models</h4>
+<p class="has-line-data" data-line-start="28" data-line-end="29">In our website for the voluntary association we have introduced the following main entities. All these entities contains the main specific data for each category, the only common thing is the Id, each entity has its own unique Id so that is possible to uniquely identify each of them.</p>
 <ul>
-<li class="has-line-data" data-line-start="31" data-line-end="32">People: who are the people that works in the association.</li>
-<li class="has-line-data" data-line-start="32" data-line-end="33">Services: that are the services that the association offers.</li>
-<li class="has-line-data" data-line-start="33" data-line-end="35">Event: which are the evnts of the association.</li>
+<li class="has-line-data" data-line-start="29" data-line-end="30">People: who are the people that works in the association.</li>
+<li class="has-line-data" data-line-start="30" data-line-end="31">Services: that are the services that the association offers.</li>
+<li class="has-line-data" data-line-start="31" data-line-end="33">Event: which are the evnts of the association.</li>
 </ul>
-<p class="has-line-data" data-line-start="35" data-line-end="36">All these different resouces has their own path so that is possible to retrieve each of them separately. For more info please refer to Deliverable 2 and Deliverable 3.</p>
-<h3 class="code-line" data-line-start=37 data-line-end=38><a id="Data_model_37"></a>Data model</h3>
-<p class="has-line-data" data-line-start="38" data-line-end="39">“Describe with an ER diagram the model used in the data layer of your web application. How these map to the OpenAPI data model?”</p>
-<p class="has-line-data" data-line-start="40" data-line-end="42">The represented tables are the one that has been already presented in the resource model paragraph.<br>
-However we had transform two relationship into tables, those are:</p>
+<p class="has-line-data" data-line-start="33" data-line-end="34">All these different resouces has their own path so that is possible to retrieve each of them separately. For more info please refer to Deliverable 2 and Deliverable 3.</p>
+<h3 class="code-line" data-line-start=35 data-line-end=36><a id="Data_model_35"></a>Data model</h3>
+<img src="assets/Er-API.png">
+<p class="has-line-data" data-line-start="36" data-line-end="38">The represented tables are the one that has been already presented in the resource model paragraph.<br>
+However we had transform the following relationship into tables:</p>
 <ul>
-<li class="has-line-data" data-line-start="42" data-line-end="43">People involved in services: this table shows the link between the people that work in the association and the services that people deal with.</li>
-<li class="has-line-data" data-line-start="43" data-line-end="45">Pictures of the services: this table is useful to have a link between all the pictures of the services and the service they belong to.</li>
+<li class="has-line-data" data-line-start="38" data-line-end="40">People involved in services: this table shows the link between the people that work in the association and the services that people deal with.</li>
 </ul>
-<h2 class="code-line" data-line-start=45 data-line-end=46><a id="Implementation_45"></a>Implementation</h2>
-<h3 class="code-line" data-line-start=46 data-line-end=47><a id="Tools_used_46"></a>Tools used</h3>
-<p class="has-line-data" data-line-start="47" data-line-end="48">There are many tools we have used for the development of our backend.</p>
+<p class="has-line-data" data-line-start="40" data-line-end="41">Since a service can have multiple pictures we have left the main picture of the service in the “Service” table and the remaning are stored into the following table:</p>
 <ul>
-<li class="has-line-data" data-line-start="48" data-line-end="49">Swagger Editor: for the creation of the API.</li>
-<li class="has-line-data" data-line-start="49" data-line-end="50">Knex.js: for the query creation.</li>
-<li class="has-line-data" data-line-start="50" data-line-end="51">Heroku: for the hosting of the WebApp.</li>
-<li class="has-line-data" data-line-start="51" data-line-end="52">Amazon Web Services: for the hosting of the Database (automatically generated through the Heroku plug-in for the postgress database).</li>
-<li class="has-line-data" data-line-start="52" data-line-end="53">Postgress: to create localhost Databases.</li>
-<li class="has-line-data" data-line-start="53" data-line-end="54">Postico: to manage the localhost and the Amazon Database (MacOS).</li>
-<li class="has-line-data" data-line-start="54" data-line-end="55">Datagrip: to manage the localhost and the Amazon Database (Windows).</li>
+<li class="has-line-data" data-line-start="41" data-line-end="43">Pictures of the services: this table is useful to have a link between all the pictures of the services and the service they belong to.</li>
 </ul>
-<h3 class="code-line" data-line-start=55 data-line-end=56><a id="Discussion_55"></a>Discussion</h3>
-<p class="has-line-data" data-line-start="56" data-line-end="57">“How did you make sure your web application adheres to the provided OpenAPI specification? Which method did you use to test all APIs endpoints against the expected response?”</p>
-<p class="has-line-data" data-line-start="58" data-line-end="59">Since the API was not so large we have had the possibility to manually check for each endpoints and assure that everything work properly. This was made by making directed requests to the API through the browser.</p>
-<p class="has-line-data" data-line-start="60" data-line-end="61">“Why do you think your web application adheres to common practices to partition a REST-based web application (static assets vs. application data)?”</p>
-<p class="has-line-data" data-line-start="62" data-line-end="63">As it is the common practices for a REST-based web application, we have partition our web application into two:</p>
+<h2 class="code-line" data-line-start=43 data-line-end=44><a id="Implementation_43"></a>Implementation</h2>
+<h3 class="code-line" data-line-start=44 data-line-end=45><a id="Tools_used_44"></a>Tools used</h3>
+<p class="has-line-data" data-line-start="45" data-line-end="46">There are many tools we have used for the development of our backend.</p>
 <ul>
-<li class="has-line-data" data-line-start="63" data-line-end="64">the static assets, that contains all the static pages of the website and is part of the presentation layer.</li>
-<li class="has-line-data" data-line-start="64" data-line-end="66">the application data, that contains all the logic and API definitions of the web application, that is part of the Backend structure.</li>
+<li class="has-line-data" data-line-start="46" data-line-end="47">Swagger Editor: for the creation of the API.</li>
+<li class="has-line-data" data-line-start="47" data-line-end="48">Knex.js: for the query creation.</li>
+<li class="has-line-data" data-line-start="48" data-line-end="49">Heroku: for the hosting of the WebApp.</li>
+<li class="has-line-data" data-line-start="49" data-line-end="50">Amazon Web Services: for the hosting of the Database (automatically generated through the Heroku plug-in for the postgress database).</li>
+<li class="has-line-data" data-line-start="50" data-line-end="51">Postgress: to create localhost Databases.</li>
+<li class="has-line-data" data-line-start="51" data-line-end="52">Postico: to manage the localhost and the Amazon Database (MacOS).</li>
+<li class="has-line-data" data-line-start="52" data-line-end="53">Datagrip: to manage the localhost and the Amazon Database (Windows).</li>
 </ul>
-<p class="has-line-data" data-line-start="66" data-line-end="67">“Describe synthetically why and how did you manage session state, what are the state change triggering actions (e.g., POST to login etc…).”</p>
-<p class="has-line-data" data-line-start="68" data-line-end="69">For the session state management we don’t have looked at it because it was not required for the implementation of this project.</p>
-<p class="has-line-data" data-line-start="70" data-line-end="71">“Which technology did you use (relational or a no-SQL database) for managing the data model?”</p>
-<p class="has-line-data" data-line-start="72" data-line-end="73">We have used a relational database for managing the data model because the nature of the entities and relationships occurring among the entities suggested this type of structure could perform better.</p>
-<h2 class="code-line" data-line-start=74 data-line-end=75><a id="Other_information_74"></a>Other information</h2>
-<h3 class="code-line" data-line-start=75 data-line-end=76><a id="Task_assignment_75"></a>Task assignment</h3>
-<p class="has-line-data" data-line-start="76" data-line-end="77">Describe here how development tasks have been subdivided among members of the group, e.g.:</p>
+<h3 class="code-line" data-line-start=53 data-line-end=54><a id="Discussion_53"></a>Discussion</h3>
+<p class="has-line-data" data-line-start="54" data-line-end="55">Since the API was not so large we have had the possibility to manually check for each endpoints and assure that everything work properly. This was made by making directed requests to the API through the browser.</p>
+<p class="has-line-data" data-line-start="56" data-line-end="57">As it is the common practices for a REST-based web application, we have partition our web application into two:</p>
+<ul>
+<li class="has-line-data" data-line-start="57" data-line-end="58">the static assets, that contains all the static pages of the website and is part of the presentation layer.</li>
+<li class="has-line-data" data-line-start="58" data-line-end="60">the application data, that contains all the logic and API definitions of the web application, that is part of the Backend structure.</li>
+</ul>
+<p class="has-line-data" data-line-start="60" data-line-end="61">For the session state management we don’t have looked at it because it was not required for the implementation of this project.</p>
+<p class="has-line-data" data-line-start="62" data-line-end="63">We have used a relational database for managing the data model because the nature of the entities and relationships occurring among the entities suggested this type of structure could perform better.</p>
+<h2 class="code-line" data-line-start=64 data-line-end=65><a id="Other_information_64"></a>Other information</h2>
+<h3 class="code-line" data-line-start=65 data-line-end=66><a id="Task_assignment_65"></a>Task assignment</h3>
 <blockquote>
 <ul>
-<li class="has-line-data" data-line-start="77" data-line-end="78">Giovanni worked on front end (30%) and OpenAPI Spec (70% of the time)</li>
-<li class="has-line-data" data-line-start="78" data-line-end="79">Edoardo worked on front end (70%) and OpenAPI Spec (30% of the time)</li>
-<li class="has-line-data" data-line-start="79" data-line-end="80">Riccardo worked on front end (70%) and OpenAPI Spec (30% of the time)</li>
+<li class="has-line-data" data-line-start="66" data-line-end="67">Giovanni worked on front end (30%) and OpenAPI Spec (70% of the time)</li>
+<li class="has-line-data" data-line-start="67" data-line-end="68">Edoardo worked on front end (70%) and OpenAPI Spec (30% of the time)</li>
+<li class="has-line-data" data-line-start="68" data-line-end="69">Riccardo worked on front end (70%) and OpenAPI Spec (30% of the time)</li>
 </ul>
 </blockquote>
-<p class="has-line-data" data-line-start="81" data-line-end="82">Since we have subdivided the workload between front end and backend part at every weekly meeting we explained each other the recently implemented features and helped each other. In this way, everybody could constantly understand what was going on in every part of the project.</p>
-<h3 class="code-line" data-line-start=83 data-line-end=84><a id="Analysis_of_existing_API_83"></a>Analysis of existing API</h3>
-<p class="has-line-data" data-line-start="84" data-line-end="85">“Describe here the research of (full or part of) existing APIs that are similar in objectives and scope to the one implemented, that have possibly guided implementation choices (these should not be necessarily OpenAPI implementations). Toy APIs (such as the Swagger’s Pet Store) or the example shown during lectures are not a valid response.”</p>
-<p class="has-line-data" data-line-start="86" data-line-end="87">One API which we have found really intresting was the one used by the website of “visit tuscany” (<a href="https://www.visittuscany.com/en/plan-your-trip/modalita-di-utilizzo-delle-api/">this address</a>).</p>
+<p class="has-line-data" data-line-start="70" data-line-end="71">Since we have subdivided the workload between front end and backend part at every weekly meeting we explained each other the recently implemented features and helped each other. In this way, everybody could constantly understand what was going on in every part of the project.</p>
+<h3 class="code-line" data-line-start=72 data-line-end=73><a id="Analysis_of_existing_API_72"></a>Analysis of existing API</h3>
+<p class="has-line-data" data-line-start="73" data-line-end="74">One API which we have found really intresting was the one used by the website of “visit tuscany” (<a href="https://www.visittuscany.com/en/plan-your-trip/modalita-di-utilizzo-delle-api/">this address</a>).</p>
 <blockquote>
-<p class="has-line-data" data-line-start="87" data-line-end="88">We took partial inspiration from API <a href="https://www.visittuscany.com/en/plan-your-trip/modalita-di-utilizzo-delle-api/"> link </a> for the part of the API that manages “Events” because they have used a grouping on the bases of the typology of the events, and that was our identical case for the “Events” entity, where we have also divided it on the bases of the type. That was performed by adding the TypeId in the path of the API request.</p>
+<p class="has-line-data" data-line-start="74" data-line-end="75">We took partial inspiration from API <a href="https://www.visittuscany.com/en/plan-your-trip/modalita-di-utilizzo-delle-api/"> link </a> for the part of the API that manages “Events” because they have used a grouping on the bases of the typology of the events, and that was our identical case for the “Events” entity, where we have also divided it on the bases of the type. That was performed by adding the TypeId in the path of the API request.</p>
 </blockquote>
 <blockquote>
-<p class="has-line-data" data-line-start="89" data-line-end="90">We also have took inspiration from API <a href="https://www.visittuscany.com/en/plan-your-trip/modalita-di-utilizzo-delle-api/"> link </a> for the management of the pagination, they have called “rows” and “start” what we have called “offset” and “limit” that allows to limit the number of rows and offset of the returned data by the Database.</p>
+<p class="has-line-data" data-line-start="76" data-line-end="77">We also have took inspiration from API <a href="https://www.visittuscany.com/en/plan-your-trip/modalita-di-utilizzo-delle-api/"> link </a> for the management of the pagination, they have called “rows” and “start” what we have called “offset” and “limit” that allows to limit the number of rows and offset of the returned data by the Database.</p>
 </blockquote>
-<h3 class="code-line" data-line-start=91 data-line-end=92><a id="Learning_outcome_91"></a>Learning outcome</h3>
-<p class="has-line-data" data-line-start="92" data-line-end="94">“What was the most important thing all the members have learned while developing this part of the project, what questions remained unanswered, how you will use what you’ve learned in your everyday life?<br>
-Examples:”</p>
+<h3 class="code-line" data-line-start=78 data-line-end=79><a id="Learning_outcome_78"></a>Learning outcome</h3>
+<p class="has-line-data" data-line-start="79" data-line-end="80">Most important thing all the members have learned while developing this part of the project:</p>
 <ul>
-<li class="has-line-data" data-line-start="94" data-line-end="95">Giovanni learned how to manage Databases and how to retrieve data with the use of Knex.js, moreover has understood the mechanism used to deploy a web application over the internet and how to access the API through the browser. Unfortunately he doesn’t use too much the type of POST requests and coockies storage, but is certainly something that is going to deepen in the future.</li>
-<li class="has-line-data" data-line-start="95" data-line-end="96">Edoardo learned how to create functional html and JS. Mainly he understood the relationship between these technologies and how to exploit them at best for our purposes. He also understood the concept of promises in JS which is very important to create good dynamic content in html pages. Also the use of session storage and cookies is generally more clear. However Edoardo would have liked to see more about the setup of a database and in general of the API system of the backend part. Nevertheless he is much more aquantied with the on hand use of a database through different clients such as JetBrain’s DataGrip.</li>
-<li class="has-line-data" data-line-start="96" data-line-end="97">Riccardo learned how to manage dynamic content on HTML pages through jQuery and how to use API through AJAX in order to retrieve specific data from the Database. Particularly, he focused on understanding how the style of a page is set through CSS. He has also understood the mechanism of API and how it is related to a Database. About this point, he is now able to use Datagrip client in order to make operations on a database.</li>
+<li class="has-line-data" data-line-start="80" data-line-end="81">Giovanni learned how to manage Databases and how to retrieve data with the use of Knex.js, moreover has understood the mechanism used to deploy a web application over the internet and how to access the API through the browser. Unfortunately he doesn’t use too much the type of POST requests and coockies storage, but is certainly something that is going to deepen in the future.</li>
+<li class="has-line-data" data-line-start="81" data-line-end="82">Edoardo learned how to create functional html and JS. Mainly he understood the relationship between these technologies and how to exploit them at best for our purposes. He also understood the concept of promises in JS which is very important to create good dynamic content in html pages. Also the use of session storage and cookies is generally more clear. However Edoardo would have liked to see more about the setup of a database and in general of the API system of the backend part. Nevertheless he is much more aquantied with the on hand use of a database through different clients such as JetBrain’s DataGrip.</li>
+<li class="has-line-data" data-line-start="82" data-line-end="83">Riccardo learned how to manage dynamic content on HTML pages through jQuery and how to use API through AJAX in order to retrieve specific data from the Database. Particularly, he focused on understanding how the style of a page is set through CSS. He has also understood the mechanism of API and how it is related to a Database. About this point, he is now able to use Datagrip client in order to make operations on a database.</li>
 </ul>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body></html>
