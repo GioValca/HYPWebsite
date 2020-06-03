@@ -135,9 +135,9 @@
                                 <div class="col-md-6 top-8" id="carousel-controls">
                                      <!--Controls-->
                                       <div class="controls-top bottom-fix">
-                                        <a class="our-button-color btn btn-info btn-circle btn-sm " href="#gallery-carousel" data-slide="prev"><i> Prev</i></a>
+                                        <a class="our-button-color btn btn-info btn-circle btn-sm " href="#gallery-carousel" data-slide="prev"><i class="fa fa-next-prev fa-caret-left"></i></a>
 
-                                        <a class="our-button-color btn btn-info btn-circle btn-sm" href="#gallery-carousel" data-slide="next"><i> Next</i></a>
+                                        <a class="our-button-color btn btn-info btn-circle btn-sm" href="#gallery-carousel" data-slide="next"><i class="fa fa-next-prev fa-caret-right"></i></a>
                                       </div>
                                       <!--/.Controls-->
                                 </div>
@@ -201,9 +201,9 @@
 
             </div>
 
-            <div class="row space-50">
+            <div class="row">
 
-                <div class="col-md-6"  id="involved-people-col">
+                <div class="col-md-6 space-50"  id="involved-people-col">
                     <div class="container">
 
                         <div class="row ">
@@ -222,16 +222,14 @@
                         <p class="card-text" id="person-desc">Library expert</p>
                         <a href="#" class="btn btn-primary" id="person-link">More</a>
                       </div>
-                    </div -- MOCK FOR THE CARD>
+                     -- MOCK FOR THE CARD -->
 
-                    <!--Carousel Wrapper-->
-                    <div class="row ">
+                    <div class="row">
 
                         <div class="container space-10" id="contact-people-cards">
                             <!-- DYNAMICALLY INSERT CARDS HERE!! -->
                         </div>
                     </div>
-                    <!--/.Carousel Wrapper-->
 
 
 
@@ -239,7 +237,7 @@
 
 
 
-                <div class="col-md-6" id="related-event-column">
+                <div class="col-md-6 space-50" id="related-event-column">
                     <div class="row">
                         <h2 class="left-15"> Related Event </h2>
                     </div>
@@ -262,16 +260,17 @@
             <div class="row space-50" id="nav-buttons">
 
                 <div class="col-md-6 text-center space-20">
-                    <!-- BOTTONE DA ATTIVARE CON JS -->
-                    <button class="our-button-color btn btn-info btn-lg" id="previous-service" onclick="previousService()">Previous Service</button>
+                    <button class="our-button-color btn btn-info btn-lg next-prev-button no-gutters" id="previous-service" onclick="previousService()"> <i class="fa fa-next-prev fa-angle-left text-center"></i> Previous Service
+					</button>
 
                 </div>
 
-                <div class="col-md-6 text-center space-20">
-                    <!-- BOTTONE DA ATTIVARE CON JS -->
-                    <button class="our-button-color btn btn-info btn-lg" id="next-service" onclick="nextService()">Next Service</button>
+                                <div class="col-md-6 text-center space-20">
+                    <button class="our-button-color btn btn-info btn-lg next-prev-button no-gutters" id="next-service" onclick="nextService()"> Next Service <i class="fa fa-next-prev fa-angle-right text-center"></i> 
+					</button>
 
                 </div>
+            
 
 
             </div>

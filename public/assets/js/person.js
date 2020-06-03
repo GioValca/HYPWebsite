@@ -92,8 +92,9 @@ $(document).ready(function() {
                 name = json_service[0].name;
                 type = json_service[0].type;
                 serviceId = String(json_service[0].serviceId)
+				text = json_service[0].descriptionText;
 
-                var new_card = createServiceCard(serviceId, card_max_width, img_path, name, type)
+                var new_card = createServiceCard(serviceId, card_max_width, img_path, name, type, text)
 				}
 				});
 
@@ -119,9 +120,10 @@ $(document).ready(function() {
                 name = event.name;
                 var string_day = pretty_day(event.day);
 				var date = months[event.month] + " " + string_day + " " + event.year;
-                eventId = String(event.eventId)
+                eventId = String(event.eventId);
+				hour = event.hour;
 
-                var new_card = createEventCard(eventId, card_max_width, img_path, name, date)
+                var new_card = createEventCard(eventId, card_max_width, img_path, name, date, hour)
             });
         }
     });
@@ -155,7 +157,7 @@ $(document).ready(function() {
 
 });
 
-function createServiceCard(serviceId, card_max_width, img_path, name, type) {
+function createServiceCard(serviceId, card_max_width, img_path, name, type, descriptionText) {
 
 var blockDiv = $('<div />')
         .addClass("row center-block top-10")
@@ -198,16 +200,28 @@ var blockDiv = $('<div />')
         .addClass("card-text")
         .appendTo(cardbody)
         .text(type)
-
-    $("<a />")
-        .addClass("button-card btn btn-info text-light")
-       	.attr("onclick", "goToService("  +  serviceId  +  ")")
+	
+	var brief_description = descriptionText.slice(0, 70);
+	
+	$("<div />")
+        .addClass("card-text description-text")
         .appendTo(cardbody)
-        .text("Read more")
+	.text(brief_description + "...")
+
+	
+	var button_div = $("<div />")
+		.addClass("text-right")
+		.appendTo(cardbody)
+	
+    $("<button />")
+        .addClass("button-card btn text-light")
+       	.attr("onclick", "goToService("  +  serviceId  +  ")")
+        .appendTo(button_div)
+        .text("Read more about this service")
 
 }
 
-function createEventCard(eventId, card_max_width, img_path, name, date) {
+function createEventCard(eventId, card_max_width, img_path, name, date, hour) {
 
     var blockDiv = $('<div />')
         .addClass("row center-block top-10")
@@ -250,12 +264,21 @@ function createEventCard(eventId, card_max_width, img_path, name, date) {
         .addClass("card-text")
         .appendTo(cardbody)
         .text(date)
-
-    $("<a />")
-        .addClass("button-card btn btn-info text-light")
-       	.attr("onclick", "goToEvent("  +  eventId  +  ")")
+	
+	$("<div />")
+        .addClass("card-text description-text")
         .appendTo(cardbody)
-        .text("Read more")
+	.text("Time: " + hour)
+
+	var button_div = $("<div />")
+		.addClass("text-right")
+		.appendTo(cardbody)
+	
+    $("<button />")
+        .addClass("button-card btn text-light")
+       	.attr("onclick", "goToService("  +  eventId  +  ")")
+        .appendTo(button_div)
+        .text("Read more about this event")
 
 }
 

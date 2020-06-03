@@ -37,6 +37,7 @@ let service_type = urlParams.get("service-type");
 
 //variabili che sono modificate appena vengono caricate le informazioni del servizio
 var event_to_display = 0;
+    var card_max_width = "100%";
 
 //guided tour functions, work on the paramenter service-gt
 //there are 4 possibilities
@@ -162,6 +163,7 @@ $(document).ready(function() {
     prevButton.classList.add("disappear");
   }
 
+	
   $("#gallery-carousel").on("slide.bs.carousel", function(e) {
     var $e = $(e.relatedTarget);
     var idx = $e.index();
@@ -237,7 +239,7 @@ $(document).ready(function() {
         var string_day = pretty_day(day);
         var pretty_date = string_month.concat(" ").concat(string_day).concat(" ".concat(year));
         
-        var card = createEventCard(eventId, name, pretty_date, picturePath);
+        var card = createEventCard(eventId, card_max_width, picturePath, name, pretty_date, hour);
         
         card.appendTo(event_card_div);
 
@@ -279,7 +281,7 @@ $(document).ready(function() {
           }).then(function(json_person){
             console.log("logging json person")
             console.log(json_person);
-            var card = createPersonCard(json_person[0]['personId'],json_person[0]['nameAndSurname'], json_person[0]['role'], json_person[0]['picturePath']); //fatto apposta così è facile da iterare
+            var card = createPersonCard(json_person[0]['personId'],json_person[0]['nameAndSurname'], json_person[0]['role'], json_person[0]['picturePath'], card_max_width, json_person[0]['profession']); //fatto apposta così è facile da iterare
             card.appendTo(contact_card_div)              
           });
           
@@ -335,99 +337,127 @@ $(document).ready(function() {
 
 });
 
-function createPersonCard(personId, personNameSurname, personRole, img_path){
-  var card = $('<div />')
-      .addClass("card mb-3 top-10")
-      .attr("id", personId);
+function createPersonCard(personId, personNameSurname, personRole, img_path, card_max_width, profession){
+	
+	var container = $('<div />')
+		.addClass("row no-gutters top-10")
+	
+    var card = $('<div />')
+        .addClass("card card-dim")
+        .attr("style", "max-width: " + card_max_width + ";")
+	.appendTo(container)
+	
 
-  var row = $('<div />')
-      .addClass("row no-gutters")
-      .appendTo(card);
+    var row = $('<div />')
+        .addClass("row-card")
+        .appendTo(card)
 
-  var col4 = $('<div />')
-      .addClass("col-md-4")
-      .appendTo(row);
-  
-  $('<img />')
-      .attr('src', img_path)    //image relative path
-      .addClass("img-fluid card-img")
-      .attr('alt', "person-image-"+personId)
-      .width("100%").height("100%")
-      .appendTo(col4);
+    var col4 = $('<div />')
+        .addClass("col-img-card")
+        .appendTo(row)
 
-  var col8 = $('<div />')
-      .addClass("col-md-8")
-      .appendTo(row)
+    $('<img />')
+        .attr('src', img_path) //image relative path
+        .addClass("img-card-madsomma card-img")
+        .attr("alt", "image-person-" + personId)
+			.attr("style", "max-width: 350px;")
+        .appendTo(col4);
 
-  var cardbody = $("<div />")
-      .addClass("card-body")
-      .appendTo(col8);
-  
-  $("<h5 />")
-      .addClass("card-title left-15")
-      .text(personNameSurname)
-      .appendTo(cardbody);
-      
+    var col8 = $('<div />')
+        .addClass("col-body-card")
+        .appendTo(row)
 
-  $("<p />")
-      .addClass("card-text left-15")
-      .text(personRole)
-      .appendTo(cardbody);
-  
-  $("<button />")
-      .addClass("button-card btn btn-info left-15")
-      .appendTo(cardbody)
-      .attr("onclick", "goToPerson("  +  personId  +  ")")
-      .text("More about ".concat(personNameSurname));
+    var cardbody = $("<div />")
+        .addClass("card-body-mad")
+        .appendTo(col8);
 
-  return card;
+    $("<h5 />")
+        .addClass("card-title")
+        .appendTo(cardbody)
+        .text(personNameSurname)
+
+    $("<p />")
+        .addClass("card-text")
+        .appendTo(cardbody)
+        .text("Role: " + personRole)
+	
+	$("<p />")
+        .addClass("card-text description-text")
+        .appendTo(cardbody)
+        .text("Profession: " + profession)
+
+	var button_div = $("<div />")
+		.addClass("text-right")
+		.appendTo(cardbody)
+	
+    $("<button />")
+        .addClass("button-card btn btn-info text-light")
+       	.attr("onclick", "goToPerson("  +  personId  +  ")")
+        .appendTo(button_div)
+        .text("Read more about this person")
+	
+	return container;
 }
 
-function createEventCard(eventId, eventName, eventDate, img_path){
-  var card = $('<div />')
-  .addClass("card mb-3 top-10")
-  .attr("id", eventId);
+function createEventCard(eventId, card_max_width, img_path, name, date, hour) {
 
-  var row = $('<div />')
-    .addClass("row no-gutters")
-    .appendTo(card);
+	var container = $('<div />')
+		.addClass("row no-gutters top-10")
+	
+    var card = $('<div />')
+        .addClass("card card-dim")
+        .attr("style", "max-width: " + card_max_width + ";")
+	.appendTo(container)
 
-  var col4 = $('<div />')
-    .addClass("col-md-4")
-    .appendTo(row);
+    var row = $('<div />')
+        .addClass("row-card")
+        .appendTo(card)
 
-  $('<img />')
-    .attr('src', img_path)    //image relative path
-    .addClass("img-fluid card-img")
-    .attr('alt', "event-image-"+eventId)
-    .width("100%").height("100%")
-    .appendTo(col4);
+    var col4 = $('<div />')
+        .addClass("col-img-card")
+        .appendTo(row)
 
-  var col8 = $('<div />')
-    .addClass("col-md-8")
-    .appendTo(row)
+    $('<img />')
+        .attr('src', img_path) //image relative path
+        .addClass("img-card-madsomma card-img")
+        .attr("alt", "image-event-" + eventId)
+        .appendTo(col4);
 
-  var cardbody = $("<div />")
-    .addClass("card-body")
-    .appendTo(col8);
+    var col8 = $('<div />')
+        .addClass("col-body-card")
+        .appendTo(row)
 
-  $("<h5 />")
-    .addClass("card-title left-15")
-    .text(eventName)
-    .appendTo(cardbody);    
+    var cardbody = $("<div />")
+        .addClass("card-body-mad")
+        .appendTo(col8);
 
-  $("<p />")
-    .addClass("card-text left-15")
-    .text(eventDate)
-    .appendTo(cardbody);
+    $("<h5 />")
+        .addClass("card-title")
+        .appendTo(cardbody)
+        .text(name)
 
-  $("<button />")
-    .addClass("button-card btn btn-info left-15")
-    .appendTo(cardbody)
-    .attr("onclick", "goToEvent("  +  eventId  +  ")")
-    .text("More about ".concat(eventName));
+    $("<p />")
+        .addClass("card-text")
+        .appendTo(cardbody)
+        .text(date)
+	
+	$("<div />")
+        .addClass("card-text description-text")
+        .appendTo(cardbody)
+	.text("Time: " + hour)
 
-  return card;
+	var button_div = $("<div />")
+		.addClass("text-right")
+		.appendTo(cardbody)
+	
+    $("<button />")
+        .addClass("button-card btn btn-info text-light")
+       	.attr("onclick", "goToEvent("  +  eventId  +  ")")
+        .appendTo(button_div)
+        .text("Read more about this event")
+	
+	return container;
+
 }
 
 function goToPerson(personId){

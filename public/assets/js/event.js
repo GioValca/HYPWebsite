@@ -1,4 +1,4 @@
-var months = {
+ var months = {
     1: "January",
     2: "February",
     3: "March",
@@ -30,6 +30,7 @@ $(document).ready(function (){
 
     //this var is updated when the info about the event is retrieved
     var contact_to_display = 0;
+	var card_max_width = "100%";
 
     if(gt_mode == "none"){
         nextButton = document.getElementById("next-event");
@@ -104,7 +105,7 @@ $(document).ready(function (){
         let {personId, nameAndSurname, birthday, picturePath, telephone, email, descriptionText, profession, role} = json[0];
 
         var contact_card_div = document.getElementById("contact-person-card");
-        var card = createPersonCard(personId, nameAndSurname, role, picturePath); //fatto apposta così è facile da iterare
+        var card = createPersonCard(personId, nameAndSurname, role, picturePath, card_max_width, profession); //fatto apposta così è facile da iterare
         card.appendTo(contact_card_div);
 
         });
@@ -140,7 +141,7 @@ $(document).ready(function (){
         for(i = 0; i < list_len; i++){
             
             let {serviceId, name, type, picturePath, descriptionText, address, eventId} = json[i];
-            var card = createServiceCard(serviceId, name, type, picturePath); //fatto apposta così è facile da iterare
+            var card = createServiceCard(serviceId, card_max_width, picturePath, name, type, descriptionText); //fatto apposta così è facile da iterare
             card.appendTo(services_div);
 
         }
@@ -233,100 +234,127 @@ function findIndex(event_code, code_list){
     });
 }
 
-function createPersonCard(personId, personNameSurname, personRole, img_path){
+function createPersonCard(personId, personNameSurname, personRole, img_path, card_max_width, profession){
+	
+	var container = $('<div />')
+		.addClass("row no-gutters top-10")
+	
     var card = $('<div />')
-        .addClass("card mb-3")
-        .attr("id", personId);
+        .addClass("card card-dim")
+        .attr("style", "max-width: " + card_max_width + ";")
+	.appendTo(container)
+	
 
     var row = $('<div />')
-        .addClass("row no-gutters")
-        .appendTo(card);
+        .addClass("row-card")
+        .appendTo(card)
 
     var col4 = $('<div />')
-        .addClass("col-md-4")
-        .appendTo(row);
-    
+        .addClass("col-img-card")
+        .appendTo(row)
+
     $('<img />')
-        .attr('src', img_path)    //image relative path
-        .addClass("img-fluid card-img")
-        .attr('alt', "image-person-"+personId)
-        .width("100%").height("100%")
+        .attr('src', img_path) //image relative path
+        .addClass("img-card-madsomma card-img")
+        .attr("alt", "image-person-" + personId)
+			.attr("style", "max-width: 350px;")
         .appendTo(col4);
 
     var col8 = $('<div />')
-        .addClass("col-md-8")
+        .addClass("col-body-card")
         .appendTo(row)
 
     var cardbody = $("<div />")
-        .addClass("card-body")
+        .addClass("card-body-mad")
         .appendTo(col8);
-    
+
     $("<h5 />")
-        .addClass("card-title left-15")
+        .addClass("card-title")
+        .appendTo(cardbody)
         .text(personNameSurname)
-        .appendTo(cardbody);
-        
 
     $("<p />")
-        .addClass("card-text left-15")
-        .text(personRole)
-        .appendTo(cardbody);
-    
-        $("<button />")
-        .addClass("button-card btn btn-info left-15")
+        .addClass("card-text")
         .appendTo(cardbody)
-        .attr("onclick", "goToPerson(" + personId + ")")
-        .text("More about ".concat(personNameSurname));
+        .text("Role: " + personRole)
+	
+	$("<p />")
+        .addClass("card-text description-text")
+        .appendTo(cardbody)
+        .text("Profession: " + profession)
 
-    return card;
+	var button_div = $("<div />")
+		.addClass("text-right")
+		.appendTo(cardbody)
+	
+    $("<button />")
+        .addClass("button-card btn btn-info text-light")
+       	.attr("onclick", "goToPerson("  +  personId  +  ")")
+        .appendTo(button_div)
+        .text("Read more about this person")
+	
+	return container;
 }
 
-function createServiceCard(serviceId, serviceName, serviceType, img_path){
+function createServiceCard(serviceId, card_max_width, img_path, name, type, descriptionText) {
+
     var card = $('<div />')
-        .addClass("card mb-3")
-        .attr("id", serviceId);
+        .addClass("card card-dim top-10")
+        .attr("style", "max-width: " + card_max_width + ";")
 
     var row = $('<div />')
-        .addClass("row no-gutters")
-        .appendTo(card);
+        .addClass("row-card")
+        .appendTo(card)
 
     var col4 = $('<div />')
-        .addClass("col-md-4")
-        .appendTo(row);
-    
+        .addClass("col-img-card")
+        .appendTo(row)
+
     $('<img />')
-        .attr('src', img_path)    //image relative path
-        .addClass("img-fluid card-img")
-        .attr('alt', "image-service-"+serviceId)
-        .width("100%").height("100%")
+        .attr('src', img_path) //image relative path
+        .addClass("img-card-madsomma card-img")
+        .attr("alt", "image-event-" + serviceId)
         .appendTo(col4);
 
     var col8 = $('<div />')
-        .addClass("col-md-8")
+        .addClass("col-body-card")
         .appendTo(row)
 
     var cardbody = $("<div />")
-        .addClass("card-body")
+        .addClass("card-body-mad")
         .appendTo(col8);
-    
+
     $("<h5 />")
-        .addClass("card-title left-15")
-        .text(serviceName)
-        .appendTo(cardbody);
+        .addClass("card-title")
+        .appendTo(cardbody)
+        .text(name)
 
     $("<p />")
-        .addClass("card-text left-15")
-        .text(serviceType)
-        .appendTo(cardbody);
-    
-    $("<button />")
-        .addClass("button-card btn btn-info left-15")
-        .attr("onclick", "goToService(" + serviceId + ")")
+        .addClass("card-text")
         .appendTo(cardbody)
-        .text("More");
+        .text(type)
+	
+	var brief_description = descriptionText.slice(0, 70);
+	
+	$("<div />")
+        .addClass("card-text description-text")
+        .appendTo(cardbody)
+	.text(brief_description + "...")
 
-    return card;
+	
+	var button_div = $("<div />")
+		.addClass("text-right")
+		.appendTo(cardbody)
+	
+    $("<button />")
+        .addClass("button-card btn text-light")
+       	.attr("onclick", "goToService("  +  serviceId  +  ")")
+        .appendTo(button_div)
+        .text("Read more about this service")
+
+	return card;
 }
+
 
 function pretty_day(day){
     var j = day % 10,

@@ -29,13 +29,13 @@ html,body {
 
 #page-container {
   position: relative;
-  min-height: calc(100vh - 11rem);
+  min-height: calc(100vh - 12rem);
 }
 
 #footer {
 	display: block;
     position: relative;
-	margin-top: 2rem;
+	margin-top: 3rem;
     width: 100vw;
 	min-height: 9rem;
 }
@@ -119,6 +119,18 @@ h5 {
   border-radius: 50px;
 }
 
+.fa-next-prev {
+  padding: 0;
+  font-size: 20px;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  border-radius: 50px;
+top: 0px;
+}
+
 /* Add a hover effect if you want */
 .fa:hover {
   opacity: 0.7;
@@ -193,7 +205,7 @@ h5 {
 
 .footer-title {
 	text-align: center;
-	padding-top: 7px;
+	padding-top: 10px;
 }
 
 @-webkit-keyframes bounce-button-in {
@@ -225,8 +237,6 @@ h5 {
 .bottom-15 {
     margin-bottom: 15px;
 }
-
-
 
 .disappear {
     display: none;
@@ -272,6 +282,10 @@ h5 {
 
 .bottom-20 {
 	padding-bottom: 20px;
+}
+
+#stats {
+	margin-top: 1.3em;
 }
 
 #stats li {
@@ -344,7 +358,6 @@ h5 {
 .img-card-madsomma {
   display: block;
 	max-height: 256px;
-
   width: 100%;
   height: 100%;
 }
@@ -381,17 +394,25 @@ width: 100%;
 	color: #fff !important;
 }
 
+.next-prev-button {
+	min-width: 211px;
+	max-height: 50px;
+}
 
 
-/* for iPad and mobile*/
-@media screen and (max-width: 768px) {
+/* for mobile*/
+@media screen and (max-width: 399px) {
   .row-card {
     display: block;
   }
 	
+	.description-text {
+		display: none;
+	}
+	
 	.img-card-madsomma {
   display: block;
-	max-height: 180px;
+	max-height: 200px;
   width: 100%;
   height: 100%;
 }
@@ -405,10 +426,137 @@ width: 100%;
 }
 	
 	.button-card {
-	position: absolute;
-		height: 35px;
-		bottom: 1.2rem;
-	right: 1rem;		
+	position: relative;
+margin-top: 7px;	
+}
+	
+	.card-dim {
+	height: auto;
+		margin: auto;
+	width: 100%;
+}
+	
+	#involved-events-title {
+		text-align: center;
+	}
+	
+	#involved-services-title {
+		text-align: center;
+	}
+
+}
+
+
+
+/* for iPad*/
+@media screen and (max-width: 850px) and (min-width: 701px) {
+  .row-card {
+    display: block;
+  }
+	
+	.description-text {
+		display: none;
+	}
+	
+	.img-card-madsomma {
+  display: block;
+	max-height: 200px;
+  width: 100%;
+  height: 100%;
+}
+	
+	.col-img-card {
+	width: 100%;
+}
+
+.col-body-card {
+	width: 100%;
+}
+	
+	.button-card {
+	position: relative;
+margin-top: 7px;	
+}
+	
+	.card-dim {
+	height: auto;
+		margin: auto;
+	width: 100%;
+}
+	
+	#involved-events-title {
+		text-align: center;
+	}
+	
+	#involved-services-title {
+		text-align: center;
+	}
+
+}
+
+/* for mobile landscape*/
+@media screen and (max-width: 700px) and (min-width: 400px){
+  .row-card {
+    display: block;
+  }
+	
+	.description-text {
+		display: none;
+	}
+	
+	#img_person {
+		max-width: 300px;
+	}
+	
+	.img-card-madsomma {
+  display: block;
+	max-height: 250px;
+		max-width: 100% !important; 
+  width: 100%;
+  height: 100%;
+}
+	
+	.col-img-card {
+	width: 100%;
+}
+
+.col-body-card {
+	width: 100%;
+}
+	
+	.button-card {
+	position: relative;
+margin-top: 7px;	
+}
+	
+	.card-dim {
+	height: auto;
+		margin: auto;
+	width: 77%;
+}
+	
+	#involved-events-title {
+		text-align: center;
+	}
+	
+	#involved-services-title {
+		text-align: center;
+	}
+
+}
+
+
+/* for desktop*/
+@media screen and (min-width: 851px) {
+	
+	.description-text {
+		display: block;
+		margin-top: 20px;
+	}
+	
+.button-card {
+	position: relative;
+	margin-top: 7px;
 }
 	
 	.card-dim {
@@ -439,4 +587,14 @@ width: 100%;
 .our-button-color {
     background-color: #0078CD !important;
 	color: #fff !important;
+}
+
+.policy-page-width {
+	align-content: center;
+	width: 77%;
+}
+
+.list-footer {
+	list-style-type: none;
+	line-height: 1.8em;
 }
