@@ -1,20 +1,20 @@
 console.log("Showing all People");
 
-$(document).ready(function(){
-	
+$(document).ready(function () {
+
 	$.ajax({
-        type: 'GET',
-        url: 'https://hyp-ave.herokuapp.com/v2/people/',
-        dataType: 'json',
-        success: function(json) {
-					
-			$.each(json, function(index, person){
-				
+		type: 'GET',
+		url: 'https://hyp-ave.herokuapp.com/v2/people/',
+		dataType: 'json',
+		success: function (json) {
+
+			$.each(json, function (index, person) {
+
 				role = person.role;
-				
+
 				console.log(role);
-				
-				switch(role) {
+
+				switch (role) {
 					case "President":
 						var card = createPersonCard(person.personId, person.nameAndSurname, person.picturePath, "350px");
 						$("#president").append(card);
@@ -32,40 +32,40 @@ $(document).ready(function(){
 						var col = $('<div />').addClass("col-md-auto");
 						card.appendTo(col);
 						$("#third-row").append(col);
-						break;		
+						break;
 				}
-				
+
 			});
 		}
-    });
+	});
 });
 
 
-function createPersonCard(personId, name, img_path, max_width){
-    var container = $('<div />')
-        .addClass("card-box-a container_img top-10 center-block")
-        .attr("id", "person" + personId)
+function createPersonCard(personId, name, img_path, max_width) {
+	var container = $('<div />')
+		.addClass("card-box-a container_img top-10 center-block")
+		.attr("id", "person" + personId)
 		.attr("style", "max-width:" + max_width + ";");
-	
+
 	var link_img = $('<a />')
 		.attr("href", "./person.html" + "?id=" + personId)
 		.appendTo(container);
-	
-		$('<img />')
-			.attr("src", img_path)
-			.attr("alt", "image-person-"+personId)
-			.addClass("img-fluid")
-			.appendTo(link_img);
-	
-	var bottom = $('<div />')
-			.addClass("bottom_center")
-			.appendTo(container);
-	
-		$('<a />')
-			.attr("href", "./person.html" + "?id=" + personId)
-			.addClass("text-light")
-			.text(name.toLocaleUpperCase())
-			.appendTo(bottom);
 
-    return container;
+	$('<img />')
+		.attr("src", img_path)
+		.attr("alt", "image-person-" + personId)
+		.addClass("img-fluid")
+		.appendTo(link_img);
+
+	var bottom = $('<div />')
+		.addClass("bottom_center")
+		.appendTo(container);
+
+	$('<a />')
+		.attr("href", "./person.html" + "?id=" + personId)
+		.addClass("text-light")
+		.text(name.toLocaleUpperCase())
+		.appendTo(bottom);
+
+	return container;
 }
