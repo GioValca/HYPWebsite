@@ -180,7 +180,7 @@ var blockDiv = $('<div />')
     $('<img />')
         .attr('src', img_path) //image relative path
         .addClass("img-card-madsomma card-img")
-        .attr("alt", "image-event-" + serviceId)
+        .attr("alt", "image-service-" + serviceId)
         .appendTo(col4);
 
     var col8 = $('<div />')

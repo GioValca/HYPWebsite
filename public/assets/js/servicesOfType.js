@@ -11,6 +11,7 @@ $(document).ready(function(){
     
     var title = document.getElementById("page-title");
     var bread = document.getElementById("breadcrumb");
+	var card_max_width = "100%";
 
     bread.innerHTML = "Services of Type " + type_to_display;
     title.innerHTML = "Services of type " + type_to_display;
@@ -47,7 +48,7 @@ $(document).ready(function(){
         for(i = 0; i < list_len; i++){
             let {serviceId, name, type, picturePath, descriptionText, address, eventId} = json[i];
             if(col_in_use == 1){
-                var card = createServiceCard(serviceId, name, type, picturePath);
+                var card = createServiceCard(serviceId, card_max_width, picturePath, name, type, descriptionText);
                 card.appendTo(col1);
                 console.log("appending card to col 1");
                 col_in_use = 2;
@@ -55,7 +56,7 @@ $(document).ready(function(){
             }
 
             if(col_in_use == 2){
-                var card = createServiceCard(serviceId, name, type, picturePath);
+                var card = createServiceCard(serviceId, card_max_width, picturePath, name, type, descriptionText);
                 card.appendTo(col2);
                 console.log("appending card to col 2");
                 col_in_use = 1;
@@ -75,51 +76,63 @@ function goToService(serviceId){
     window.location = "./service.html" + "?id=" + serviceId + "&service-type=" + type_to_display + "&service-gt=type";
   }
 
-function createServiceCard(serviceId, serviceTitle, shortDesc, serviceImagePath){
+
+function createServiceCard(serviceId, card_max_width, img_path, name, type, descriptionText) {
 
     var card = $('<div />')
-    .addClass("card mb-3 top-10")
-    .attr("id", serviceId);
+        .addClass("card card-dim top-10")
+        .attr("style", "max-width: " + card_max_width + ";")
 
     var row = $('<div />')
-        .addClass("row no-gutters")
-        .appendTo(card);
+        .addClass("row-card")
+        .appendTo(card)
 
     var col4 = $('<div />')
-        .addClass("col-md-4")
-        .appendTo(row);
+        .addClass("col-img-card")
+        .appendTo(row)
 
     $('<img />')
-        .attr('src', serviceImagePath)    //image relative path
-        .addClass("img-fluid card-img")
-        .attr('alt', "img-service-" + serviceId)
-        .width("100%").height("100%")
+        .attr('src', img_path) //image relative path
+        .addClass("img-card-madsomma card-img")
+        .attr("alt", "image-service-" + serviceId)
         .appendTo(col4);
 
     var col8 = $('<div />')
-        .addClass("col-md-8")
+        .addClass("col-body-card")
         .appendTo(row)
 
     var cardbody = $("<div />")
-        .addClass("card-body")
+        .addClass("card-body-mad")
         .appendTo(col8);
 
     $("<h5 />")
-        .addClass("card-title left-15")
-        .text(serviceTitle)
-        .appendTo(cardbody);
-        
+        .addClass("card-title")
+        .appendTo(cardbody)
+        .text(name)
 
     $("<p />")
-        .addClass("card-text left-15")
-        .text(shortDesc)
-        .appendTo(cardbody);
-
-    $("<button />")
-        .addClass("button-card btn btn-info left-15")
+        .addClass("card-text")
         .appendTo(cardbody)
-        .attr("onclick", "goToService"+ "("  +  serviceId  +  ")")
-        .text("More about ".concat(serviceTitle));
-    
-    return card;
+        .text(type)
+	
+	var brief_description = descriptionText.slice(0, 70);
+	
+	$("<div />")
+        .addClass("card-text description-text")
+        .appendTo(cardbody)
+	.text(brief_description + "...")
+
+	
+	var button_div = $("<div />")
+		.addClass("text-right")
+		.appendTo(cardbody)
+	
+    $("<button />")
+        .addClass("button-card btn text-light")
+       	.attr("onclick", "goToService("  +  serviceId  +  ")")
+        .appendTo(button_div)
+        .text("Read more about this service")
+	
+	return card;
+
 }

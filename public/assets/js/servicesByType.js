@@ -66,44 +66,53 @@ function goToServicsOfType(typeId){
 }
 
 function createTypeCard(type, picturePath){
+	
+	var blockDiv = $('<div />')
+        .addClass("row center-block top-10")
+
 
     var card = $('<div />')
-    .addClass("card mb-3 top-10")
-    .attr("id", type);
+    .addClass("card card-dim")
+    .attr("id", type)
+	.appendTo(blockDiv); //div in which load the images
 
     var row = $('<div />')
-        .addClass("row no-gutters")
+        .addClass("row-card")
         .appendTo(card);
 
     var col4 = $('<div />')
-        .addClass("col-md-4")
+        .addClass("col-img-card")
         .appendTo(row);
 
     $('<img />')
         .attr('src', picturePath)    //image relative path
-        .addClass("img-fluid card-img")
+        .addClass("img-card-madsomma card-img")
         .attr('alt', "img-service-" + type)
-        .width("100%").height("100%")
         .appendTo(col4);
 
     var col8 = $('<div />')
-        .addClass("col-md-8")
+        .addClass("col-body-card")
         .appendTo(row)
 
     var cardbody = $("<div />")
-        .addClass("card-body")
+        .addClass("card-body-mad")
         .appendTo(col8);
 
     $("<h5 />")
-        .addClass("card-title left-15")
+        .addClass("card-title")
         .text(type)
-        .appendTo(cardbody);        
-
+        .appendTo(cardbody);   
+	
+	var button_div = $("<div />")
+		.addClass("text-right")
+		.appendTo(cardbody)
+	
     $("<button />")
-        .addClass("button-card btn btn-info left-15")
-        .appendTo(cardbody)
-        .attr("onclick", "goToServicsOfType"+ "("  + "\"" + type  + "\"" +   ")")
+        .addClass("button-card btn text-light")
+       	.attr("onclick", "goToServicsOfType"+ "("  + "\"" + type  + "\"" +   ")")
+        .appendTo(button_div)
         .text("More "+ type + " services");
+        
     
-    return card;
+    return blockDiv;
 }

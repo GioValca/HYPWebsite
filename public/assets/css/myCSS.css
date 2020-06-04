@@ -35,7 +35,7 @@ html,body {
 #footer {
 	display: block;
     position: relative;
-	margin-top: 3rem;
+	margin-top: 2.78rem;
     width: 100vw;
 	min-height: 9rem;
 }
@@ -52,7 +52,7 @@ html,body {
 }
 
 .space-20 {
-margin-top: 20px;
+padding-top: 20px;
 }
 
 .right-margin50 {
@@ -412,7 +412,7 @@ width: 100%;
 	
 	.img-card-madsomma {
   display: block;
-	max-height: 200px;
+	max-height: 230px;
   width: 100%;
   height: 100%;
 }
@@ -444,12 +444,19 @@ margin-top: 7px;
 		text-align: center;
 	}
 
+		#img_person, #carousel-association {
+		display: block;
+		width: 100%;
+		max-width: 450px;
+		padding: 0 20px 10px 0;
+	}
+	
 }
 
 
 
 /* for iPad*/
-@media screen and (max-width: 850px) and (min-width: 701px) {
+@media screen and (max-width: 799px) and (min-width: 701px) {
   .row-card {
     display: block;
   }
@@ -460,7 +467,7 @@ margin-top: 7px;
 	
 	.img-card-madsomma {
   display: block;
-	max-height: 200px;
+	max-height: 220px;
   width: 100%;
   height: 100%;
 }
@@ -481,7 +488,7 @@ margin-top: 7px;
 	.card-dim {
 	height: auto;
 		margin: auto;
-	width: 100%;
+	width: 85% !important;
 }
 	
 	#involved-events-title {
@@ -491,7 +498,56 @@ margin-top: 7px;
 	#involved-services-title {
 		text-align: center;
 	}
+	
+		#img_person, carousel-association {
+		display: block;
+		float: left;
+		width: 100%;
+		max-width: 450px;
+		padding: 0 20px 10px 0;
+	}
+	
+}
 
+/* for iPad landscape*/
+@media screen and (max-width: 1079px) and (min-width: 800px) {
+	.description-text {
+		display: none;
+	}
+	
+	.img-card-madsomma {
+  display: block;
+	max-height: 220px;
+  width: 100%;
+  height: 100%;
+}
+	.button-card {
+	position: relative;
+margin-top: 7px;	
+}
+	
+	.card-dim {
+	height: auto;
+		margin: auto;
+	width: 100% !important;
+}
+	
+	#involved-events-title {
+		text-align: center;
+	}
+	
+	#involved-services-title {
+		text-align: center;
+	}
+	
+		#img_person, carousel-association {
+		display: block;
+		float: left;
+		width: 100%;
+		max-width: 450px;
+		padding: 0 20px 10px 0;
+	}
+	
 }
 
 /* for mobile landscape*/
@@ -504,7 +560,7 @@ margin-top: 7px;
 		display: none;
 	}
 	
-	#img_person {
+	#img_person, carousel-association {
 		max-width: 300px;
 	}
 	
@@ -542,12 +598,20 @@ margin-top: 7px;
 	#involved-services-title {
 		text-align: center;
 	}
+	
+		#img_person, carousel-association {
+		display: block;
+			float: left;
+		width: 100%;
+		max-width: 350px;
+		padding: 0 20px 10px 0;
+	}
 
 }
 
 
 /* for desktop*/
-@media screen and (min-width: 851px) {
+@media screen and (min-width: 1080px) {
 	
 	.description-text {
 		display: block;
@@ -571,6 +635,14 @@ margin-top: 7px;
 	
 	#involved-services-title {
 		text-align: center;
+	}
+	
+		#img_person, carousel-association {
+		display: block;
+		float: left;
+		width: 100%;
+		max-width: 450px;
+		padding: 0 20px 10px 0;
 	}
 
 }
@@ -597,4 +669,18 @@ margin-top: 7px;
 .list-footer {
 	list-style-type: none;
 	line-height: 1.8em;
+}
+
+
+.clear {
+  clear: both;
+}
+
+.container-bio {
+	  display: block;
+  height: auto;
+}
+
+#carousel-association {
+	float: left;
 }

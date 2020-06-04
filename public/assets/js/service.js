@@ -199,7 +199,7 @@ $(document).ready(function() {
       var title = document.getElementById("service-title");
       var description = document.getElementById("description-text");
       var type_html = document.getElementById("service-type");
-      var image = document.getElementById("main-image");
+      var image = document.getElementById("img_person");
       var breadcrumb = document.getElementById("current-page");
       var address_html = document.getElementById("service-address");
 
