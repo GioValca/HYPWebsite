@@ -391,7 +391,7 @@ function createPersonCard(personId, personNameSurname, personRole, img_path, car
 		.appendTo(cardbody)
 	
     $("<button />")
-        .addClass("button-card btn btn-info text-light")
+        .addClass("button-card btn text-light")
        	.attr("onclick", "goToPerson("  +  personId  +  ")")
         .appendTo(button_div)
         .text("Read more about this person")
@@ -451,7 +451,7 @@ function createEventCard(eventId, card_max_width, img_path, name, date, hour) {
 		.appendTo(cardbody)
 	
     $("<button />")
-        .addClass("button-card btn btn-info text-light")
+        .addClass("button-card btn text-light")
        	.attr("onclick", "goToEvent("  +  eventId  +  ")")
         .appendTo(button_div)
         .text("Read more about this event")

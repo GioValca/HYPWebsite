@@ -25,6 +25,8 @@ $(document).ready(function(){
     
     var breadcrumb = document.getElementById("current-page");
     var title = document.getElementById("page-title");
+		var card_max_width = "100%";
+
 
     breadcrumb.innerHTML = "Events of " + months[parseInt(month_to_display)];
     title.innerHTML = " Events of " + months[parseInt(month_to_display)];
@@ -65,7 +67,7 @@ $(document).ready(function(){
             var string_day = pretty_day(day);
             var pretty_date = string_month.concat(" ").concat(string_day).concat(" ".concat(year));
             if(col_in_use == 1){
-                var card = createEventCard(eventId, name, pretty_date, picturePath);
+                var card = createEventCard(eventId, card_max_width, picturePath, name, pretty_date, hour);
                 card.appendTo(col1);
                 console.log("appending card to col 1");
                 col_in_use = 2;
@@ -73,7 +75,7 @@ $(document).ready(function(){
             }
 
             if(col_in_use == 2){
-                var card = createEventCard(eventId, name, pretty_date, picturePath);
+                var card = createEventCard(eventId, card_max_width, picturePath, name, pretty_date, hour);
                 card.appendTo(col2);
                 console.log("appending card to col 2");
                 col_in_use = 1;
@@ -109,51 +111,64 @@ function goToEvent(eventId){
     window.location = "./event.html" + "?id=" + eventId + "&month=" + month_to_display + "&event-gt=month";
   }
 
-function createEventCard(eventId, eventTitle, eventDate, eventImagePath){
-    
+function createEventCard(eventId, card_max_width, img_path, name, date, hour) {
+
+    var blockDiv = $('<div />')
+        .addClass("row center-block top-10")
+        .attr("id", eventId)
+	
     var card = $('<div />')
-    .addClass("card mb-3 top-10")
-    .attr("id", eventId);
+        .addClass("card card-dim")
+        .attr("style", "max-width: " + card_max_width + ";")
+        .appendTo(blockDiv)
 
     var row = $('<div />')
-        .addClass("row no-gutters")
-        .appendTo(card);
+        .addClass("row-card")
+        .appendTo(card)
 
     var col4 = $('<div />')
-        .addClass("col-md-4")
-        .appendTo(row);
+        .addClass("col-img-card")
+        .appendTo(row)
 
     $('<img />')
-        .attr('src', eventImagePath)    //image relative path
-        .addClass("img-fluid card-img")
-        .attr('alt', "event-image-"+eventId)
-        .width("100%").height("100%")
+        .attr('src', img_path) //image relative path
+        .addClass("img-card-madsomma card-img")
+        .attr("alt", "image-event-" + eventId)
         .appendTo(col4);
 
     var col8 = $('<div />')
-        .addClass("col-md-8")
+        .addClass("col-body-card")
         .appendTo(row)
 
     var cardbody = $("<div />")
-        .addClass("card-body")
+        .addClass("card-body-mad")
         .appendTo(col8);
 
     $("<h5 />")
-        .addClass("card-title left-15")
-        .text(eventTitle)
-        .appendTo(cardbody);
-        
+        .addClass("card-title")
+        .appendTo(cardbody)
+        .text(name)
 
     $("<p />")
-        .addClass("card-text left-15")
-        .text(eventDate)
-        .appendTo(cardbody);
-
-    $("<button />")
-        .addClass("button-card btn btn-info left-15")
+        .addClass("card-text")
         .appendTo(cardbody)
-        .attr("onclick", "goToEvent"+ "("  +  eventId  +  ")")
-        .text("More about ".concat(eventTitle));
-    
-    return card;
+        .text(date)
+	
+	$("<div />")
+        .addClass("card-text description-text")
+        .appendTo(cardbody)
+	.text("Time: " + hour)
+
+	var button_div = $("<div />")
+		.addClass("text-right")
+		.appendTo(cardbody)
+	
+    $("<button />")
+        .addClass("button-card btn text-light")
+       	.attr("onclick", "goToEvent("  +  eventId  +  ")")
+        .appendTo(button_div)
+        .text("Read more about this event")
+	
+	return blockDiv;
+
 }

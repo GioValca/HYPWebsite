@@ -1,6 +1,21 @@
 //getting the month to display from the cache
 console.log("Showing today's events");
 
+var months = {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December"
+}
+
 $(document).ready(function(){
     
     var title = document.getElementById("page-title");
@@ -37,8 +52,10 @@ $(document).ready(function(){
 
         for(i = 0; i < list_len; i++){
             let {eventId, name, hour, day, month, year, address, city, picturePath, descriptionText, contactPerson} = json[i];
+			 var string_day = pretty_day(day);
+				var date = months[month] + " " + string_day + " " + year;
             if(col_in_use == 1){
-                var card = createEventCard(eventId, card_max_width, picturePath, name, descriptionText);
+                var card = createEventCard(eventId, card_max_width, picturePath, name, date, hour);
                 card.appendTo(col1);
                 console.log("appending card to col 1");
                 col_in_use = 2;
@@ -46,7 +63,7 @@ $(document).ready(function(){
             }
 
             if(col_in_use == 2){
-                var card = createEventCard(eventId, name, descriptionText, picturePath);
+                var card = createEventCard(eventId, card_max_width, picturePath, name, date, hour);
                 card.appendTo(col2);
                 console.log("appending card to col 2");
                 col_in_use = 1;
@@ -127,4 +144,19 @@ function createEventCard(eventId, card_max_width, img_path, name, date, hour) {
 	
 	return blockDiv;
 
+}
+
+function pretty_day(day){
+    var j = day % 10,
+    k = day % 100;
+    if (j == 1 && k != 11) {
+        return day + "st";
+    }
+    if (j == 2 && k != 12) {
+        return day + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return day + "rd";
+    }
+    return day + "th";
 }

@@ -276,7 +276,7 @@ function createEventCard(eventId, card_max_width, img_path, name, date, hour) {
 	
     $("<button />")
         .addClass("button-card btn text-light")
-       	.attr("onclick", "goToService("  +  eventId  +  ")")
+       	.attr("onclick", "goToEvent("  +  eventId  +  ")")
         .appendTo(button_div)
         .text("Read more about this event")
 
